@@ -1,0 +1,22 @@
+{
+  "name": "youtube-clone",
+  "version": "2.0.0",
+  "description": "This is Clone of YouTube made to upgrade user experience.",
+  "main": "app.js",
+  "scripts": {
+    "test": "",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "YouTube Clone"
+  },
+  "keywords": [
+    "YouTube"
+  ],
+  "author": "Kartik Hatwar",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
