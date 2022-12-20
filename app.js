@@ -1,14 +1,22 @@
-const express = require('express');
+import { config } from 'dotenv';
+import express from 'express';
+import { Auth } from './Middleware/auth.js';
+import { Home } from './Routes/HomePage.js';
+import { LoginPage } from './Routes/LoginPage.js';
+import {SignUp} from './Routes/SignUp.js';
+
+config();
+
 const app = express();
 const port = process.env.PORT || 8080;
 
-const homepage = require("./Routes/homepageRoute");
-
-app.set('view engine','ejs');
+app.set("view engine", "ejs");
+app.use(express.static('./views'));
 app.set('views','./views');
 
-app.use(express.json());
-app.use("/",homepage);
+app.get('/',Auth,Home);
+app.get('/loginpage',LoginPage);
+app.use('/googlesignin',SignUp);
 
 
 

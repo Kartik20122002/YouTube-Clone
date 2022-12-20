@@ -1,0 +1,12 @@
+{
+    "files.exclude": {
+        "node_modules": true
+    },
+    "explorer.excludeGitIgnore": false,
+    "outline.showArrays": true,
+    "search.exclude": {
+        "**/node_modules": false
+    },
+    "npm.enableRunFromFolder": false,
+    "html.format.contentUnformatted": "pre,code,textarea"
+}
