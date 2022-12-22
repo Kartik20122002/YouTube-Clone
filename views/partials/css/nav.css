@@ -1,0 +1,111 @@
+nav{
+    padding: 10px 2%;
+    width: 100%;
+    justify-content: space-between;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+nav i{
+    cursor: pointer;
+}
+
+.nav-right img{
+    width: 25px;
+    margin-right: 25px ;
+}
+
+.nav-right i{
+    width: 25px;
+    margin-right: 25px ;
+}
+
+.nav-right i{
+    font-size: 25px;
+    display: none;
+}
+
+.nav-right .user-icon{
+    width: 35px;
+    border-radius: 50%;
+    margin-right: 0;
+}
+
+
+.nav-left .menu-icon{
+   font-size: 25px;
+   margin-right: 25px;
+}
+
+.nav-left .logo{
+    width: 130px;
+}
+
+.nav-left .logo-small{
+    color: red;
+    font-size: 45px;
+    margin-right: 25px ;
+}
+
+.nav-middle .search-box{
+   border: 1px solid #ccc;
+   margin-right: 15px;
+   padding: 8px 12px;
+   border-radius: 25px;
+}
+
+.nav-middle .search-box input{
+    width: 400px;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+}
+
+.nav-middle .search-box img{
+    width: 15px ;
+}
+
+.nav-middle .search-box button{
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    border: none;
+}
+
+@media (min-width:901px){
+    .nav-left .logo{
+        display: block;
+    }
+    .nav-left .logo-small{
+        display: none;
+    }
+}
+
+@media (max-width:900px){
+    .nav-left .logo{
+        display: none;
+    }
+
+    .nav-left .logo-small{
+        display: block;
+    }
+
+    .nav-left .menu-icon{
+        display: none;
+    }
+
+    .nav-middle .search-box{
+       display: none;
+    }
+
+    .nav-right .upload , .nav-right .more , .nav-right .notification{
+        display: none;
+    }
+
+    .nav-right .search{
+        display: inline;
+    }
+}
