@@ -15,6 +15,7 @@ export const popular_videos = async (value)=>{
     {   part:'snippet',
         maxResults : value,
         chart : 'mostPopular',
+        regionCode : 'In'
     });
     
     return {result : results.data.items, nextpagetoken : results.data.nextPageToken , prevpagetoken : results.data.prevPageToken};
@@ -26,6 +27,7 @@ export const popular_videos_by_pagetoken = async (pagetoken)=>{
         maxResults : 25,
         chart : 'mostPopular',
         pageToken : pagetoken,
+        regionCode : 'In'
     });
     return {result : results.data.items, nextpagetoken : results.data.nextPageToken , prevpagetoken : results.data.prevPageToken};
 }

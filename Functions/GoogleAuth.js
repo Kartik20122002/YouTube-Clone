@@ -12,7 +12,7 @@ export const oauth2Client = new google.auth.OAuth2(clientId, clientSecret, redir
 
 export const youtube = google.youtube({
   version: 'v3',
-  auth: yt_api,
+  auth: oauth2Client,
 });
 
 export const GetToken = async ()=>{
@@ -31,4 +31,13 @@ export const SetToken = async (code) =>{
   const {tokens} = await oauth2Client.getToken(code);
   oauth2Client.setCredentials(tokens);
   return;
+}
+
+export const logout = async ()=>{
+  oauth2Client.credentials.access_token = null;
+  oauth2Client.credentials.refresh_token = null;
+}
+
+export const user_info = ()=>{
+  oauth2Client.credentials
 }
