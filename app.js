@@ -1,7 +1,6 @@
 import { config } from 'dotenv';
 import express from 'express';
-import ejs from 'ejs';
-import { search_videos , popular_videos , popular_videos_by_pagetoken} from './Functions/Youtube_Data.js';
+import { popular_videos_by_pagetoken} from './Functions/Youtube_Data.js';
 import { Auth } from './Middleware/auth.js';
 import { logout } from './Functions/GoogleAuth.js';
 import { Home } from './Routes/HomePage.js';
