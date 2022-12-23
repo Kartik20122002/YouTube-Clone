@@ -1,4 +1,4 @@
-// import { config } from 'dotenv';
+import { config } from 'dotenv';
 import express from 'express';
 import ejs from 'ejs';
 import { search_videos , popular_videos , popular_videos_by_pagetoken} from './Functions/Youtube_Data.js';
@@ -8,7 +8,7 @@ import { Home } from './Routes/HomePage.js';
 import { LoginPage } from './Routes/LoginPage.js';
 import {SignUp} from './Routes/SignUp.js';
 
-config();
+// config();
 
 
 const app = express();
@@ -18,18 +18,7 @@ app.use(express.static('./views'));
 app.set('views','./views');
 
 
-app.get('/',Auth,async (req,res)=>{
-   
-    let {result , nextpagetoken , prevpagetoken}= await popular_videos(25);
-    ejs.renderFile('./views/HomePage.ejs',{items : result , nextpagetoken : nextpagetoken , prevpagetoken : prevpagetoken},{},(err,temp)=>{
-        if (err) {
-            throw err;
-        } else {
-            res.end(temp);
-        }
-    });
-    // res.render('Homepage.ejs',{items : result , nextpagetoken : nextpagetoken , prevpagetoken : prevpagetoken });
-});
+app.get('/',Auth,Home);
 
 
 
