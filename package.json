@@ -4,7 +4,7 @@
   "description": "This is Clone of YouTube made to upgrade user experience.",
   "main": "app.js",
   "scripts": {
-    "test": "",
+    "build" : "npm init",
     "start": "node app.js"
   },
   "repository": {

@@ -21,14 +21,14 @@ app.set('views','./views');
 app.get('/',Auth,async (req,res)=>{
    
     let {result , nextpagetoken , prevpagetoken}= await popular_videos(25);
-    // ejs.renderFile('./views/HomePage.ejs',{data : result , nextpagetoken : nextpagetoken , prevpagetoken : prevpagetoken},{},(err,temp)=>{
-    //     if (err) {
-    //         throw err;
-    //     } else {
-    //         res.end(temp);
-    //     }
-    // });
-    res.render('Homepage.ejs',{items : result , nextpagetoken : nextpagetoken , prevpagetoken : prevpagetoken });
+    ejs.renderFile('./views/HomePage.ejs',{items : result , nextpagetoken : nextpagetoken , prevpagetoken : prevpagetoken},{},(err,temp)=>{
+        if (err) {
+            throw err;
+        } else {
+            res.end(temp);
+        }
+    });
+    // res.render('Homepage.ejs',{items : result , nextpagetoken : nextpagetoken , prevpagetoken : prevpagetoken });
 });
 
 
