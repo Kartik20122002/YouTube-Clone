@@ -6,7 +6,7 @@ export const Auth = (req,res,next)=>{
           next();
         }
         else{
-            res.render('loginpage.ejs');
+            res.render('LoginPage.ejs');
         }
     } catch (error) {
         res.send(error);
