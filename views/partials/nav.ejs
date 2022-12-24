@@ -14,9 +14,9 @@
 
 
     <div class="nav-middle flex-div">
-            <form action="#" method="post" class="search-box flex-div">
-              <input type="text" placeholder="Search">
-              <button type="submit"><img src="../images/search.png" alt="" srcset=""></button>
+            <form action="/searchresults" method="post" class="search-box flex-div">
+              <input type="text" id="searchquery" name="searchquery" placeholder="Search" value="">
+              <button type="submit"><img src="../images/search.png"></button>
             </form>
     </div>
 
@@ -27,7 +27,7 @@
         <a href="#"> <img src="../images/notification.png" class="notification" alt="" srcset=""> </a>
         <a href="#"> <i class="fa-solid fa-magnifying-glass search"></i></a>
         <!-- <i class="fa-regular fa-bell notification"></i> -->
-        <a href="/logout"> <img src="../images/Jack.png" alt="user" class="user-icon"> </a>
+        <a href="/googleauth/logout"> <img src="../images/Jack.png" alt="user" class="user-icon"> </a>
        
     </div>
 </nav>

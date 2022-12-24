@@ -4,7 +4,7 @@
   "description": "This is Clone of YouTube made to upgrade user experience.",
   "main": "app.js",
   "scripts": {
-    "build" : "npm install",
+    "build": "npm install",
     "start": "node app.js"
   },
   "repository": {
@@ -22,12 +22,18 @@
     "dotenv": "^16.0.3",
     "ejs": "^3.1.8",
     "express": "^4.18.2",
+    "express-session": "^1.17.3",
     "google-auth-library": "^8.7.0",
     "googleapis": "^109.0.1",
     "http": "^0.0.1-security",
     "https": "^1.0.0",
     "mongoose": "^6.8.0",
+    "mongoose-findorcreate": "^3.0.0",
+    "passport": "^0.6.0",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-youtube-v3": "^2.1.0",
     "validator": "^13.7.0",
+    "youtube-node": "^1.3.3",
     "youtube-search-api": "^1.1.1"
   }
 }

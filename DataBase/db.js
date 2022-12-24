@@ -2,6 +2,9 @@ import env from "dotenv";
 env.config();
 
 import mongoose from "mongoose";
+import findOrCreatePlugin from 'mongoose-findorcreate';
+
+mongoose.plugin(findOrCreatePlugin);
 
 mongoose.set('strictQuery', false);
 //Set up default mongoose connection
@@ -39,4 +42,4 @@ const userSchema = new mongoose.Schema({
     lastVisited: { type: Date, default: new Date() }
 });
 
-export const userModel = mongoose.model("user", userSchema, "user");
+export const User = mongoose.model("user", userSchema);

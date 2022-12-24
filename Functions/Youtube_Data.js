@@ -1,19 +1,28 @@
-import {youtube} from './GoogleAuth.js';
+import { google } from 'googleapis';
+import { clientId, clientSecret , redirectUrl } from './GoogleAuth.js';
+const OAuth2 = google.auth.OAuth2;
 
-export const search_videos = async (query,value)=>{
-    let results = await youtube.search.list(
-        {
-            part:'snippet', 
-            q: query, 
-            maxResults: value,
-        });
-    return results.data.items;
+export const oauth2client = new OAuth2(
+    clientId,
+    clientSecret,
+    redirectUrl
+)
+const youtube = google.youtube({version : 'v3' , auth : oauth2client});
+
+export const search_videos = async (query)=>{
+ let results = await youtube.search.list(
+     {
+         part:'snippet', 
+         q: query, 
+         maxResults: 25,
+     });
+    return {result : results.data.items, nextpagetoken : results.data.nextPageToken , prevpagetoken : results.data.prevPageToken};
 }
 
-export const popular_videos = async (value)=>{
+export const popular_videos = async ()=>{
     let results = await youtube.videos.list(
     {   part:'snippet',
-        maxResults : value,
+        maxResults : 25,
         chart : 'mostPopular',
         regionCode : 'In'
     });
@@ -33,10 +42,10 @@ export const popular_videos_by_pagetoken = async (pagetoken)=>{
 }
 
 
-export const user_liked_videos = async (value)=>{
+export const user_liked_videos = async ()=>{
     let results = await youtube.videos.list(
     {   part:'snippet',
-        maxResults : value,
+        maxResults : 25,
         myRating : 'liked',
     });
 
