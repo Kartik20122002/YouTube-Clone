@@ -12,11 +12,15 @@
             <div class="vid-list">
                 <a href=https://www.youtube.com/watch?v=<%=items[i].id%>>  <img src=<%=items[i].snippet.thumbnails.medium.url%> class="thumbnail" alt="Image Here" srcset=""> </a>
                 <div class="flex-div">
-                    <img src="../images/Jack.png" alt="" srcset="">
+                 <a href=https://www.youtube.com/<%=items[i].channelinfo.snippet.customUrl%>><img src=<%=items[i].channelinfo.snippet.thumbnails.medium.url%> alt="" srcset=""></a> 
                     <div class="vid-info">
-                        <a href="#"><%-items[i].snippet.title%></a>
-                        <p><%-items[i].channelTitle%></p>
-                        <p>15k Views &bull; 2 days</p>
+                        <a href=https://www.youtube.com/watch?v=<%=items[i].id%>><%-items[i].snippet.title%></a>
+                       <a href=https://www.youtube.com/<%=items[i].channelinfo.snippet.customUrl%>> <p><%-items[i].snippet.channelTitle%></p></a>
+                        <% let views = (items[i].statistics.viewCount/1000000).toFixed(1)%>
+                        <% if(views > 10) views = Math.trunc(views)%>
+                        <% if(views > 1) views = views + 'M' %>
+                        <% if(views <= 1) views = (items[i].statistics.viewCount/1000).toFixed(1) + 'K' %>
+                        <p> <%=views%> Views &bull; 2 days</p>
                     </div>
                 </div>
             </div>

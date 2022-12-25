@@ -42,4 +42,14 @@ const userSchema = new mongoose.Schema({
     lastVisited: { type: Date, default: new Date() }
 });
 
+const channelSchema = new mongoose.Schema({
+    channelId :{
+        type : String,
+        required : [true , 'Channel already added']
+    },
+    name : String,
+    thumbnail : String
+})
+
 export const User = mongoose.model("user", userSchema);
+export const Channel = mongoose.model("channel",channelSchema);

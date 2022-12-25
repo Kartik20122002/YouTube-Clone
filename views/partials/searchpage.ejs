@@ -1,0 +1,53 @@
+<link rel="stylesheet" href="./partials/css/mainpage.css">
+
+<div class="container" id="mainpage">
+    <!-- <div class="banner">
+        <img src="../images/banner.png" alt="" srcset="">
+    </div> -->
+
+
+    <div class="list-container">
+        <% for(let i = 0 ; i < items.length ; i++){ %>
+            <% let id = "" %>
+            
+            <%if(items[i].id.kind === 'youtube#video'){ %>
+                <% id = items[i].id.videoId%>
+                
+                <div class="vid-list">
+                    <a href=https://www.youtube.com/watch?v=<%=id%>>  <img src=<%=items[i].snippet.thumbnails.medium.url%> class="thumbnail" alt="Image Here" srcset=""> </a>
+                    <div class="flex-div">
+                        <a href=https://www.youtube.com/<%=items[i].channelinfo.snippet.customUrl%>><img src=<%=items[i].channelinfo.snippet.thumbnails.medium.url%> alt="" srcset=""></a>
+                        <div class="vid-info">
+                            <a href=https://www.youtube.com/watch?v=<%=items[i].id%>><%-items[i].snippet.title%></a>
+                            <a href=https://www.youtube.com/<%=items[i].channelinfo.snippet.customUrl%>> <p><%-items[i].snippet.channelTitle%></p></a>
+                            <p> ? Views &bull; 2 days</p>  
+                        </div>
+                    </div>
+                </div>
+
+                    <%}%>
+
+                <%if(items[i].id.kind === 'youtube#playlist') { %>
+                <% id = items[i].id.playlistId %>
+                <%}%>
+                <%if(items[i].id.kind === 'youtube#channel') { %>
+                <% id = items[i].id.channelId %>
+
+                <div class="vid-list channel-list">
+                    <a href=https://www.youtube.com/channel/<%=id%>>  <img src=<%=items[i].snippet.thumbnails.medium.url%> class="thumbnail" alt="Image Here"> </a>
+                    <div class="flex-div">
+                        <!-- <img src="../images/Jack.png" alt="" srcset=""> -->
+                        <div class="vid-info">
+                            <a href=https://www.youtube.com/channel/<%=id%>><%-items[i].snippet.title%></a>
+                        </div>
+                    </div>
+                </div>
+
+                <%}%>
+                
+        <%}%>
+ 
+
+    </div>
+
+</div>

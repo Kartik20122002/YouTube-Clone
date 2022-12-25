@@ -6,28 +6,32 @@
 
        <i class="fa-solid fa-bars menu-icon"></i>
 
-       <a href="#"> <img src="../images/logo.png" class="logo" alt="" srcset=""> </a>
+       <a href="/"> <img src="../images/logo.png" class="logo" alt="" srcset=""> </a>
 
-       <a href="#"> <i class="fa-brands fa-youtube logo-small"></i> </a>
+       <a href="/"> <i class="fa-brands fa-youtube logo-small"></i> </a>
        
     </div>
 
 
     <div class="nav-middle flex-div">
             <form action="/searchresults" method="post" class="search-box flex-div">
-              <input type="text" id="searchquery" name="searchquery" placeholder="Search" value="">
+                <div class="input-div">
+              <input type="text" id="searchquery" name="searchquery" placeholder="Search" value="<%=queryvalue%>">
+                </div>
+                <div class="btn-div">
               <button type="submit"><img src="../images/search.png"></button>
+            </div>
             </form>
     </div>
 
 
     <div class="nav-right flex-div">
         <a href="#"> <img src="../images/upload.png" class="upload" alt="" srcset=""> </a>
-        <a href="#"> <img src="../images/more.png" class="more" alt="" srcset=""> </a>
+        <!-- <a href="#"> <img src="../images/more.png" class="more" alt="" srcset=""> </a> -->
         <a href="#"> <img src="../images/notification.png" class="notification" alt="" srcset=""> </a>
         <a href="#"> <i class="fa-solid fa-magnifying-glass search"></i></a>
         <!-- <i class="fa-regular fa-bell notification"></i> -->
-        <a href="/googleauth/logout"> <img src="../images/Jack.png" alt="user" class="user-icon"> </a>
+        <a href="/googleauth/logout"> <img src=<%=profile.photos[0].value%> alt="" class="user-icon"> </a>
        
     </div>
 </nav>

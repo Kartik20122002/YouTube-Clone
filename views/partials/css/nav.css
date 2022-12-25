@@ -1,6 +1,11 @@
+::-webkit-progress-bar{
+    color: aqua
+}
+
 nav{
     padding: 10px 2%;
     width: 100%;
+    height: 60px;
     justify-content: space-between;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     background-color: #fff;
@@ -34,6 +39,9 @@ nav i{
     margin-right: 0;
 }
 
+.nav-left{
+    height: 100%;
+}
 
 .nav-left .menu-icon{
    font-size: 25px;
@@ -41,7 +49,7 @@ nav i{
 }
 
 .nav-left .logo{
-    width: 130px;
+    width: 105px;
 }
 
 .nav-left .logo-small{
@@ -50,27 +58,52 @@ nav i{
     margin-right: 25px ;
 }
 
+.nav-middle{
+    width: 600px;
+}
+
 .nav-middle .search-box{
    border: 1px solid #ccc;
-   margin-right: 15px;
-   padding: 8px 12px;
+   width: 100%;
+   height: 40px;
    border-radius: 25px;
+   margin: 15px;
+}
+
+.nav-middle .search-box .input-div{
+    width: 90%;
+    height: 100%;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    background: #ffffff;
+    padding: 0px 12px;
 }
 
 .nav-middle .search-box input{
-    width: 400px;
+    width: 90%;
+    height: 100%;
     border: 0;
     outline: 0;
-    background-color: transparent;
+    background-color: white;
 }
 
 .nav-middle .search-box img{
     width: 15px ;
 }
 
+.nav-middle .search-box .btn-div{
+    height: 100%;
+    width: 10%;
+    padding: 0px 0px;
+    display: flex;
+    justify-content: center;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
 .nav-middle .search-box button{
-    padding: 0;
-    margin: 0;
+    height: 100%;
+    width: 100%;
     background-color: transparent;
     border: none;
 }

@@ -1,12 +1,40 @@
+
+
 .sidebar{
     background: #fff;
     width: 15%;
-    height: 100vh;
     position: fixed;
     top: 0;
-    padding-left: 2%;
-    padding-top: 80px;
+    height: 100vh;
     transition: .5s;
+    z-index: 9;
+   
+}
+
+.sidebar-util{
+    width: 100%;
+    height: 100%;
+    padding-top: 110px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.sidebar .shortcut-links{
+    padding-left: 3%;
+}
+
+.sidebar .subscribed-list{
+    padding-left: 3%;
+}
+
+.large-padding{
+    padding-left: 25%!important;
+}
+
+
+.sidebar a{
+    width: 100%;
 }
 
 .sidebar .shortcut-links a img{
@@ -17,9 +45,7 @@
 .sidebar .shortcut-links a{
     display: flex;
     align-items: center;
-    justify-content: center;
     margin-bottom: 20px;
-    width: fit-content;
     flex-wrap: wrap;
 }
 
@@ -36,7 +62,7 @@
 }
 
 .sidebar .subscribed-list h3{
-    font-size: 13px;
+    font-size: 18px;
     margin: 20px 0;
     color: #5a5a5a;
 }
@@ -45,7 +71,6 @@
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    width: fit-content;
     flex-wrap: wrap;
 }
 
