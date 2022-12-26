@@ -6,7 +6,7 @@ import { Home } from './Routes/HomePage.js';
 import { SearchResults } from './Routes/SearchResults.js';
 
 const app = express();
-app.use(session({secret : 'kartikissecret'}));
+app.use(session({secret : process.env.SECRET}));
 app.use(passport.initialize());
 app.use(passport.session());
 
