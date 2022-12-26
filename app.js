@@ -22,5 +22,5 @@ app.use('/googleauth',Auth);
 app.use('/searchresults',isLoggedIn,SearchResults);
 
 app.listen(port,()=>{
-    console.log(`http://localhost:${port}/`);
+    // console.log(`https://youtube-lite.onrender.com`);
 });
