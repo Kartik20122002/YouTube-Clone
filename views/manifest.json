@@ -1,0 +1,58 @@
+{
+    "short_name" : "YouTube-Lite",
+    "name" : "YouTube-Lite",
+    "description": "This is fully functional clone of youtube.",
+    "start_url": "/",
+    "display" : "standalone",
+    "background_color" : "white",
+    "theme_color" : "red",
+    "orientation":"portrait-primary",
+    "icons":[
+       {
+        "src" : "/images/Icons/48x48.png",
+        "type" : "image/png",
+        "sizes" : "48x48"
+       },
+       {
+        "src" : "/images/Icons/72x72.png",
+        "type" : "image/png",
+        "sizes" : "72x72"
+       },
+       {
+        "src" : "/images/Icons/96x96.png",
+        "type" : "image/png",
+        "sizes" : "96x96"
+       },
+       {
+        "src" : "/images/Icons/144x144.png",
+        "type" : "image/png",
+        "sizes" : "144x144"
+       },
+       {
+        "src" : "/images/Icons/192x192.png",
+        "type" : "image/png",
+        "sizes" : "192x192"
+       },
+       {
+        "src" : "/images/Icons/256x256.png",
+        "type" : "image/png",
+        "sizes" : "256x256"
+       },
+       {
+        "src" : "/images/Icons/600x600.png",
+        "type" : "image/png",
+        "sizes" : "600x600"
+       },
+       {
+        "src" : "/images/Icons/maskable_icon.png",
+        "type" : "image/png",
+        "sizes" : "1907x1907",
+        "purpose": "maskable"
+       },
+       {
+        "src" : "/images/Icons/1240x1240.png",
+        "type" : "image/png",
+        "sizes" : "1240x1240"
+       }
+    ]
+}
