@@ -45,6 +45,7 @@
 
 #mainpage .vid-list .flex-div img{
     width: 35px;
+    height: 35px;
     margin-right: 10px;
     border-radius: 50%;
 }
@@ -70,6 +71,17 @@
 
 #mainpage .vid-list.channel-list .vid-info{
     text-align: center;
+}
+
+#mainpage .skeleton{
+    background:#5a5a5a ;
+    opacity: 50%;
+}
+#mainpage .skeleton-text{
+    color: transparent!important;
+    background:#5a5a5a ;
+    border-radius: 10%;
+    opacity: 50%;
 }
 
 @media (max-width : 900px){

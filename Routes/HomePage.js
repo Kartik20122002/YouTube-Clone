@@ -16,13 +16,15 @@ Home
 
     let {result , nextpagetoken , prevpagetoken}= await popular_videos();
     let subs = await user_subscriptions();
-    ejs.renderFile('./views/HomePage.ejs',{ profile : req.user.profile, items : result, nextpagetoken : nextpagetoken, prevpagetoken : prevpagetoken, queryvalue : "", subs : subs},{},(err,temp)=>{
-        if (err) {
-            throw err;
-        } else {
-            res.end(temp);
-        }
-    });
+    res.render('HomePage.ejs',{ profile : req.user.profile, items : result, nextpagetoken : nextpagetoken, prevpagetoken : prevpagetoken, queryvalue : "", subs : subs});
+    
+    // ejs.renderFile('./views/HomePage.ejs',{ profile : req.user.profile, items : result, nextpagetoken : nextpagetoken, prevpagetoken : prevpagetoken, queryvalue : "", subs : subs},{},(err,temp)=>{
+    //     if (err) {
+    //         throw err;
+    //     } else {
+    //         res.end(temp);
+    //     }
+    // });
     
 });
 

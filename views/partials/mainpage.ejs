@@ -1,33 +1,37 @@
 <link rel="stylesheet" href="./partials/css/mainpage.css">
 
 <div class="container" id="mainpage">
-    <!-- <div class="banner">
-        <img src="../images/banner.png" alt="" srcset="">
-    </div> -->
-
 
     <div class="list-container">
-        
         <% for(let i = 0 ; i < items.length ; i++){ %>
-            <div class="vid-list">
-                <a href=https://www.youtube.com/watch?v=<%=items[i].id%>>  <img src=<%=items[i].snippet.thumbnails.medium.url%> class="thumbnail" alt="Image Here" srcset=""> </a>
-                <div class="flex-div">
-                 <a href=https://www.youtube.com/<%=items[i].channelinfo.snippet.customUrl%>><img src=<%=items[i].channelinfo.snippet.thumbnails.medium.url%> alt="" srcset=""></a> 
-                    <div class="vid-info">
-                        <a href=https://www.youtube.com/watch?v=<%=items[i].id%>><%-items[i].snippet.title%></a>
-                       <a href=https://www.youtube.com/<%=items[i].channelinfo.snippet.customUrl%>> <p><%-items[i].snippet.channelTitle%></p></a>
-                        <% let views = (items[i].statistics.viewCount/1000000).toFixed(1)%>
-                        <% if(views > 10) views = Math.trunc(views)%>
-                        <% if(views > 1) views = views + 'M' %>
-                        <% if(views <= 1) views = (items[i].statistics.viewCount/1000).toFixed(1) + 'K' %>
-                        <p> <%=views%> Views &bull; 2 days</p>
-                    </div>
-                </div>
-            </div>
-        <%}%>
- 
 
+            <div class= "vid-list s<%=i%>">
+                <a href=#> <img src="../../images/skeleton.png" class="thumbnail skeleton"> </a>
+                            <div class="flex-div">
+                             <a href=#><img src="../../images/skeleton.png" class="skeleton" alt="" srcset=""></a> 
+                                <div class="vid-info">
+                                    <a href=# class="skeleton-text">${data[i].snippet.title}</a>
+                                   <a href=# class="skeleton-text"> <p>${data[i].snippet.channelTitle}</p></a>
+                                    
+                                    <p class="skeleton-text"> ${views} Views &bull; 2 days</p>
+                                </div>
+                            </div>
+            </div>
+
+        <%}%>
     </div>
 
 </div>
 
+
+
+<script>
+    
+    let data = [];
+    <% for(let i = 0 ; i < items.length ; i++){%>
+     data.push(<%- JSON.stringify(items[i]) %>);
+    <%}%>
+
+</script>
+
+<script src="./partials/js/mainpage.js"></script>
