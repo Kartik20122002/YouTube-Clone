@@ -27,10 +27,7 @@
 
 <script>
     
-    let data = [];
-    <% for(let i = 0 ; i < items.length ; i++){%>
-     data.push(<%- JSON.stringify(items[i]) %>);
-    <%}%>
+    let data = <%-JSON.stringify(items)%>;
 
 </script>
 
