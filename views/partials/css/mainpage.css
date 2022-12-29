@@ -8,7 +8,7 @@
 }
 
 #mainpage.larger-container{
-   padding-left: 7%;
+    padding-left: 7%;
 }
 
 #mainpage .banner{
@@ -30,6 +30,7 @@
     grid-column-gap: 16px;
     grid-row-gap: 30px;
     margin-top: 15px;
+    /* overflow-y: scroll; */
 }
 
 
@@ -75,13 +76,13 @@
 
 #mainpage .skeleton{
     background:#5a5a5a ;
-    opacity: 50%;
+    opacity: 20%;
 }
 #mainpage .skeleton-text{
     color: transparent!important;
     background:#5a5a5a ;
     border-radius: 10%;
-    opacity: 50%;
+    opacity: 20%;
 }
 
 @media (max-width : 900px){
