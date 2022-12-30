@@ -8,10 +8,17 @@ videopage.use(express.json());
 
 videopage
 .get('/',async (req,res)=>{
-   const videoId = req.query.v;
-   const channelId = req.query.c;
 
-   const {video , channel , relatedvideos} = await get_videoAndChannel(videoId,channelId);
+   try {
+      const videoId = req.query.v;
+      const channelId = req.query.c;
+   
+      const {video , channel , relatedvideos} = await get_videoAndChannel(videoId,channelId);
+   
+      res.render('VideoPage.ejs',{relatedvideos: relatedvideos, video : video , channel : channel , queryvalue : "" , profile : req.user.profile});
+   } catch (error) {
+      res.send(error);
+   }
 
-   res.render('VideoPage.ejs',{relatedvideos: relatedvideos, video : video , channel : channel , queryvalue : "" , profile : req.user.profile});
+
 })
