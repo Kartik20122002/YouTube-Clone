@@ -8,7 +8,11 @@ import { SearchResults } from './Routes/SearchResults.js';
 import { videopage } from './Routes/VideoPage.js';
 
 const app = express();
-app.use(session({secret : secret}));
+app.use(session({
+    secret : secret ,
+    resave : true,
+    saveUninitialized : true
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
