@@ -13,7 +13,7 @@ for(let i = 0 ; i < data.length ; i++){
         if(views <= 1) views = (data[i].statistics.viewCount/1000).toFixed(1) + 'K';
         
         vid.innerHTML = `
-                        <a href=https://www.youtube.com/watch?v=${data[i].id}>  <img src=${data[i].snippet.thumbnails.medium.url} class="thumbnail" alt="Image Here" srcset=""> </a>
+                        <a href=/videopage?v=${data[i].id}&c=${data[i].channelinfo.id}>  <img src=${data[i].snippet.thumbnails.medium.url} class="thumbnail" alt="Image Here" srcset=""> </a>
                         <div class="flex-div">
                          <a href=https://www.youtube.com/${data[i].channelinfo.snippet.customUrl}><img src=${data[i].channelinfo.snippet.thumbnails.medium.url} alt="" srcset=""></a> 
                             <div class="vid-info">
@@ -25,7 +25,7 @@ for(let i = 0 ; i < data.length ; i++){
                         </div>
         `
         container.replaceChild(vid,skeletonvid);
-    },Math.floor((Math.random() * 100) + 1)*50);
+    },Math.floor((Math.random() * 100) + 1)*10);
 
 
 }

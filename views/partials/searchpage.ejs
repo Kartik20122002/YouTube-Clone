@@ -9,12 +9,12 @@
     <div class="list-container">
         <% for(let i = 0 ; i < items.length ; i++){ %>
             <% let id = "" %>
-            
+            <!-- &c=${data[i].channelinfo.id -->
             <%if(items[i].id.kind === 'youtube#video'){ %>
                 <% id = items[i].id.videoId%>
                 
                 <div class="vid-list">
-                    <a href=https://www.youtube.com/watch?v=<%=id%>>  <img src=<%=items[i].snippet.thumbnails.medium.url%> class="thumbnail" alt="Image Here" srcset=""> </a>
+                    <a href=/videopage?v=<%=id%>&c=<%=items[i].channelinfo.id%>>  <img src=<%=items[i].snippet.thumbnails.medium.url%> class="thumbnail" alt="Image Here" srcset=""> </a>
                     <div class="flex-div">
                         <a href=https://www.youtube.com/<%=items[i].channelinfo.snippet.customUrl%>><img src=<%=items[i].channelinfo.snippet.thumbnails.medium.url%> alt="" srcset=""></a>
                         <div class="vid-info">

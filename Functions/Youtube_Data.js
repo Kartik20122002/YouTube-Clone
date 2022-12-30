@@ -108,3 +108,27 @@ export const channel_info = async(id)=>{
     })
     return result.data.items;
 }
+
+export const get_videoAndChannel = async (videoId , ChannelId)=>{
+    let videodetails = await youtube.videos.list({
+        part: ['snippet','statistics'],
+        id: videoId,
+        maxResults: 1
+    });
+
+    let channeldetials = await youtube.channels.list({
+        part: ['snippet','statistics'],
+        id: ChannelId,
+        maxResults: 1
+    });
+    let relatedvideos = await  youtube.search.list(
+        {
+            part:['snippet'], 
+            relatedToVideoId : videoId,
+            type : 'video',
+            maxResults: 30,
+        });;
+    
+
+    return {relatedvideos : relatedvideos ,video : videodetails.data.items[0], channel : channeldetials.data.items[0]};
+}
