@@ -3,13 +3,12 @@
 
 <div id="videopage" class="container play-container">
 
-  <% console.log(relatedvideos.data.items)%>
     <div class="row">
         <div class="video-player">
             <div class="player">
                 <iframe  src=https://www.youtube.com/embed/<%-video.id%>?rel=0&autoplay=1 frameborder="0" allowfullscreen></iframe>
             </div>
-            
+
             <h3 class="video-title"><%=video.snippet.title%></h3>
 
             <div class="video-info">
