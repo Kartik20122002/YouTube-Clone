@@ -1,4 +1,6 @@
 import { google } from 'googleapis';
+import { config } from 'dotenv';
+config();
 import { clientId, clientSecret , redirectUrl } from './GoogleAuth.js';
 import mongoose from 'mongoose';
 import { Channel } from '../DataBase/db.js';
@@ -14,6 +16,22 @@ export const oauth2client = new OAuth2(
 const youtube = google.youtube({version : 'v3' , auth : oauth2client});
 
 export const search_videos = async (query)=>{
+
+// let maxResults = 40;
+// let part = "snippet";
+
+// const url = `https://youtube-v31.p.rapidapi.com/search?q=${query}&part=${part}&maxResults=${maxResults}&order=date`;
+
+// const options = {
+//   method: 'GET',
+//   headers: {
+//     'X-RapidAPI-Key': '79f25e9d42mshed666ecd3dda012p1ed78ejsnaa144f427d4e',
+//     'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
+//   }
+// };
+
+//    let results = await fetch(url, options)
+	
  let results = await youtube.search.list(
      {
          part:['snippet'], 
@@ -21,17 +39,19 @@ export const search_videos = async (query)=>{
          maxResults: 40,
      });
 
-     let channels = [];
+    //  console.log(results);
 
-    for(let i = 0 ; i < results.data.items.length ; i++){
-            channels.push(channel_info(results.data.items[i].snippet.channelId)); 
+     let channelsId = [];
+
+     for(let i = 0; i < results.data.items.length ; i++){
+         channelsId.push(results.data.items[i].snippet.channelId);
      }
-
-     let channelsinfo = await Promise.all(channels);
-
-     for(let i = 0 ; i < results.data.items.length ; i++){
-        results.data.items[i].channelinfo = channelsinfo[i][0];
-     }
+ 
+      let channelsinfo = await channel_info(channelsId);
+ 
+      for(let i = 0 ; i < results.data.items.length ; i++){
+         results.data.items[i].channelinfo = channelsinfo[i];
+      }
 
     return {result : results.data.items, nextpagetoken : results.data.nextPageToken , prevpagetoken : results.data.prevPageToken};
 }
@@ -44,16 +64,16 @@ export const popular_videos = async ()=>{
         regionCode : 'In'
     });
 
-    let channels = [];
+    let channelsId = [];
 
-    for(let i = 0 ; i < results.data.items.length ; i++){
-            channels.push(channel_info(results.data.items[i].snippet.channelId)); 
-     }
+    for(let i = 0; i < results.data.items.length ; i++){
+        channelsId.push(results.data.items[i].snippet.channelId);
+    }
 
-     let channelsinfo = await Promise.all(channels);
+     let channelsinfo = await channel_info(channelsId);
 
      for(let i = 0 ; i < results.data.items.length ; i++){
-        results.data.items[i].channelinfo = channelsinfo[i][0];
+        results.data.items[i].channelinfo = channelsinfo[i];
      }
     
     return {result : results.data.items, nextpagetoken : results.data.nextPageToken , prevpagetoken : results.data.prevPageToken};
