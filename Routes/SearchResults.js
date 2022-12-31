@@ -11,14 +11,12 @@ SearchResults
       try {
         let {result , nextpagetoken , prevpagetoken} = await search_videos(req.body.searchquery);
      let subs = await user_subscriptions();
-     ejs.renderFile('./views/SearchPage.ejs',{profile : req.user.profile ,items : result , nextpagetoken : nextpagetoken , prevpagetoken : prevpagetoken ,queryvalue : req.body.searchquery , subs : subs},{},(err,temp)=>{
-      if (err) {
-          throw err;
-      } else {
-          res.end(temp);
+
+     res.render('SearchPage.ejs',{ profile : req.user.profile, items : result ,nextpagetoken : nextpagetoken, prevpagetoken : prevpagetoken, queryvalue :req.body.searchquery, subs : subs});
+
+
       }
-     });
-      } catch (error) {
+      catch(error){
         res.send(error);
       }
 

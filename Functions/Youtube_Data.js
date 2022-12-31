@@ -4,6 +4,7 @@ config();
 import { clientId, clientSecret , redirectUrl } from './GoogleAuth.js';
 import mongoose from 'mongoose';
 import { Channel } from '../DataBase/db.js';
+import fetch from 'node-fetch';
 
 const OAuth2 = google.auth.OAuth2;
 
@@ -17,10 +18,7 @@ const youtube = google.youtube({version : 'v3' , auth : oauth2client});
 
 export const search_videos = async (query)=>{
 
-// let maxResults = 40;
-// let part = "snippet";
-
-// const url = `https://youtube-v31.p.rapidapi.com/search?q=${query}&part=${part}&maxResults=${maxResults}&order=date`;
+// const url = `https://youtube-v31.p.rapidapi.com/search?q=${query}&part=snippet%2Cid&maxResults=40`;
 
 // const options = {
 //   method: 'GET',
@@ -29,29 +27,33 @@ export const search_videos = async (query)=>{
 //     'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
 //   }
 // };
-
-//    let results = await fetch(url, options)
 	
+//  let results = await fetch(url,options);
+
+//  results = await results.json();
+
  let results = await youtube.search.list(
-     {
-         part:['snippet'], 
-         q: query, 
-         maxResults: 40,
-     });
+    {
+        part:['snippet'], 
+        q: query, 
+        maxResults: 50,
+    });
 
-    //  console.log(results);
-
-     let channelsId = [];
+    let channelsId = [];
 
      for(let i = 0; i < results.data.items.length ; i++){
          channelsId.push(results.data.items[i].snippet.channelId);
-     }
+    }
  
-      let channelsinfo = await channel_info(channelsId);
+    let channelsinfo = await channel_info(channelsId);
  
-      for(let i = 0 ; i < results.data.items.length ; i++){
-         results.data.items[i].channelinfo = channelsinfo[i];
-      }
+    for(let i = 0 ; i < results.data.items.length ; i++){
+        if(channelsinfo[i] == null){
+            results.data.items[i].channelinfo = {snippet : {thumbnails : {medium : {url :{}}}}};
+        }
+        else
+        results.data.items[i].channelinfo = channelsinfo[i];
+    }
 
     return {result : results.data.items, nextpagetoken : results.data.nextPageToken , prevpagetoken : results.data.prevPageToken};
 }
@@ -59,30 +61,35 @@ export const search_videos = async (query)=>{
 export const popular_videos = async ()=>{
     let results = await youtube.videos.list(
     {   part:['snippet','statistics'], 
-        maxResults : 40,
+        maxResults : 50,
         chart : 'mostPopular',
         regionCode : 'In'
     });
 
     let channelsId = [];
 
-    for(let i = 0; i < results.data.items.length ; i++){
-        channelsId.push(results.data.items[i].snippet.channelId);
+     for(let i = 0; i < results.data.items.length ; i++){
+         channelsId.push(results.data.items[i].snippet.channelId);
     }
 
-     let channelsinfo = await channel_info(channelsId);
-
-     for(let i = 0 ; i < results.data.items.length ; i++){
+    let channelsinfo = await channel_info(channelsId);
+ 
+    for(let i = 0 ; i < results.data.items.length ; i++){
+        if(channelsinfo[i] == null){
+            results.data.items[i].channelinfo = {snippet : {thumbnails : {medium : {url :{}}}}};
+        }
+        else
         results.data.items[i].channelinfo = channelsinfo[i];
-     }
-    
+    }
+
+
     return {result : results.data.items, nextpagetoken : results.data.nextPageToken , prevpagetoken : results.data.prevPageToken};
 }
 
 export const popular_videos_by_pagetoken = async (pagetoken)=>{
     let results = await youtube.videos.list({
         part:['snippet','statistics'], 
-        maxResults : 40,
+        maxResults : 50,
         chart : 'mostPopular',
         pageToken : pagetoken,
         regionCode : 'In'
@@ -94,7 +101,7 @@ export const popular_videos_by_pagetoken = async (pagetoken)=>{
 export const user_liked_videos = async ()=>{
     let results = await youtube.videos.list(
     {   part:['snippet','statistics'], 
-        maxResults : 25,
+        maxResults : 50,
         myRating : 'liked',
     });
 
@@ -104,7 +111,7 @@ export const user_liked_videos = async ()=>{
 export const user_liked_videos_by_pagetoken = async (pagetoken)=>{
     let results = await youtube.videos.list({
         part:['snippet','statistics'], 
-        maxResults : 25,
+        maxResults : 50,
         myRating : 'liked',
         pageToken : pagetoken,
     });
@@ -124,9 +131,35 @@ export const user_subscriptions = async ()=>{
 export const channel_info = async(id)=>{
     let result = await youtube.channels.list({
         part : ['snippet'],
-        id : id
-    })
+        id : id,
+        maxResults : 50
+    });
+
     return result.data.items;
+}
+
+export const RelatedVideos = async (id)=>{
+    try {
+const url = `https://youtube-v31.p.rapidapi.com/search?relatedToVideoId=${id}&part=id%2Csnippet&type=video&maxResults=25`;
+
+const options = {
+  method: 'GET',
+  headers: {
+    'X-RapidAPI-Key': '79f25e9d42mshed666ecd3dda012p1ed78ejsnaa144f427d4e',
+    'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
+  }
+};
+
+let results = await fetch(url,options);
+results = await results.json();
+
+return results;
+
+    } catch (error) {
+        return null;
+    }
+
+
 }
 
 export const get_videoAndChannel = async (videoId , ChannelId)=>{
@@ -141,14 +174,22 @@ export const get_videoAndChannel = async (videoId , ChannelId)=>{
         id: ChannelId,
         maxResults: 1
     });
-    let relatedvideos = await  youtube.search.list(
-        {
-            part:['snippet'], 
-            relatedToVideoId : videoId,
-            type : 'video',
-            maxResults: 30,
-        });;
+    
+    let relatedvideos = await RelatedVideos(videoId);
+
+    if(relatedvideos == null) relatedvideos = {items : {}};
     
 
     return {relatedvideos : relatedvideos ,video : videodetails.data.items[0], channel : channeldetials.data.items[0]};
+}
+
+export const getComments = async (videoId)=>{
+   
+    let result = await youtube.commentThreads.list({
+        part : ['snippet'],
+        videoId : videoId,
+        maxResults : 50
+    });
+
+    return result.data.items;
 }

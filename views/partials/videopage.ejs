@@ -40,10 +40,10 @@
       <%  if(subscribers <= 1) subscribers = (channel.statistics.subscriberCount/1000).toFixed(1) + 'K'; %>
 
             <div class="channelinfo">
-                <img src=<%=channel.snippet.thumbnails.medium.url%> alt="">
+            <a href="#">    <img src=<%=channel.snippet.thumbnails.medium.url%> alt=""> </a>
 
                 <div class="channel-details">
-                    <p><%=channel.snippet.title%></p>
+                 <a href="#">   <p><%=channel.snippet.title%></p> </a>
                     <span><%=subscribers%> Subscribers</span>
                 </div>
                 <button type="button">Subscribe</button>
@@ -59,174 +59,56 @@
               <h4><%=video.statistics.commentCount %> Comments</h4>
 
               <form action="#" method="post" class="add-comment">
-                <img src="./images/Jack.png">
+                <img src=<%=profile.photos[0].value%>>
                 <input type="text" name="commenttoadd" id="commenttoadd" placeholder="Write comments...">
               </form>
 
-              <div class="comments">
+        <div class="comments">
 
-              <div class="commentsection">
+        <% for(let i = 0 ; i < comments.length ; i++){ %>
 
-                <img src="./images/Jack.png">
+        <% let authorImage = comments[i].snippet.topLevelComment.snippet.authorProfileImageUrl %>
+        <% let authorName =  comments[i].snippet.topLevelComment.snippet.authorDisplayName%>
+        <% let authorChannel = comments[i].snippet.topLevelComment.snippet.authorChannelUrl%>
+
+        <% let comment = comments[i].snippet.topLevelComment.snippet.textOriginal%>
+        <% let likes = comments[i].snippet.topLevelComment.snippet.likeCount%>
+
+            <div class="commentsection">
+              <a href=<%=authorChannel%>>  <img src=<%=authorImage%>> </a>
                 <div class="person-details">
-                    <h3>Jack Nicholson <span>2 days ago</span></h3>
-                    <p class="person-comment"> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem, ex. ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis veritatis nam incidunt ab alias illo quibusdam quis? Quos, ea dolorum?</p>
+                    <a href=<%=authorChannel%>> <h3><%=authorName%> <span>2 days ago</span></h3> </a>
+                    <p class="person-comment"> <%=comment%></p>
 
                     <div class="comment-actions">
                         <img src="./images/like.png">
-                        <span>244</span>
+                        <span><%=likes%></span>
                         <img src="./images/dislike.png">
-                        <span>2</span>
-                        <span>REPLY</span>
-                        <a href="#">All replies</a>
+                        <!-- <span>REPLY</span> -->
+                        <!-- <a href="#">All replies</a> -->
 
                     </div>
 
                 </div>
-
-              </div>
-
-              <div class="commentsection">
-
-                <img src="./images/Jack.png">
-                <div class="person-details">
-                    <h3>Jack Nicholson <span>2 days ago</span></h3>
-                    <p class="person-comment"> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem, ex. ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis veritatis nam incidunt ab alias illo quibusdam quis? Quos, ea dolorum?</p>
-
-                    <div class="comment-actions">
-                        <img src="./images/like.png">
-                        <span>244</span>
-                        <img src="./images/dislike.png">
-                        <span>2</span>
-                        <span>REPLY</span>
-                        <a href="#">All replies</a>
-
-                    </div>
-
-                </div>
-
-              </div>
-
-              <div class="commentsection">
-
-                <img src="./images/Jack.png">
-                <div class="person-details">
-                    <h3>Jack Nicholson <span>2 days ago</span></h3>
-                    <p class="person-comment"> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem, ex. ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis veritatis nam incidunt ab alias illo quibusdam quis? Quos, ea dolorum?</p>
-
-                    <div class="comment-actions">
-                        <img src="./images/like.png">
-                        <span>244</span>
-                        <img src="./images/dislike.png">
-                        <span>2</span>
-                        <span>REPLY</span>
-                        <a href="#">All replies</a>
-
-                    </div>
-
-                </div>
-
-              </div>
-
-              <div class="commentsection">
-
-                <img src="./images/Jack.png">
-                <div class="person-details">
-                    <h3>Jack Nicholson <span>2 days ago</span></h3>
-                    <p class="person-comment"> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem, ex. ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis veritatis nam incidunt ab alias illo quibusdam quis? Quos, ea dolorum?</p>
-
-                    <div class="comment-actions">
-                        <img src="./images/like.png">
-                        <span>244</span>
-                        <img src="./images/dislike.png">
-                        <span>2</span>
-                        <span>REPLY</span>
-                        <a href="#">All replies</a>
-
-                    </div>
-
-                </div>
-
-              </div>
-
-              <div class="commentsection">
-
-                <img src="./images/Jack.png">
-                <div class="person-details">
-                    <h3>Jack Nicholson <span>2 days ago</span></h3>
-                    <p class="person-comment"> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem, ex. ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis veritatis nam incidunt ab alias illo quibusdam quis? Quos, ea dolorum?</p>
-
-                    <div class="comment-actions">
-                        <img src="./images/like.png">
-                        <span>244</span>
-                        <img src="./images/dislike.png">
-                        <span>2</span>
-                        <span>REPLY</span>
-                        <a href="#">All replies</a>
-
-                    </div>
-
-                </div>
-
-              </div>
-
-              <div class="commentsection">
-
-                <img src="./images/Jack.png">
-                <div class="person-details">
-                    <h3>Jack Nicholson <span>2 days ago</span></h3>
-                    <p class="person-comment"> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem, ex. ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis veritatis nam incidunt ab alias illo quibusdam quis? Quos, ea dolorum?</p>
-
-                    <div class="comment-actions">
-                        <img src="./images/like.png">
-                        <span>244</span>
-                        <img src="./images/dislike.png">
-                        <span>2</span>
-                        <span>REPLY</span>
-                        <a href="#">All replies</a>
-
-                    </div>
-
-                </div>
-
-              </div>
-
-              <div class="commentsection">
-
-                <img src="./images/Jack.png">
-                <div class="person-details">
-                    <h3>Jack Nicholson <span>2 days ago</span></h3>
-                    <p class="person-comment"> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem, ex. ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis veritatis nam incidunt ab alias illo quibusdam quis? Quos, ea dolorum?</p>
-
-                    <div class="comment-actions">
-                        <img src="./images/like.png">
-                        <span>244</span>
-                        <img src="./images/dislike.png">
-                        <span>2</span>
-                        <span>REPLY</span>
-                        <a href="#">All replies</a>
-
-                    </div>
-
-                </div>
-
-              </div>
 
             </div>
 
-            </div>
+        <%}%>
 
+        </div>
+        </div>
         </div>
 
         <div class="right-sidebar">
 
-            <% for(let i = 0 ; i < relatedvideos.data.items.length ; i++){ %>
+            <% for(let i = 0 ; i < relatedvideos.items.length ; i++){ %>
+
 
             <div class="side-video-list">
-                <% let link = '/videopage?v=' +  relatedvideos.data.items[i].id.videoId  + '&c=' +  relatedvideos.data.items[i].snippet.channelId  %>
-                <% let thumbnail = relatedvideos.data.items[i].snippet.thumbnails.medium.url %>
-                <% let videoTitle = relatedvideos.data.items[i].snippet.title %>
-                <% let channelTitle = relatedvideos.data.items[i].snippet.channelTitle %>
+                <% let link = '/videopage?v=' +  relatedvideos.items[i].id.videoId  + '&c=' +  relatedvideos.items[i].snippet.channelId  %>
+                <% let thumbnail = relatedvideos.items[i].snippet.thumbnails.medium.url %>
+                <% let videoTitle = relatedvideos.items[i].snippet.title %>
+                <% let channelTitle = relatedvideos.items[i].snippet.channelTitle %>
 
                 <a href=<%=link%> class="small-thumbnail"> <img src=<%=thumbnail%>> </a>
                 <div class="vid-info">
