@@ -97,8 +97,8 @@
    align-items: center;
    justify-content: space-between;
    flex-wrap: wrap;
-   margin-top: 10px;
-   font-size: 14px;
+   margin-top: 20px;
+   font-size: 16px;
    color: #5a5a5a;
 }
 
@@ -111,6 +111,48 @@
     display: inline-flex;
     align-items: center;
     margin-left: 15px;
+    color: black;
+}
+
+
+.buttons{
+    display: flex;
+    width: 60%;
+    margin-right: 10%;
+}
+
+.rating{
+    padding: 1.5% 4%;
+    background: #5a5a5a1f;
+}
+
+#like{
+    margin-right: 0;
+    border-radius: 30% 0 0 30%;
+    border-right: solid 1px #5a5a5a29;
+}
+
+#dislike{
+    margin-left: 0px;
+    margin-right: auto;
+    border-radius: 0 40% 40% 0;
+}
+
+#share{
+    padding: 1.5% 4%;
+    background: #5a5a5a1f;
+    border-radius: 23%;
+    margin-right: auto;
+}
+
+#save{
+    padding: 1.5% 4%;
+    background: #5a5a5a1f;
+    border-radius: 23%;
+}
+
+.video-player .video-info .buttons a:hover , #save:hover , #share:hover{
+    background-color: #5a5a5a5c;
 }
 
 .video-player hr{
@@ -158,6 +200,10 @@
     cursor: pointer;
     margin-left: 1%;
     margin-right: 1%;
+}
+
+.channelinfo .button:hover{
+    background-color: #ce0202;
 }
 
 .vid-description{
@@ -246,6 +292,14 @@
         padding: 1% 1%;
     }
     .vid-description{
+        display: none;
+    }
+
+    .buttons{
+        width: 37%;
+    }
+
+    .buttons #share , .buttons #save{
         display: none;
     }
 
