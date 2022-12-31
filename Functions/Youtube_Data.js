@@ -191,3 +191,11 @@ export const getComments = async (videoId)=>{
 
     return result.data.items;
 }
+
+export const getRating = async (videoId)=>{
+    let result = await youtube.videos.getRating({
+        id: videoId,
+    })
+
+    return result;
+}

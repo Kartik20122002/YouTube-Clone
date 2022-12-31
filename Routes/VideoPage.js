@@ -1,7 +1,7 @@
 import express from 'express';
 export const videopage = express.Router();
 import ejs from 'ejs';
-import { getComments, get_videoAndChannel } from '../Functions/Youtube_Data.js';
+import { getComments, getRating, get_videoAndChannel } from '../Functions/Youtube_Data.js';
 videopage.use(express.json());
 
 
@@ -17,9 +17,18 @@ videopage
 
       const comments = await getComments(videoId);
 
-      console.log(comments);
-   
-      res.render('VideoPage.ejs',{comments: comments, relatedvideos: relatedvideos, video : video , channel : channel , queryvalue : "" , profile : req.user.profile});
+      const rating = await getRating(videoId);
+
+      res.render('VideoPage.ejs',{
+         comments: comments,
+         relatedvideos: relatedvideos, 
+         video : video , 
+         rating : rating,
+         channel : channel , 
+         queryvalue : "" , 
+         profile : req.user.profile
+      });
+
    } catch (error) {
       res.send(error);
    }
