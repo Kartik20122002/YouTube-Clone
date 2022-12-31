@@ -4,6 +4,7 @@ import passport from 'passport';
 import { secret } from './Functions/GoogleAuth.js';
 import { Auth, isLoggedIn } from './Routes/Auth.js';
 import { Home } from './Routes/HomePage.js';
+import { Liked_Page } from './Routes/LikedVideos.js';
 import { SearchResults } from './Routes/SearchResults.js';
 import { videopage } from './Routes/VideoPage.js';
 
@@ -22,8 +23,9 @@ app.use(express.static('./views'));
 app.set('views','./views');
 app.use(express.urlencoded({ extended: true }))
 
-app.get('/',isLoggedIn,Home);
 app.use('/googleauth',Auth);
+app.use('/',isLoggedIn,Home);
+app.use('/likedvideos',isLoggedIn,Liked_Page);
 app.use('/searchresults',isLoggedIn,SearchResults);
 app.use('/videopage',isLoggedIn,videopage)
 

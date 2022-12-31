@@ -86,35 +86,33 @@ export const popular_videos = async ()=>{
     return {result : results.data.items, nextpagetoken : results.data.nextPageToken , prevpagetoken : results.data.prevPageToken};
 }
 
-export const popular_videos_by_pagetoken = async (pagetoken)=>{
-    let results = await youtube.videos.list({
-        part:['snippet','statistics'], 
-        maxResults : 50,
-        chart : 'mostPopular',
-        pageToken : pagetoken,
-        regionCode : 'In'
-    });
-    return {result : results.data.items, nextpagetoken : results.data.nextPageToken , prevpagetoken : results.data.prevPageToken};
-}
 
 
-export const user_liked_videos = async ()=>{
+export const liked_videos = async ()=>{
     let results = await youtube.videos.list(
     {   part:['snippet','statistics'], 
         maxResults : 50,
-        myRating : 'liked',
+        myRating : 'like',
+        regionCode : 'In'
     });
 
-    return {result : results.data.items, nextpagetoken : results.data.nextPageToken , prevpagetoken : results.data.prevPageToken};
-}
+    let channelsId = [];
 
-export const user_liked_videos_by_pagetoken = async (pagetoken)=>{
-    let results = await youtube.videos.list({
-        part:['snippet','statistics'], 
-        maxResults : 50,
-        myRating : 'liked',
-        pageToken : pagetoken,
-    });
+     for(let i = 0; i < results.data.items.length ; i++){
+         channelsId.push(results.data.items[i].snippet.channelId);
+    }
+
+    let channelsinfo = await channel_info(channelsId);
+ 
+    for(let i = 0 ; i < results.data.items.length ; i++){
+        if(channelsinfo[i] == null){
+            results.data.items[i].channelinfo = {snippet : {thumbnails : {medium : {url :{}}}}};
+        }
+        else
+        results.data.items[i].channelinfo = channelsinfo[i];
+    }
+
+
     return {result : results.data.items, nextpagetoken : results.data.nextPageToken , prevpagetoken : results.data.prevPageToken};
 }
 
