@@ -6,8 +6,10 @@ import { Auth, isLoggedIn } from './Routes/Auth.js';
 import { Home } from './Routes/HomePage.js';
 import { OtherHomePage } from './Routes/OtherHomePage.js';
 import { Liked_Page } from './Routes/LikedVideos.js';
+import { OtherLikePage } from './Routes/OtherLikedPage.js';
 import { SearchResults } from './Routes/SearchResults.js';
 import { videopage } from './Routes/VideoPage.js';
+import { UserPage } from './Routes/UserPage.js';
 
 const app = express();
 app.use(session({
@@ -30,6 +32,8 @@ app.use('/likedvideos',isLoggedIn,Liked_Page);
 app.use('/searchresults',isLoggedIn,SearchResults);
 app.use('/videopage',isLoggedIn,videopage)
 app.use('/otherpage',OtherHomePage);
+app.use('/otherlikedpage',OtherLikePage);
+app.use('/userpage',UserPage)
 
 app.listen(port,()=>{
     console.log(`http://localhost:${port}/`);

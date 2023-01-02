@@ -1,15 +1,15 @@
-.play-container{
+#videopage.play-container{
     padding-top: 1.5%;
     padding-left: 4%;
 }
 
-.row{
+#videopage .row{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 }
 
-.video-player{
+#videopage .video-player{
     flex-basis: 64%;
     flex-shrink: 1;
     height: 100%;
@@ -24,20 +24,20 @@
     overflow: hidden;
 }
 
-.right-sidebar{
+#videopage .right-sidebar{
     display: flex;
     flex-basis: 33%;
     flex-direction: column;
 }
 
-.player{
+#videopage .player{
     position: relative;
     overflow: hidden;
     width: 100%;
     padding-top: 56.25%;
 }
 
-.player iframe{
+#videopage .player iframe{
     position: absolute;
     top: 0;
     left: 0;
@@ -47,28 +47,28 @@
     height: 100%;
 }
 
-.side-video-list{
+#videopage .side-video-list{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     margin-bottom: 8px;
 }
 
-.side-video-list img{
+#videopage .side-video-list img{
     width: 100%;
     border-radius: 12px;
 }
 
-.side-video-list .small-thumbnail{
+#videopage .side-video-list .small-thumbnail{
     flex-basis: 35%;
 }
 
-.side-video-list .vid-info{
+#videopage .side-video-list .vid-info{
     flex-basis: 63%;
     padding-top: 1%;
 }
 
-.vid-info a{
+#videopage .vid-info a{
     font-size: 14px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -77,22 +77,22 @@
     overflow: hidden;
     margin-bottom: 9px;
 }
-.vid-info p{
+#videopage .vid-info p{
     color: #606060;
     font-weight: 500;
     font-size: 13px;
 }
 
-.video-player .tags a{
+#videopage .video-player .tags a{
     color: #0000ff;
 }
 
-.video-player h3{
+#videopage .video-player h3{
     font-weight: 600;
     font-size: 22px;
 }
 
-.video-player .video-info{
+#videopage .video-player .video-info{
    display: flex;
    align-items: center;
    justify-content: space-between;
@@ -102,12 +102,12 @@
    color: #5a5a5a;
 }
 
-.video-player .video-info .buttons img{
+#videopage .video-player .video-info .buttons img{
     width: 20px;
     margin-right: 8px;
 }
 
-.video-player .video-info .buttons a{
+#videopage .video-player .video-info .buttons a{
     display: inline-flex;
     align-items: center;
     margin-left: 15px;
@@ -115,82 +115,82 @@
 }
 
 
-.buttons{
+#videopage .buttons{
     display: flex;
     width: 60%;
     margin-right: 10%;
 }
 
-.rating{
+#videopage .rating{
     padding: 1.5% 4%;
     background: #5a5a5a1f;
 }
 
-#like{
+#videopage #like{
     margin-right: 0;
     border-radius: 30% 0 0 30%;
     border-right: solid 1px #5a5a5a29;
 }
 
-#dislike{
+#videopage #dislike{
     margin-left: 0px;
     margin-right: auto;
     border-radius: 0 40% 40% 0;
 }
 
-#share{
+#videopage #share{
     padding: 1.5% 4%;
     background: #5a5a5a1f;
     border-radius: 23%;
     margin-right: auto;
 }
 
-#save{
+#videopage #save{
     padding: 1.5% 4%;
     background: #5a5a5a1f;
     border-radius: 23%;
 }
 
-.video-player .video-info .buttons a:hover , #save:hover , #share:hover{
+#videopage .video-player .video-info .buttons a:hover , #save:hover , #share:hover{
     background-color: #5a5a5a5c;
 }
 
-.video-player hr{
+#videopage .video-player hr{
     border: 0;
     height: 1px;
     background: #ccc;
     margin: 10px 0px;
 }
 
-.channelinfo{
+#videopage .channelinfo{
     display: flex;
     align-items: center;
     margin-top: 20px;
 }
 
-.channelinfo .channel-details{
+#videopage .channelinfo .channel-details{
     flex: 1;
     line-height: 18px;
 }
 
-.channelinfo img{
+#videopage .channelinfo img{
     width: 40px;
     border-radius: 50%;
     margin-right: 15px;
 }
 
-.channelinfo .channel-details p{
+#videopage .channelinfo .channel-details p{
     color: #000;
     font-weight: 600;
     font-size: 18px;
 }
 
-.channelinfo .channel-details span{
+#videopage .channelinfo .channel-details span{
     font-size: 13px;
     color: #5a5a5a;
 }
 
-.channelinfo button{
+#videopage .channelinfo button{
     background: red;
     color: #fff;
     padding: 8px 30px ;
@@ -202,41 +202,41 @@
     margin-right: 1%;
 }
 
-.channelinfo .button:hover{
+#videopage .channelinfo .button:hover{
     background-color: #ce0202;
 }
 
-.vid-description{
+#videopage .vid-description{
     padding-left: 55px;
     margin: 15px 0px;
 }
 
-.vid-description p{
+#videopage .vid-description p{
     font-size: 14px;
     margin-bottom: 5px;
     color: #5a5a5a;
 }
 
-.vid-description h4{
+#videopage .vid-description h4{
     font-size: 14px;
     color: #5a5a5a;
     margin-top: 15px;
 }
 
-.add-comment{
+#videopage .add-comment{
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 30px 0px;
 }
 
-.add-comment img{
+#videopage .add-comment img{
     width: 35px;
     border-radius: 50%;
     margin-right: 15px;
 }
 
-.add-comment input{
+#videopage .add-comment input{
     border: 0;
     outline: 0;
     border-bottom: 1px solid #ccc;
@@ -246,41 +246,41 @@
     background: transparent;
 }
 
-.commentsection{
+#videopage .commentsection{
     display: flex;
     align-items: center;
     margin: 20px 0px;
 }
 
-.commentsection img{
+#videopage .commentsection img{
     width: 35px;
     border-radius: 50%;
     margin-right: 15px;
 }
 
-.commentsection h3{
+#videopage .commentsection h3{
     font-size: 14px;
     margin-bottom: 2px ;
 }
 
-.commentsection h3 span{
+#videopage .commentsection h3 span{
     font-size: 12px;
     color: #5a5a5a;
     font-weight: 500;
     margin-left: 8px;
 }
-.commentsection .comment-actions{
+#videopage .commentsection .comment-actions{
     display: flex;
     align-items: center;
 }
 
-.commentsection .comment-actions img{
+#videopage .commentsection .comment-actions img{
     border-radius: 0;
     width: 20px;
     margin-right: 5px;
 }
 
-.commentsection .comment-actions span{
+#videopage .commentsection .comment-actions span{
     margin-right: 20px;
     color: #5a5a5a;
 }
@@ -288,34 +288,34 @@
 
 @media (max-width : 900px){
 
-    .play-container{
+    #videopage.play-container{
         padding: 1% 1%;
     }
-    .vid-description{
+    #videopage .vid-description{
         display: none;
     }
 
-    .buttons{
+    #videopage .buttons{
         width: 37%;
     }
 
-    .buttons #share , .buttons #save{
+    #videopage .buttons #share , .buttons #save{
         display: none;
     }
 
-    .row{
+    #videopage .row{
         flex-direction: column;
     }
 
-    .right-sidebar{
+    #videopage .right-sidebar{
         margin-top: 5%;
     }
 
-    .side-video-list .small-thumbnail{
+    #videopage .side-video-list .small-thumbnail{
         flex-basis: 35%;
     }
 
-    .side-video-list .vid-info{
+    #videopage .side-video-list .vid-info{
         flex-basis: 63%;
     }
 }

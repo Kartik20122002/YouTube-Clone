@@ -1,0 +1,103 @@
+<link rel="stylesheet" href="./partials/css/userpage.css">
+
+<div id="userpage">
+    
+    <div class="row">
+        <div class="listpage">
+            <div class="videos-collection" id="liked-videos">
+            
+                <div class="title"><img src="./images/like.png" alt=""> Liked Videos <span><%=like_count%></span> <a href="/likedvideos">See All</a></div>
+
+                <div class="collection">
+
+                    <% for(let i = 0 ; i < Math.min(5,liked.length) ; i++){ %>
+                    <div class="vid-list">
+                         <a href="/videopage?v=<%=liked[i].id%>&c=<%=liked[i].snippet.channelId%>"><img src="<%=liked[i].snippet.thumbnails.medium.url%>" alt="" srcset=""></a>
+                         <div class="vid-title"><%=liked[i].snippet.title%></div>
+                       <a href="https://www.youtube.com/channel/<%=liked[i].snippet.channelId%>">  <div class="vid-channel"><%=liked[i].snippet.channelTitle%></div> </a>
+                         <div class="vid-detials"><%=liked[i].statistics.viewCount%> views &bull; 2 days ago</div>
+                    </div>
+                    <%}%>
+                    
+                </div>
+            
+            </div>
+
+            <hr>
+
+            <div class="videos-collection" id="Subscriptions">
+            
+                <div class="title"><img src="./images/subscriptionsicon.png" alt=""> Subscription<span><%=sub_count%></span> <a href="#">See All</a></div>
+
+                <div class="collection">
+
+                    <%for(let i = 0 ; i < Math.min(5,subs.length) ; i++){%>
+
+                    <div class="vid-list">
+                         <a href="https://www.youtube.com/channel/<%=subs[i].snippet.channelId%>"><img src="<%=subs[i].snippet.thumbnails.medium.url%>" alt="" srcset=""></a>
+                         <div class="vid-channel"><%=subs[i].snippet.title%></div>
+                         <div class="vid-detials">3276 items &bull; 2 days ago</div>
+                    </div>
+
+                    <%}%>
+
+                </div>
+            
+            </div>
+
+            <hr>
+
+            <div class="videos-collection" id="playlists">
+            
+                <div class="title"><img src="./images/playlisticon.png" alt=""> Playlists <span><%=playlist_count%></span>  <a href="#">See All</a></div>
+
+                <div class="collection">
+
+                    <% for(let i = 0 ; i < Math.min(5,playlists.length) ; i++){ %>
+
+                    <div class="vid-list">
+                         <a href="#"><img src="<%=playlists[i].snippet.thumbnails.medium.url%>" alt="" srcset=""></a>
+                         <div class="vid-title"><%=playlists[i].snippet.title%></div>
+                         <div class="vid-channel"><%=playlists[i].snippet.channelTitle%></div>
+                         <div class="vid-detials"><%=playlists[i].contentDetails.itemCount%> items &bull; 2 days ago</div>
+                    </div>
+
+                    <%}%>
+
+                </div>
+            
+            </div>
+
+            <hr>
+
+        </div>
+
+
+        <div class="user-info">
+              <img src="<%=profile.photos[0].value%>" alt=""> 
+              <div class="user-name"><%=profile.displayName%></div>
+              
+              <hr>
+              <div class="details">
+                <div class="list">Subscriptions</div>
+                <div class="list"><%=sub_count%></div>
+              </div>
+              <hr>
+
+              <div class="details">
+                <div class="list">Uploads</div>
+                <div class="list">0</div>
+              </div>
+              <hr>
+
+              <div class="details">
+                <div class="list">Likes</div>
+                <div class="list">0</div>
+              </div>
+              <hr>
+              
+        
+        </div>
+    </div>
+    
+</div>

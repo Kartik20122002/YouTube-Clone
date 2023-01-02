@@ -11,9 +11,10 @@ Liked_Page
 
     try {
         
-        let {result , nextpagetoken , prevpagetoken}= await liked_videos();
-        let subs = await user_subscriptions();
-        res.render('HomePage.ejs',{ profile : req.user.profile, items : result, nextpagetoken : nextpagetoken, prevpagetoken : prevpagetoken, queryvalue : "", subs : subs});
+        let {liked , nextpagetoken , prevpagetoken}= await liked_videos("");
+
+        let {subs} = await user_subscriptions();
+        res.render('LikedPage.ejs',{ profile : req.user.profile, items : liked, nextpagetoken : nextpagetoken, prevpagetoken : prevpagetoken, queryvalue : "", subs : subs});
            
     } catch (error) {
         if(error.response){

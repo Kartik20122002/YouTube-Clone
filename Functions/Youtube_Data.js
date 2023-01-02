@@ -118,12 +118,13 @@ export const popular_videos_bytoken = async (token)=>{
 
 
 
-export const liked_videos = async ()=>{
+export const liked_videos = async (token)=>{
     let results = await youtube.videos.list(
     {   part:['snippet','statistics'], 
         maxResults : 50,
         myRating : 'like',
-        regionCode : 'In'
+        regionCode : 'In',
+        pageToken : token
     });
 
     let channelsId = [];
@@ -143,17 +144,18 @@ export const liked_videos = async ()=>{
     }
 
 
-    return {result : results.data.items, nextpagetoken : results.data.nextPageToken , prevpagetoken : results.data.prevPageToken};
+    return {liked : results.data.items,count : results.data.pageInfo.totalResults, nextpagetoken : results.data.nextPageToken , prevpagetoken : results.data.prevPageToken};
 }
+
 
 export const user_subscriptions = async ()=>{
     let results = await youtube.subscriptions.list({
-        part : ['snippet'],
+        part : ['snippet','contentDetails'],
         maxResults : 25,
         mine : true,
     });
 
-    return results.data.items
+    return {subs : results.data.items , sub_count : results.data.pageInfo.totalResults};
 }
 
 export const channel_info = async(id)=>{
@@ -228,4 +230,13 @@ export const getRating = async (videoId)=>{
     })
 
     return result;
+}
+
+export const user_playlists = async ()=>{
+     let playlists = await youtube.playlists.list({
+        part : ['snippet' , 'contentDetails'],
+        mine : true
+     })
+
+     return {playlists : playlists.data.items , playlist_count : playlists.data.pageInfo.totalResults};
 }

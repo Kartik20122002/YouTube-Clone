@@ -1,26 +1,25 @@
 import express from 'express';
-export const OtherHomePage = express.Router();
+export const OtherLikePage = express.Router();
 import ejs from 'ejs';
-import {popular_videos_bytoken } from '../Functions/Youtube_Data.js';
-OtherHomePage.use(express.json());
+import { liked_videos } from '../Functions/Youtube_Data.js';
+OtherLikePage.use(express.json());
 
 
 
-OtherHomePage
+OtherLikePage
 .get('/',async (req,res)=>{
 
     try {
     
-        let {result , nextpagetoken}= await popular_videos_bytoken(req.query.token);
+        let {liked , nextpagetoken}= await liked_videos(req.query.token);
 
-        ejs.renderFile('./views/partials/otherhomepage.ejs',{ items : result , nextpagetoken : nextpagetoken},{},(err,temp)=>{
+        ejs.renderFile('./views/partials/otherlikepage.ejs',{ items : liked , nextpagetoken : nextpagetoken},{},(err,temp)=>{
             if (err) {
                 throw err;
             } else {
                 res.send(temp);
             }
         });
-
 
            
     } catch (error) {
