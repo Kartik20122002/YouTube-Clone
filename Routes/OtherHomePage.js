@@ -9,9 +9,6 @@ OtherHomePage.use(express.json());
 OtherHomePage
 .get('/',async (req,res)=>{
 
-    console.log('request reached',req.query.token);
-
-
     try {
     
         let {result , nextpagetoken}= await popular_videos_bytoken(req.query.token);

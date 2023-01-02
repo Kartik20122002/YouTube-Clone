@@ -2,6 +2,9 @@ const static_cache = 'static_cache';
 
 const assets = [
     '/',
+    'LoginPage.ejs',
+    'css/LoginPage.css',
+    'js/LoginPage.js'
 ]
 
 self.addEventListener('install', function(event) {
