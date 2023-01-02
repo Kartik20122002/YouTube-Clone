@@ -27,7 +27,6 @@ app.use(express.static('./views'));
 app.set('views','./views');
 app.use(express.urlencoded({ extended: true }));
 
-
 app.use('/googleauth',Auth);
 app.use('/',isLoggedIn,Home);
 app.use('/likedvideos',isLoggedIn,Liked_Page);
