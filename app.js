@@ -4,6 +4,7 @@ import passport from 'passport';
 import { secret } from './Functions/GoogleAuth.js';
 import { Auth, isLoggedIn } from './Routes/Auth.js';
 import { Home } from './Routes/HomePage.js';
+import { OtherHomePage } from './Routes/OtherHomePage.js';
 import { Liked_Page } from './Routes/LikedVideos.js';
 import { SearchResults } from './Routes/SearchResults.js';
 import { videopage } from './Routes/VideoPage.js';
@@ -28,6 +29,7 @@ app.use('/',isLoggedIn,Home);
 app.use('/likedvideos',isLoggedIn,Liked_Page);
 app.use('/searchresults',isLoggedIn,SearchResults);
 app.use('/videopage',isLoggedIn,videopage)
+app.use('/otherpage',OtherHomePage);
 
 app.listen(port,()=>{
     console.log(`http://localhost:${port}/`);

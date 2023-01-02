@@ -2,33 +2,58 @@
 
 <div class="container" id="mainpage">
 
-    <div class="list-container">
+    <div class="list-container" id="video-container-home">
         <% for(let i = 0 ; i < items.length ; i++){ %>
 
-            <div class= "vid-list s<%=i%>">
-                <a href=#> <img src="../../images/skeleton.png" class="thumbnail skeleton"> </a>
-                            <div class="flex-div">
-                             <a href=#><img src="../../images/skeleton.png" class="skeleton" alt="" srcset=""></a> 
-                                <div class="vid-info">
-                                    <a href=# class="skeleton-text">${data[i].snippet.title}</a>
-                                   <a href=# > <p class="skeleton-text">${data[i].snippet.channelTitle}</p></a>
-                                    
-                                    <p class="skeleton-text"> ${views} Views &bull; 2 days</p>
+        <% let video_link = "/videopage?v=" + items[i].id + "&c=" + items[i].snippet.channelId %>
+        <% let channel_link = "https://www.youtube.com/channel/" + items[i].snippet.channelId %>
+
+    <%    let views = (items[i].statistics.viewCount/1000000).toFixed(1);%>
+    <%    if(views > 10) views = Math.trunc(views);%>
+    <%    if(views > 1) views = views + 'M';%>
+    <%    if(views <= 1) views = (items[i].statistics.viewCount/1000).toFixed(1) + 'K';%>
+
+            <%if(i === items.length-1){%>
+                <div class= "vid-list">
+                    <a href= <%=video_link%>> <img src="<%=items[i].snippet.thumbnails.medium.url%>" class="thumbnail"> </a>
+                                <div class="flex-div">
+                                 <a href=<%=channel_link%>><img src="<%=items[i].channelinfo.snippet.thumbnails.medium.url%>" alt="" srcset=""></a> 
+                                    <div class="vid-info">
+                                        <a hx-get = "/otherpage?token=<%=nextpagetoken%>"
+                                            hx-trigger = "revealed"
+                                            hx-target = "#video-container-home"
+                                            hx-swap = "beforeend"
+                                            href=<%=video_link%>><%=items[i].snippet.title%></a>
+                                       <a href=<%=channel_link%> > <p><%=items[i].snippet.channelTitle%></p></a>
+                                        
+                                        <p> <%=views%> Views &bull; 2 days</p>
+                                    </div>
                                 </div>
-                            </div>
-            </div>
+                </div>
+            <%}%>
+            <% if(i < items.length-1){  %>
+                <div class= "vid-list">
+                    <a href=<%=video_link%>> <img src="<%=items[i].snippet.thumbnails.medium.url%> " class="thumbnail"> </a>
+                                <div class="flex-div">
+                                 <a href=<%=channel_link%>><img src="<%=items[i].channelinfo.snippet.thumbnails.medium.url%>"></a> 
+                                    <div class="vid-info">
+                                        <a href=<%=video_link%>><%=items[i].snippet.title%></a>
+                                       <a href=<%=channel_link%>> <p><%=items[i].snippet.channelTitle%></p></a>
+                                        
+                                        <p> <%=views%> Views &bull; 2 days</p>
+                                    </div>
+                                </div>
+                </div>
+           <% } %>
 
         <%}%>
     </div>
 
+    <!-- <button 
+    hx-get = "/otherpage?token=<%=nextpagetoken%>"
+    hx-trigger = "revealed"
+    hx-target = "#video-container-home"
+    hx-swap = "beforeend"
+    class="loading-btn"> Load More</button> -->
+
 </div>
-
-
-
-<script>
-    
-    let data = <%-JSON.stringify(items)%>;
-
-</script>
-
-<script src="./partials/js/mainpage.js"></script>

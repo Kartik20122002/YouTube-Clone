@@ -1,6 +1,5 @@
 .sidebar-util::-webkit-scrollbar{
     display: none;
-    height: 0px;
 }
 
 .sidebar-util:hover::-webkit-scrollbar{
