@@ -10,6 +10,7 @@ import { OtherLikePage } from './Routes/OtherLikedPage.js';
 import { SearchResults } from './Routes/SearchResults.js';
 import { videopage } from './Routes/VideoPage.js';
 import { UserPage } from './Routes/UserPage.js';
+import { ChannelPage} from './Routes/ChannelPage.js';
 
 const app = express();
 app.use(session({
@@ -24,7 +25,8 @@ const port = process.env.PORT || 8080;
 app.set("view engine", "ejs");
 app.use(express.static('./views'));
 app.set('views','./views');
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }));
+
 
 app.use('/googleauth',Auth);
 app.use('/',isLoggedIn,Home);
@@ -33,7 +35,8 @@ app.use('/searchresults',isLoggedIn,SearchResults);
 app.use('/videopage',isLoggedIn,videopage)
 app.use('/otherpage',OtherHomePage);
 app.use('/otherlikedpage',OtherLikePage);
-app.use('/userpage',UserPage)
+app.use('/userpage',UserPage);
+app.use('/channelpage',ChannelPage);
 
 app.listen(port,()=>{
     console.log(`http://localhost:${port}/`);
