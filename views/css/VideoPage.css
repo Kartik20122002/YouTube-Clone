@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+.nav-left .menu-icon{
+  display: none;
+}
+
 ::-webkit-scrollbar {
     display: none;
   }
