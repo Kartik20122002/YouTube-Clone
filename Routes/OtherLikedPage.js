@@ -13,6 +13,11 @@ OtherLikePage
     
         let {liked , nextpagetoken}= await liked_videos(req.query.token);
 
+        if(nextpagetoken){
+            nextpagetoken = nextpagetoken;
+       }
+       else nextpagetoken = "notokenhere";
+
         ejs.renderFile('./views/partials/otherlikepage.ejs',{ items : liked , nextpagetoken : nextpagetoken},{},(err,temp)=>{
             if (err) {
                 throw err;

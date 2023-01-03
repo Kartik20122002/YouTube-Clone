@@ -12,6 +12,11 @@ OtherHomePage
     try {
     
         let {result , nextpagetoken}= await popular_videos_bytoken(req.query.token);
+        
+        if(nextpagetoken){
+             nextpagetoken = nextpagetoken;
+        }
+        else nextpagetoken = "notokenhere";
 
         ejs.renderFile('./views/partials/otherhomepage.ejs',{ items : result , nextpagetoken : nextpagetoken},{},(err,temp)=>{
             if (err) {

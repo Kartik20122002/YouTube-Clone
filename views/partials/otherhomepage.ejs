@@ -8,7 +8,8 @@
 <%    if(views > 1) views = views + 'M';%>
 <%    if(views <= 1) views = (items[i].statistics.viewCount/1000).toFixed(1) + 'K';%>
 
-        <%if(i === items.length-1){%>
+
+        <%if(i === items.length-1 && nextpagetoken !== "notokenhere"){%>
             <div class= "vid-list">
                 <a href= <%=video_link%>> <img src="<%=items[i].snippet.thumbnails.medium.url%>" class="thumbnail"> </a>
                             <div class="flex-div">
@@ -25,8 +26,7 @@
                                 </div>
                             </div>
             </div>
-        <%}%>
-        <% if(i < items.length-1){  %>
+        <%} else {%>
             <div class= "vid-list">
                 <a href=<%=video_link%>> <img src="<%=items[i].snippet.thumbnails.medium.url%> " class="thumbnail"> </a>
                             <div class="flex-div">

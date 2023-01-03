@@ -1,16 +1,16 @@
 import express from 'express';
-export const ChannelPage = express.Router();
+export const trial = express.Router();
 import ejs from 'ejs';
 import { user_subscriptions } from '../Functions/Youtube_Data.js';
-ChannelPage.use(express.json());
+trial.use(express.json());
 
 
-ChannelPage
+trial
 .get('/',async (req,res)=>{
 
     try {
 
-       
+        res.render('TrialPage.ejs',{profile : {photos : [{value :{}}]},subs : {} , queryvalue : ""});
         
     } catch (error) {
         if(error.response){

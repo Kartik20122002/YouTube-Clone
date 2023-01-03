@@ -8,25 +8,27 @@
 <%    if(views > 1) views = views + 'M';%>
 <%    if(views <= 1) views = (items[i].statistics.viewCount/1000).toFixed(1) + 'K';%>
 
-        <%if(i === items.length-1){%>
+        <%if(i === items.length-1 && nextpagetoken !== "notokenhere"){%>
             <div class= "vid-list">
                 <a href= <%=video_link%>> <img src="<%=items[i].snippet.thumbnails.medium.url%>" class="thumbnail"> </a>
                             <div class="flex-div">
                              <a href=<%=channel_link%>><img src="<%=items[i].channelinfo.snippet.thumbnails.medium.url%>" alt="" srcset=""></a> 
                                 <div class="vid-info">
+
                                     <a hx-get = "/otherlikedpage?token=<%=nextpagetoken%>"
                                         hx-trigger = "revealed"
                                         hx-target = "#video-container-home"
                                         hx-swap = "beforeend"
                                         href=<%=video_link%>><%=items[i].snippet.title%></a>
+
+
                                    <a href=<%=channel_link%> > <p><%=items[i].snippet.channelTitle%></p></a>
                                     
                                     <p> <%=views%> Views &bull; 2 days</p>
                                 </div>
                             </div>
             </div>
-        <%}%>
-        <% if(i < items.length-1){  %>
+        <%} else {%>
             <div class= "vid-list">
                 <a href=<%=video_link%>> <img src="<%=items[i].snippet.thumbnails.medium.url%> " class="thumbnail"> </a>
                             <div class="flex-div">

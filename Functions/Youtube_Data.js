@@ -240,3 +240,13 @@ export const user_playlists = async ()=>{
 
      return {playlists : playlists.data.items , playlist_count : playlists.data.pageInfo.totalResults};
 }
+
+export const channel_playlists = async (channelId , token)=>{
+    let playlists = await youtube.playlists.list({
+        part : ['snippet' , 'contentDetails'],
+        channelId : channelId,
+        pageToken : token
+    })
+
+    return {channel_playlists : playlists.data.items , playlists_count : playlists.data.pageInfo.totalResults , token : playlists.data.nextPageToken};
+}

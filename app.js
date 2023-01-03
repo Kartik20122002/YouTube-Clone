@@ -11,6 +11,7 @@ import { SearchResults } from './Routes/SearchResults.js';
 import { videopage } from './Routes/VideoPage.js';
 import { UserPage } from './Routes/UserPage.js';
 import { ChannelPage} from './Routes/ChannelPage.js';
+import { trial } from './Routes/trial.js';
 
 const app = express();
 app.use(session({
@@ -27,6 +28,8 @@ app.use(express.static('./views'));
 app.set('views','./views');
 app.use(express.urlencoded({ extended: true }));
 
+
+// app.use('/',trial);
 app.use('/googleauth',Auth);
 app.use('/',isLoggedIn,Home);
 app.use('/likedvideos',isLoggedIn,Liked_Page);
