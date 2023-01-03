@@ -98,11 +98,11 @@ a{
     }
 
     #channelmainpage .videos-collection .collection .vid-title{
-        font-size: 12px;
+        font-size: 10px;
     }
 
     #channelmainpage .videos-collection .collection .vid-channel , #channelmainpage .videos-collection .collection .vid-detials{
-        font-size: 10px;
+        font-size: 9px;
     }
 }
 
