@@ -1,7 +1,7 @@
 import express from 'express';
 export const ChannelPage = express.Router();
 import ejs from 'ejs';
-import { channel_activities, channel_info, channel_playlists, user_subscriptions } from '../Functions/Youtube_Data.js';
+import { channel_activities, channel_info, channel_playlists, get_date, user_subscriptions } from '../Functions/Youtube_Data.js';
 ChannelPage.use(express.json());
 
 
@@ -10,10 +10,10 @@ ChannelPage
 
     try {
         let channel_id =req.query.c;
-        let channelinfo = channel_info(channel_id);
-        let {channelplaylists , playlists_count , playlists_token} = channel_playlists(channel_id,"");
-        let {channelactivities, activites_count , activities_token} = channel_activities(channel_id,"");
-        let {subs , sub_count} = user_subscriptions();
+        let channelinfo = await channel_info(channel_id);
+        let {channelplaylists , playlists_count , playlists_token} = await channel_playlists(channel_id,"");
+        let {channelactivities, activities_count , activities_token} = await channel_activities(channel_id,"");
+        let {subs , sub_count} = await user_subscriptions();
 
         if(playlists_token == null) playlists_token = "notokenhere";
         if(activities_token == null) activities_token = "notokenhere";
@@ -22,12 +22,15 @@ ChannelPage
             profile : req.user.profile,
             subs : subs,
             sub_count : sub_count,
+            channelinfo : channelinfo,
             channelplaylists : channelplaylists,
             playlists_count : playlists_count,
             playlists_token : playlists_token,
             channelactivities : channelactivities,
-            activites_count : activites_count,
-            activities_token : activities_token
+            activities_count : activities_count,
+            activities_token : activities_token,
+            queryvalue : "",
+            datefunction : get_date,
         });
        
         

@@ -14,7 +14,7 @@
                     <div class="vid-list">
                          <a href="/videopage?v=<%=liked[i].id%>&c=<%=liked[i].snippet.channelId%>"><img src="<%=liked[i].snippet.thumbnails.medium.url%>" alt="" srcset=""></a>
                          <div class="vid-title"><%=liked[i].snippet.title%></div>
-                       <a href="https://www.youtube.com/channel/<%=liked[i].snippet.channelId%>">  <div class="vid-channel"><%=liked[i].snippet.channelTitle%></div> </a>
+                       <a href="/channelpage?c=<%=liked[i].snippet.channelId%>">  <div class="vid-channel"><%=liked[i].snippet.channelTitle%></div> </a>
                          <div class="vid-detials"><%=liked[i].statistics.viewCount%> views &bull; 2 days ago</div>
                     </div>
                     <%}%>
@@ -34,7 +34,7 @@
                     <%for(let i = 0 ; i < Math.min(5,subs.length) ; i++){%>
 
                     <div class="vid-list">
-                         <a href="https://www.youtube.com/channel/<%=subs[i].snippet.channelId%>"><img src="<%=subs[i].snippet.thumbnails.medium.url%>" alt="" srcset=""></a>
+                         <a href="/channelpage?c=<%=subs[i].snippet.channelId%>"><img src="<%=subs[i].snippet.thumbnails.medium.url%>" alt="" srcset=""></a>
                          <div class="vid-channel"><%=subs[i].snippet.title%></div>
                          <div class="vid-detials">3276 items &bull; 2 days ago</div>
                     </div>

@@ -150,6 +150,7 @@ a{
 
 #channelmainpage .videos-collection .collection img{
     width: 100%;
+    max-width: 250px;
     border-radius: 5%;
 }
 
@@ -158,3 +159,9 @@ a{
     color: #606060;
 }
 
+#channelmainpage .videos-collection .collection .vid-title{
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}

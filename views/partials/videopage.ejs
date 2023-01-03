@@ -56,10 +56,10 @@
       <%  if(subscribers <= 1) subscribers = (channel.statistics.subscriberCount/1000).toFixed(1) + 'K'; %>
 
             <div class="channelinfo">
-            <a href="#">    <img src=<%=channel.snippet.thumbnails.medium.url%> alt=""> </a>
+            <a href="/channelpage?c=<%=channel.id%>">    <img src=<%=channel.snippet.thumbnails.medium.url%> alt=""> </a>
 
                 <div class="channel-details">
-                 <a href="#">   <p><%=channel.snippet.title%></p> </a>
+                 <a href="/channelpage?c=<%=channel.id%>">   <p><%=channel.snippet.title%></p> </a>
                     <span><%=subscribers%> Subscribers</span>
                 </div>
                 <button type="button">Subscribe</button>
@@ -81,11 +81,13 @@
 
         <div class="comments">
 
+
+
         <% for(let i = 0 ; i < comments.length ; i++){ %>
 
         <% let authorImage = comments[i].snippet.topLevelComment.snippet.authorProfileImageUrl %>
         <% let authorName =  comments[i].snippet.topLevelComment.snippet.authorDisplayName%>
-        <% let authorChannel = comments[i].snippet.topLevelComment.snippet.authorChannelUrl%>
+        <% let authorChannel = "/channelpage?c=" + comments[i].snippet.topLevelComment.snippet.authorChannelId.value%>
 
         <% let comment = comments[i].snippet.topLevelComment.snippet.textOriginal%>
         <% let likes = comments[i].snippet.topLevelComment.snippet.likeCount%>

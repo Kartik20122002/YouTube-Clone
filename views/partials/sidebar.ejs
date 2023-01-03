@@ -21,7 +21,7 @@
         <h3>Subscriptions</h3>
 
      <%   for(let i = 0 ; i < subs.length ; i++){  %>
-        <a href=https://www.youtube.com/channel/<%=subs[i].snippet.resourceId.channelId%>>
+        <a href=/channelpage?c=<%=subs[i].snippet.resourceId.channelId%>>
             <img src=<%=subs[i].snippet.thumbnails.medium.url%> alt="" srcset="">
             <p><%=subs[i].snippet.title%></p>
         </a>

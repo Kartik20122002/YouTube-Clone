@@ -6,7 +6,7 @@
         <% for(let i = 0 ; i < items.length ; i++){ %>
 
         <% let video_link = "/videopage?v=" + items[i].id + "&c=" + items[i].snippet.channelId %>
-        <% let channel_link = "https://www.youtube.com/channel/" + items[i].snippet.channelId %>
+        <% let channel_link = "/channelpage?c=" + items[i].snippet.channelId %>
 
     <%    let views = (items[i].statistics.viewCount/1000000).toFixed(1);%>
     <%    if(views > 10) views = Math.trunc(views);%>

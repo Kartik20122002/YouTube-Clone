@@ -115,9 +115,6 @@ export const popular_videos_bytoken = async (token)=>{
     return {result : results.data.items, nextpagetoken : results.data.nextPageToken , prevpagetoken : results.data.prevPageToken};
 }
 
-
-
-
 export const liked_videos = async (token)=>{
     let results = await youtube.videos.list(
     {   part:['snippet','statistics'], 
@@ -147,7 +144,6 @@ export const liked_videos = async (token)=>{
     return {liked : results.data.items,count : results.data.pageInfo.totalResults, nextpagetoken : results.data.nextPageToken , prevpagetoken : results.data.prevPageToken};
 }
 
-
 export const user_subscriptions = async ()=>{
     let results = await youtube.subscriptions.list({
         part : ['snippet','contentDetails'],
@@ -160,12 +156,12 @@ export const user_subscriptions = async ()=>{
 
 export const channel_info = async(id)=>{
     let result = await youtube.channels.list({
-        part : ['snippet','contentDetails'],
+        part : ['snippet','statistics','contentDetails'],
         id : id,
         maxResults : 50
     });
 
-    return result.data.items;
+    return result.data.items[0];
 }
 
 export const RelatedVideos = async (id)=>{
@@ -245,7 +241,8 @@ export const channel_playlists = async (channelId , token)=>{
     let playlists = await youtube.playlists.list({
         part : ['snippet' , 'contentDetails'],
         channelId : channelId,
-        pageToken : token
+        pageToken : token,
+        maxResults : 25,
     })
 
     return {channelplaylists : playlists.data.items , playlists_count : playlists.data.pageInfo.totalResults , playlists_token : playlists.data.nextPageToken};
@@ -255,10 +252,19 @@ export const channel_activities = async (channelId,token)=>{
    let activities = await youtube.activities.list({
     part : ['snippet','contentDetails'],
     channelId : channelId,
-    pageToken : token
+    pageToken : token,
+    maxResults: 25,
    });
 
-   console.log(activities.data.tokenPagination);
+   return {channelactivities : activities.data.items , activities_count : activities.data.pageInfo.totalResults , activities_token : activities.data.nextPageToken};
+}
 
-   return {channelactivities : activities.data.kind , activities_count : activities.data.pageInfo.totalResults , activities_token : activities.data.nextPageToken};
+export const get_date = (isoformat)=>{
+    
+    let year = isoformat.slice(0,4); 
+    let month = isoformat.slice(5,7);  
+    let day = isoformat.slice(8,10);  
+    let date = day + "/" + month + "/" + year;
+
+    return date;
 }

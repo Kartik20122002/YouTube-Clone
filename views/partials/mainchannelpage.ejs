@@ -1,19 +1,20 @@
 <link rel="stylesheet" href="./partials/css/mainchannelpage.css">
 
-
 <div id="channelmainpage">
 
     <div class="channel-info">
 
         <div class="profile-photo">
-            <img src="./images/Jack.png" alt="" srcset="">
+            <img src="<%=channelinfo.snippet.thumbnails.medium.url%>" alt="" srcset="">
         </div>
 
+
         <div class="channel-details">
-            <div class="channel-name">Jack Nickolson</div>
-            <div class="fancy-id">@JackNicko</div>
-            <div class="subscribers">134 subscribers</div>
-            <div class="items">10k views</div>
+            <div class="channel-name"><%=channelinfo.snippet.title%></div>
+            <div class="fancy-id"><%=channelinfo.snippet.customUrl%></div>
+            <div class="subscribers"><%=channelinfo.statistics.subscriberCount%> subscribers</div>
+            <div class="subscribers"><%=channelinfo.statistics.videoCount%> videos</div>
+            <div class="items"><%=channelinfo.statistics.viewCount%> views</div>
         </div>
 
         <div class="buttons">
@@ -26,26 +27,38 @@
 
     <div class="videos-collection" id="recent_uploads">
             
-        <div class="title"><img src="./images/playlisticon.png" alt=""> Recent Uploads <span>7</span>  <a onclick=showmore()>See All</a></div>
+        <div class="title"><img src="./images/playlisticon.png" alt=""> Recent Uploads <span><%=activities_count%></span>  <a onclick=showmore()>See All</a></div>
 
         <div class="collection">
 
-            <%for(let i = 0 ; i < 16 ; i++){%>
+            <%for(let i = 0 ; i < channelactivities.length ; i++){%>
+            <% if(channelactivities[i].snippet.type === "upload"){ %>
+
+                
+        <% let year = channelactivities[i].snippet.publishedAt.slice(0,4); %>
+        <% let month = channelactivities[i].snippet.publishedAt.slice(5,7);  %>
+        <% let day = channelactivities[i].snippet.publishedAt.slice(8,10);  %>
+
+        <% let date = day + "/" + month + "/" + year%>
+
+
             <%if(i < 4){%>
             <div class="vid-list visible">
             <%}%>
             <%if(i >= 4){%>
             <div class="vid-list hidden">
             <%}%>
-                 <a href="#"><img src="./images/thumbnail1.png" alt="" srcset=""></a>
-                 <div class="vid-title">Visarjan</div>
-                 <div class="vid-channel">Kartik Hatwar</div>
-                 <div class="vid-detials">63 items &bull; 2 days ago</div>
+                 <a href="/videopage?v=<%=channelactivities[i].contentDetails.upload.videoId%>&c=<%=channelactivities[i].snippet.channelId%>"><img src="<%=channelactivities[i].snippet.thumbnails.medium.url%>" alt="" srcset=""></a>
+                 <div class="vid-title"><%=channelactivities[i].snippet.title%></div>
+                 <div class="vid-channel"><%=channelinfo.snippet.title%></div>
+                 <div class="vid-detials">Uploaded on <%=date%></div>
             </div>
-                        
             <%}%>
+            <%}%>
+                        
 
         </div>
+        
     
     </div>                     <!-- *********************** -->
 
@@ -53,21 +66,22 @@
 
     <div class="videos-collection" id="playlists">
             
-        <div class="title"><img src="./images/playlisticon.png" alt=""> Playlists <span>7</span>  <a onclick=showmore()>See All</a></div>
+        <div class="title"><img src="./images/playlisticon.png" alt=""> Playlists <span><%=playlists_count%></span>  <a onclick=showmore()>See All</a></div>
+
 
         <div class="collection">
 
-            <%for(let i = 0 ; i < 16 ; i++){%>
+            <%for(let i = 0 ; i < channelplaylists.length ; i++){%>
             <%if(i < 4){%>
             <div class="vid-list visible">
             <%}%>
             <%if(i >= 4){%>
             <div class="vid-list hidden">
             <%}%>
-                 <a href="#"><img src="./images/thumbnail1.png" alt="" srcset=""></a>
-                 <div class="vid-title">Visarjan</div>
-                 <div class="vid-channel">Kartik Hatwar</div>
-                 <div class="vid-detials">63 items &bull; 2 days ago</div>
+                 <a href="/playlist?p=<%=channelplaylists[i].id%>"><img src="<%=channelplaylists[i].snippet.thumbnails.medium.url%>" alt="" srcset=""></a>
+                 <div class="vid-title"><%=channelplaylists[i].snippet.title%></div>
+                 <div class="vid-channel"><%=channelplaylists[i].snippet.channelTitle%></div>
+                 <div class="vid-detials"><%=channelplaylists[i].contentDetails.itemCount%> items &bull; 2 days ago</div>
             </div>
                         
             <%}%>
