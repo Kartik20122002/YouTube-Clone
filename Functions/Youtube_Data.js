@@ -160,7 +160,7 @@ export const user_subscriptions = async ()=>{
 
 export const channel_info = async(id)=>{
     let result = await youtube.channels.list({
-        part : ['snippet'],
+        part : ['snippet','contentDetails'],
         id : id,
         maxResults : 50
     });
@@ -248,5 +248,17 @@ export const channel_playlists = async (channelId , token)=>{
         pageToken : token
     })
 
-    return {channel_playlists : playlists.data.items , playlists_count : playlists.data.pageInfo.totalResults , token : playlists.data.nextPageToken};
+    return {channelplaylists : playlists.data.items , playlists_count : playlists.data.pageInfo.totalResults , playlists_token : playlists.data.nextPageToken};
+}
+
+export const channel_activities = async (channelId,token)=>{
+   let activities = await youtube.activities.list({
+    part : ['snippet','contentDetails'],
+    channelId : channelId,
+    pageToken : token
+   });
+
+   console.log(activities.data.tokenPagination);
+
+   return {channelactivities : activities.data.kind , activities_count : activities.data.pageInfo.totalResults , activities_token : activities.data.nextPageToken};
 }
