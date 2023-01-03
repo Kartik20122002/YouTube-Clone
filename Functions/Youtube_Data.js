@@ -268,3 +268,27 @@ export const get_date = (isoformat)=>{
 
     return date;
 }
+
+export const playlist_byid = async (playlistId, token)=>{
+    try {
+        
+        let playlist_items = await youtube.playlistItems.list({
+            part : ['snippet' , 'contentDetails'],
+            maxResults: 50,
+            playlistId : playlistId,
+            pageToken : token
+        })
+
+        let playlist_info = await youtube.playlists.list({
+            part : ['snippet' , 'contentDetails'],
+            maxResults: 50,
+            id: playlistId,
+            pageToken : token
+        })
+
+        return {playlist_items : playlist_items.data,playlist_info : playlist_info.data.items[0]}
+
+    } catch (error) {
+        throw error;
+    }
+}

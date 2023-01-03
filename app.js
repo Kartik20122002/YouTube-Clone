@@ -11,7 +11,7 @@ import { SearchResults } from './Routes/SearchResults.js';
 import { videopage } from './Routes/VideoPage.js';
 import { UserPage } from './Routes/UserPage.js';
 import { ChannelPage} from './Routes/ChannelPage.js';
-import { trial } from './Routes/trial.js';
+import { Playlist } from './Routes/PlaylistPage.js';
 
 const app = express();
 app.use(session({
@@ -29,12 +29,12 @@ app.set('views','./views');
 app.use(express.urlencoded({ extended: true }));
 
 
-// app.use('/',trial);
 app.use('/googleauth',Auth);
 app.use('/',isLoggedIn,Home);
 app.use('/likedvideos',isLoggedIn,Liked_Page);
 app.use('/searchresults',isLoggedIn,SearchResults);
 app.use('/videopage',isLoggedIn,videopage)
+app.use('/playlist',Playlist);
 app.use('/otherpage',OtherHomePage);
 app.use('/otherlikedpage',OtherLikePage);
 app.use('/userpage',UserPage);

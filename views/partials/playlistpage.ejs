@@ -1,0 +1,74 @@
+<link rel="stylesheet" href="./partials/css/playlistpage.css">
+
+<div id="playlistpage">
+
+<div class="info-section">
+    <img class="blur-img" src="<%=playlist_info.snippet.thumbnails.medium.url%>" alt="">
+
+    <a href="#" class="playlist-img" >
+        <img src="<%=playlist_info.snippet.thumbnails.medium.url%>" alt="">
+    </a>
+
+    <div class="playlist-details">
+        <div class="title"><%=playlist_info.snippet.title%></div>
+
+        <% let year = playlist_info.snippet.publishedAt.slice(0,4); %>
+        <% let month = playlist_info.snippet.publishedAt.slice(5,7);  %>
+        <% let day = playlist_info.snippet.publishedAt.slice(8,10);  %>
+
+        <% let date = day + "/" + month + "/" + year%>
+
+        <div class="other-details">
+            <div class="channel-name"><%=playlist_info.snippet.channelTitle%></div>
+            <div class="playlist-info"><%=playlist_info.contentDetails.itemCount%> videos Updated <%=date%> &bull; Duration 11.40.15</div>
+
+            <div class="links">
+                <div class="save l-btn"><img src="./images/save.png" alt="" srcset=""></div>
+                <div class="share l-btn"><img src="./images/share.png" alt="" srcset=""></div>
+                <div class="more l-btn"><img src="./images/more.png" alt="" srcset=""></div>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <a href="#" class="playall-btn">
+            <img src="../images/playlisticon.png" alt="">
+             Play All
+            </a>
+            <a href="#" class="playall-btn download-btn">
+                <img src="../images/download.png" alt="">
+                 Download
+            </a>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="videos-section">
+   
+    <% for(let i = 0 ; i < playlist_items.items.length ; i++){%>
+
+        <% let vyear = playlist_items.items[i].snippet.publishedAt.slice(0,4); %>
+        <% let vmonth = playlist_items.items[i].snippet.publishedAt.slice(5,7);  %>
+        <% let vday = playlist_items.items[i].snippet.publishedAt.slice(8,10);  %>
+
+        <% let vdate = vday + "/" + vmonth + "/" + vyear%>
+
+        <div class="vid-list">
+            <div class="num"><%=i+1%></div>
+            <a href="/videopage?v=<%=playlist_items.items[i].contentDetails.videoId%>&c=<%=playlist_items.items[i].snippet.channelTitle%>" class="vid-img"><img src="<%=playlist_items.items[i].snippet.thumbnails.medium.url%>" alt=""></a>
+        <div class="vid-details">
+          <div class="vid-title"><%=playlist_items.items[i].snippet.title%></div>
+          <div class="vid-cred">
+            <div class="channel-name"><%=playlist_items.items[i].snippet.channelTitle%></div>
+             <div class="viewsDate">Streamed on <%=vdate%></div>
+          </div>
+        </div>
+
+        </div>
+
+    <%}%>
+</div>
+
+
+</div>
