@@ -87,24 +87,7 @@ a{
 }
 
 
-@media (max-width : 900px){
-    #channelmainpage{
-        padding-left: 2%;
-        padding-right: 2%;
-    }
 
-    #channelmainpage .channel-info {
-        padding: 0;
-    }
-
-    #channelmainpage .videos-collection .collection .vid-title{
-        font-size: 10px;
-    }
-
-    #channelmainpage .videos-collection .collection .vid-channel , #channelmainpage .videos-collection .collection .vid-detials{
-        font-size: 9px;
-    }
-}
 
 
 #channelmainpage .videos-collection{
@@ -172,4 +155,23 @@ a{
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+}
+
+@media (max-width : 900px){
+    #channelmainpage{
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+
+    #channelmainpage .channel-info {
+        padding: 0;
+    }
+
+    #channelmainpage .videos-collection .collection .vid-title{
+        font-size: 10px;
+    }
+
+    #channelmainpage .videos-collection .collection .vid-channel , #channelmainpage .videos-collection .collection .vid-detials{
+        font-size: 9px;
+    }
 }
