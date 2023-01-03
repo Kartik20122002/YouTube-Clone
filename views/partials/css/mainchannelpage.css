@@ -96,6 +96,14 @@ a{
     #channelmainpage .channel-info {
         padding: 0;
     }
+
+    #channelmainpage .videos-collection .collection .vid-title{
+        font-size: 12px;
+    }
+
+    #channelmainpage .videos-collection .collection .vid-channel , #channelmainpage .videos-collection .collection .vid-detials{
+        font-size: 10px;
+    }
 }
 
 
