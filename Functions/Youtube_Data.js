@@ -117,10 +117,10 @@ export const popular_videos_bytoken = async (token)=>{
 
 export const liked_videos = async (token)=>{
     let results = await youtube.videos.list(
-    {   part:['snippet','statistics'], 
-        maxResults : 50,
+        {   
+        part:['snippet','statistics'], 
         myRating : 'like',
-        regionCode : 'In',
+        maxResults : 50,
         pageToken : token
     });
 
@@ -158,7 +158,7 @@ export const channel_info = async(id)=>{
     let result = await youtube.channels.list({
         part : ['snippet','statistics','contentDetails'],
         id : id,
-        maxResults : 50
+        maxResults : 2
     });
 
     return result.data.items[0];
@@ -272,19 +272,24 @@ export const get_date = (isoformat)=>{
 export const playlist_byid = async (playlistId, token)=>{
     try {
         
-        let playlist_items = await youtube.playlistItems.list({
+        let playlist_items = youtube.playlistItems.list({
             part : ['snippet' , 'contentDetails'],
             maxResults: 50,
             playlistId : playlistId,
             pageToken : token
         })
 
-        let playlist_info = await youtube.playlists.list({
+        let playlist_info = youtube.playlists.list({
             part : ['snippet' , 'contentDetails'],
             maxResults: 50,
             id: playlistId,
             pageToken : token
         })
+
+        let result = await Promise.all([playlist_items,playlist_info])
+
+        playlist_items = result[0];
+        playlist_info = result[1];
 
         return {playlist_items : playlist_items.data,playlist_info : playlist_info.data.items[0]}
 
