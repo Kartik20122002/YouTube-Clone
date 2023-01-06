@@ -10,10 +10,17 @@ ChannelPage
 
     try {
         let channel_id =req.query.c;
-        let channelinfo = await channel_info(channel_id);
-        let {channelplaylists , playlists_count , playlists_token} = await channel_playlists(channel_id,"");
-        let {channelactivities, activities_count , activities_token} = await channel_activities(channel_id,"");
-        let {subs , sub_count} = await user_subscriptions();
+        let item0 = channel_info(channel_id);
+        let item1 =  channel_playlists(channel_id,"");
+        let item2 = channel_activities(channel_id,"");
+        let item3 = user_subscriptions();
+
+        let result = await Promise.all([item0,item1,item2,item3]);
+
+        let channelinfo = result[0];
+        let {channelplaylists , playlists_count , playlists_token} = result[1];
+        let {channelactivities, activities_count , activities_token} = result[2];
+        let {subs , sub_count} = result[3];
 
         if(playlists_token == null) playlists_token = "notokenhere";
         if(activities_token == null) activities_token = "notokenhere";

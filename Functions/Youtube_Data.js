@@ -72,16 +72,17 @@ export const popular_videos = async ()=>{
          channelsId.push(results.data.items[i].snippet.channelId);
     }
 
-    let channelsinfo = await channel_info(channelsId);
+    
+    let channelsinfo = await youtube.channels.list({
+        part : ['snippet'],
+        maxResults : 50,
+        id : channelsId,
+    });
  
     for(let i = 0 ; i < results.data.items.length ; i++){
-        if(channelsinfo[i] == null){
-            results.data.items[i].channelinfo = {snippet : {thumbnails : {medium : {url :{}}}}};
-        }
-        else
-        results.data.items[i].channelinfo = channelsinfo[i];
+            results.data.items[i].channelinfo = channelsinfo.data.items[i];
+      if(results.data.items[i].channelinfo == null) results.data.items[i].channelinfo = {snippet : {thumbnails : {medium : {url :{}}}}};
     }
-
 
     return {result : results.data.items, nextpagetoken : results.data.nextPageToken , prevpagetoken : results.data.prevPageToken};
 }
@@ -101,14 +102,16 @@ export const popular_videos_bytoken = async (token)=>{
          channelsId.push(results.data.items[i].snippet.channelId);
     }
 
-    let channelsinfo = await channel_info(channelsId);
+    
+    let channelsinfo = await youtube.channels.list({
+        part : ['snippet'],
+        maxResults : 50,
+        id : channelsId,
+    });
  
     for(let i = 0 ; i < results.data.items.length ; i++){
-        if(channelsinfo[i] == null){
-            results.data.items[i].channelinfo = {snippet : {thumbnails : {medium : {url :{}}}}};
-        }
-        else
-        results.data.items[i].channelinfo = channelsinfo[i];
+            results.data.items[i].channelinfo = channelsinfo.data.items[i];
+            if(results.data.items[i].channelinfo == null) results.data.items[i].channelinfo = {id : "" ,snippet : {thumbnails : {medium : {url :{}}}}};
     }
 
 
@@ -130,14 +133,16 @@ export const liked_videos = async (token)=>{
          channelsId.push(results.data.items[i].snippet.channelId);
     }
 
-    let channelsinfo = await channel_info(channelsId);
+    
+    let channelsinfo = await youtube.channels.list({
+        part : ['snippet'],
+        maxResults : 50,
+        id : channelsId,
+    });
  
     for(let i = 0 ; i < results.data.items.length ; i++){
-        if(channelsinfo[i] == null){
-            results.data.items[i].channelinfo = {snippet : {thumbnails : {medium : {url :{}}}}};
-        }
-        else
-        results.data.items[i].channelinfo = channelsinfo[i];
+            results.data.items[i].channelinfo = channelsinfo.data.items[i];
+            if(results.data.items[i].channelinfo == null) results.data.items[i].channelinfo = {id : "" ,snippet : {thumbnails : {medium : {url :{}}}}};
     }
 
 

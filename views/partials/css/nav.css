@@ -84,9 +84,13 @@ nav i{
     height: 100%;
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
-    border: 0;
+    border: none;
     outline: 0;
     background-color: white;
+}
+
+.nav-middle .search-box input:focus{
+    border: none;
 }
 
 .nav-middle .search-box img{
