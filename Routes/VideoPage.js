@@ -1,7 +1,7 @@
 import express from 'express';
 export const videopage = express.Router();
 import ejs from 'ejs';
-import { getComments, getRating, get_videoAndChannel } from '../Functions/Youtube_Data.js';
+import { getComments, getRating, get_videoAndChannel, is_Subscribed } from '../Functions/Youtube_Data.js';
 videopage.use(express.json());
 
 
@@ -13,11 +13,22 @@ videopage
       const videoId = req.query.v;
       const channelId = req.query.c;
    
-      const {video , channel , relatedvideos} = await get_videoAndChannel(videoId,channelId);
+      let item0 = get_videoAndChannel(videoId,channelId);
+      let item1 = getComments(videoId);
+      let item2 = getRating(videoId);
+      let item3 = is_Subscribed(channelId);
 
-      const comments = await getComments(videoId);
 
-      const rating = await getRating(videoId);
+      let results = await Promise.all([item0,item1,item2,item3]);
+
+      
+      const {video , channel , relatedvideos} = results[0];
+      const comments = results[1];
+      const rating = results[2];
+      const {flag , id} = results[3];
+
+      
+
 
       res.render('VideoPage.ejs',{
          comments: comments,
@@ -25,6 +36,8 @@ videopage
          video : video , 
          rating : rating,
          channel : channel , 
+         isSubscribed : flag,
+         sub_id : id,
          queryvalue : "" , 
          profile : req.user.profile
       });

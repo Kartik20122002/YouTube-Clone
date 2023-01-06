@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="./partials/css/videopage.css">
-
+<script src="./js/htmx.js"></script>
 
 <div id="videopage" class="container play-container">
 
@@ -62,14 +62,24 @@
                  <a href="/channelpage?c=<%=channel.id%>">   <p><%=channel.snippet.title%></p> </a>
                     <span><%=subscribers%> Subscribers</span>
                 </div>
-                <button type="button">Subscribe</button>
+                <%if(isSubscribed > 0){%>
+                <button 
+                        hx-get = "/subscribe?subid=<%=sub_id%>&value=false&c=<%=channel.id%>"
+                        hx-swap = "outerHTML"
+                        type="button" id="subscribed">Subscribed
+                </button>
+                <%}else{%>
+                    <button  hx-get = "/subscribe?c=<%=channel.id%>&value=true"
+                            hx-swap = "outerHTML"
+                             type="button">Subscribe
+                    </button> 
+                <%}%>
 
             </div>
 
             <div class="vid-description">
 
                 <p><%-video.snippet.description%></p>
-                <!-- <p><%-channel.snippet.description%></p> -->
                                   <hr>
 
               <h4><%=video.statistics.commentCount %> Comments</h4>
@@ -102,9 +112,6 @@
                         <img src="./images/like.png">
                         <span><%=likes%></span>
                         <img src="./images/dislike.png">
-                        <!-- <span>REPLY</span> -->
-                        <!-- <a href="#">All replies</a> -->
-
                     </div>
 
                 </div>
@@ -145,5 +152,3 @@
     </div>
 
 </div>
-
-

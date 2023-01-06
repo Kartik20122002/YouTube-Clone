@@ -18,7 +18,15 @@
         </div>
 
         <div class="buttons">
-            <button class="subscribe-btn">Subscribe</button>
+
+            <% if(isSubscribed === true){%>
+                <button hx-get = "/subscribe?subid=<%=sub_id%>&value=false&c=<%=channelinfo.id%>"
+                      hx-swap = "outerHTML"
+                     class="subscribe-btn" id="subscribed" >Subscribed</button>
+            <%}else{%>
+                <button hx-get = "/subscribe?c=<%=channelinfo.id%>&value=true"
+                    hx-swap = "outerHTML"  class="subscribe-btn" >Subscribe</button>
+            <%}%>
         </div>
 
     </div>

@@ -30,7 +30,7 @@ a{
     flex-shrink: 1;
     min-width: 360px;
     min-height: 85vh;
-    max-height: 85vh;
+    max-height: 95vh;
     border-radius: 15px;
     padding: 2%;
     display: flex;
@@ -133,10 +133,9 @@ a{
  }
 #playlistpage .videos-section{
     display: grid;
-    width: fit-content;
+    flex-basis: 40%;
     flex-grow: 1;
     flex-shrink: 0;
-    grid-template-columns: repeat(1,1fr);
     grid-gap: 10px;
     margin-left: 1%;
     padding: 1%;
@@ -151,7 +150,8 @@ a{
  }
 
  #playlistpage .videos-section .vid-list .vid-img{
-    width: 160px;
+    min-width: 160px;
+    flex-basis: 16%;
     margin-right: 2%;
  }
 

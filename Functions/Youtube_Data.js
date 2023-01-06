@@ -2,8 +2,6 @@ import { google } from 'googleapis';
 import { config } from 'dotenv';
 config();
 import { clientId, clientSecret , redirectUrl } from './GoogleAuth.js';
-import mongoose from 'mongoose';
-import { Channel } from '../DataBase/db.js';
 import fetch from 'node-fetch';
 
 const OAuth2 = google.auth.OAuth2;
@@ -301,4 +299,44 @@ export const playlist_byid = async (playlistId, token)=>{
     } catch (error) {
         throw error;
     }
+}
+
+export const is_Subscribed = async (channelId)=>{
+    let result = await youtube.subscriptions.list({
+        part : ['id'],
+        forChannelId : channelId,
+        mine : true
+    });
+    
+    let id = "";
+    if(result.data.pageInfo.totalResults > 0) id = result.data.items[0].id;
+
+
+    return {flag : result.data.pageInfo.totalResults , id : id};
+}
+
+export const subscribe = async (channelId)=>{
+    let result = await youtube.subscriptions.insert({
+        part : 'snippet',
+        requestBody : {
+            snippet: {
+              resourceId: {
+                channelId: channelId
+              }
+            }
+          }
+    });
+
+    if(result.data.snippet.resourceId.channelId === channelId) return {flag : true , subid : result.data.id};
+    else return {flag : false , subid : ""};
+}
+
+export const unsubscribe = async (subid)=>{
+    let result = await youtube.subscriptions.delete({
+        part : 'snippet',
+        id : subid,
+    })
+
+    if(result.status === 204) return true;
+    else return false;
 }

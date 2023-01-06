@@ -1,7 +1,7 @@
 import express from 'express';
 export const ChannelPage = express.Router();
 import ejs from 'ejs';
-import { channel_activities, channel_info, channel_playlists, get_date, user_subscriptions } from '../Functions/Youtube_Data.js';
+import { channel_activities, channel_info, channel_playlists, get_date, is_Subscribed, user_subscriptions } from '../Functions/Youtube_Data.js';
 ChannelPage.use(express.json());
 
 
@@ -14,8 +14,16 @@ ChannelPage
         let item1 =  channel_playlists(channel_id,"");
         let item2 = channel_activities(channel_id,"");
         let item3 = user_subscriptions();
+        let item4 = is_Subscribed(channel_id);
 
-        let result = await Promise.all([item0,item1,item2,item3]);
+        let result = await Promise.all([item0,item1,item2,item3,item4]);
+
+        let isSubscribed = false;
+
+        let {flag , id} = result[4];
+
+
+        if(flag > 0) isSubscribed = true;
 
         let channelinfo = result[0];
         let {channelplaylists , playlists_count , playlists_token} = result[1];
@@ -30,6 +38,8 @@ ChannelPage
             subs : subs,
             sub_count : sub_count,
             channelinfo : channelinfo,
+            isSubscribed : isSubscribed,
+            sub_id : id,
             channelplaylists : channelplaylists,
             playlists_count : playlists_count,
             playlists_token : playlists_token,

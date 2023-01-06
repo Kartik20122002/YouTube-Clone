@@ -123,36 +123,36 @@
 
 #videopage .rating{
     padding: 1.5% 4%;
-    background: #5a5a5a1f;
+    background: rgba(0, 0, 0, 0.05);
 }
 
 #videopage #like{
     margin-right: 0;
-    border-radius: 30% 0 0 30%;
-    border-right: solid 1px #5a5a5a29;
+    border-radius: 35px 0 0 35px;
+    border-right: solid 1px ;
 }
 
 #videopage #dislike{
     margin-left: 0px;
     margin-right: auto;
-    border-radius: 0 40% 40% 0;
+    border-radius: 0 35px 35px 0;
 }
 
 #videopage #share{
     padding: 1.5% 4%;
-    background: #5a5a5a1f;
-    border-radius: 23%;
+    background:rgba(0, 0, 0, 0.05) ;
+    border-radius: 23px;
     margin-right: auto;
 }
 
 #videopage #save{
     padding: 1.5% 4%;
-    background: #5a5a5a1f;
-    border-radius: 23%;
+    background:rgba(0, 0, 0, 0.05) ;
+    border-radius: 23px;
 }
 
 #videopage .video-player .video-info .buttons a:hover , #save:hover , #share:hover{
-    background-color: #5a5a5a5c;
+    background: rgba(0, 0, 0, 0.1) ;
 }
 
 #videopage .video-player hr{
@@ -191,19 +191,19 @@
 }
 
 #videopage .channelinfo button{
-    background: red;
-    color: #fff;
+    background: rgba(0, 0, 0, 0.05);
+    color: black;
     padding: 8px 30px ;
     border: 0;
     outline: 0;
-    border-radius: 4px;
+    border-radius: 20px;
     cursor: pointer;
     margin-left: 1%;
     margin-right: 1%;
 }
 
-#videopage .channelinfo .button:hover{
-    background-color: #ce0202;
+#videopage .channelinfo button:hover{
+    background: rgba(0, 0, 0, 0.1) ;
 }
 
 #videopage .vid-description{
@@ -299,7 +299,11 @@
         width: 37%;
     }
 
-    #videopage .buttons #share , .buttons #save{
+    #videopage #share{
+        display: none;
+    }
+
+    #videopage #save{
         display: none;
     }
 
@@ -318,4 +322,12 @@
     #videopage .side-video-list .vid-info{
         flex-basis: 63%;
     }
+}
+
+#subscribed{
+    background: rgba(0, 0, 0, 0.2)!important;
+}
+
+#subscribed:hover{
+    background: rgba(0, 0, 0, 0.25)!important;
 }
