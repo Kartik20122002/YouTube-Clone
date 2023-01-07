@@ -18,7 +18,6 @@
       <%  if(views > 10) views = Math.trunc(views); %>
       <%  if(views > 1) views = views + 'M'; %>
       <%  if(views <= 1) views = (video.statistics.viewCount/1000).toFixed(1) + 'K'; %>
-        
       <%  let likes = (video.statistics.likeCount/1000000).toFixed(1); %>
       <%  if(likes > 10) likes = Math.trunc(likes); %>
       <%  if(likes > 1) likes = likes + 'M'; %>
@@ -27,22 +26,29 @@
                 <p class="views"><%=views%> Views &bull; 2 days ago</p>
                 <div class="buttons">
 
-                    <a href="#" id="like" class="rating">
+                    <a id="like" class="rating">
                         <% if(rating.data.items[0].rating === "like"){ %>
-                        <img src="./images/liked.png">
+                        <img hx-get="/like?value=false&videoId=<%=video.id%>&likes=<%=likes%>" hx-target="#like" hx-swap="outerHTML"
+                        src="./images/liked.png">
                         <%}else{%>
-                            <img src="./images/like.png">
+                            <img hx-get="/like?value=true&videoId=<%=video.id%>&likes=<%=likes%>" hx-target="#like" hx-swap="outerHTML"
+                             src="./images/like.png">
                         <%}%>
 
-                        <%=likes%></a>
-                    <a href="#" id="dislike" class="rating">
-                        <% if(rating.data.items[0].rating === "dislike"){ %>
-                            <img src="./images/disliked.png">
-                            <%}else{%>
+                        <%=likes%>
+                    </a>
+                    
+                    <a  id="dislike" class="rating">
 
-                            <img src="./images/dislike.png">
+                        <% if(rating.data.items[0].rating === "dislike"){ %>
+                            <img hx-get="/like/dislike?value=false&videoId=<%=video.id%>" hx-target="#dislike" hx-swap="outerHTML"
+                            src="./images/disliked.png">
+                            <%}else{%>
+                                <img hx-get="/like/dislike?value=true&videoId=<%=video.id%>" hx-target="#dislike" hx-swap="outerHTML"
+                                 src="./images/dislike.png">
                             <%}%>
                     </a>
+                    
                     <a href="#" id="share"><img src="./images/share.png">Share</a>
                     <a href="#" id="save"><img src="./images/download.png">Download</a>
 

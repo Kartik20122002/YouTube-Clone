@@ -27,7 +27,20 @@
     
     <%- include('partials/bottommenu.ejs') %>
 
-<script src="./js/ChannelPage.js"></script>
+<script>
+    
+    let menuIcon = document.querySelector('.menu-icon');
+    let sidebar = document.querySelector('.sidebar');
+    let mainpage = document.querySelector('#channelmainpage');
+
+    menuIcon.addEventListener('click',()=>{
+        mainpage.classList.toggle('larger-container')
+        sidebar.classList.toggle('small-sidebar');
+        document.querySelector('.sidebar .shortcut-links').classList.toggle('large-padding');
+        document.querySelector('.sidebar .subscribed-list').classList.toggle('large-padding');
+    });
+</script>
+
 <script src="https://kit.fontawesome.com/57a3e51741.js" crossorigin="anonymous"></script>
 </body>
 </html>

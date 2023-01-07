@@ -13,6 +13,7 @@ import { UserPage } from './Routes/UserPage.js';
 import { ChannelPage} from './Routes/ChannelPage.js';
 import { Playlist } from './Routes/PlaylistPage.js';
 import { Subscribe } from './Routes/Subscribe.js';
+import { Like } from './Routes/Like.js';
 
 const app = express();
 app.use(session({
@@ -41,6 +42,7 @@ app.use('/otherlikedpage',OtherLikePage);
 app.use('/userpage',UserPage);
 app.use('/channelpage',ChannelPage);
 app.use('/subscribe',Subscribe);
+app.use('/like',Like)
 
 
 app.listen(port,()=>{

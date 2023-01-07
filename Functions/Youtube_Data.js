@@ -16,20 +16,6 @@ const youtube = google.youtube({version : 'v3' , auth : oauth2client});
 
 export const search_videos = async (query)=>{
 
-// const url = `https://youtube-v31.p.rapidapi.com/search?q=${query}&part=snippet%2Cid&maxResults=40`;
-
-// const options = {
-//   method: 'GET',
-//   headers: {
-//     'X-RapidAPI-Key': '79f25e9d42mshed666ecd3dda012p1ed78ejsnaa144f427d4e',
-//     'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
-//   }
-// };
-	
-//  let results = await fetch(url,options);
-
-//  results = await results.json();
-
  let results = await youtube.search.list(
     {
         part:['snippet'], 
@@ -46,12 +32,12 @@ export const search_videos = async (query)=>{
     let channelsinfo = await channel_info(channelsId);
  
     for(let i = 0 ; i < results.data.items.length ; i++){
-        if(channelsinfo[i] == null){
+        results.data.items[i].channelinfo = channelsinfo[i];
+       
+        if( results.data.items[i].channelinfo == null){
             results.data.items[i].channelinfo = {snippet : {thumbnails : {medium : {url :{}}}}};
         }
-        else
-        results.data.items[i].channelinfo = channelsinfo[i];
-    }
+    }  
 
     return {result : results.data.items, nextpagetoken : results.data.nextPageToken , prevpagetoken : results.data.prevPageToken};
 }
@@ -339,4 +325,14 @@ export const unsubscribe = async (subid)=>{
 
     if(result.status === 204) return true;
     else return false;
+}
+
+export const rating = async(videoId,rating)=>{
+    let result = await youtube.videos.rate({
+        id:videoId,
+        rating : rating
+    })
+
+    if(result.status === 204) return true;
+    return false;
 }
