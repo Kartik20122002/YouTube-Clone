@@ -99,6 +99,32 @@
     background-color: #5a5a5a33;
 }
 
+nav{
+    animation: nav-load 0.5s ease-in-out;
+}
+
+.sidebar{
+    animation: side-bar-load 0.5s ease-in-out;
+}
+
+@keyframes nav-load {
+    0%{
+        transform: translateY(-100%);
+    }
+    100%{
+        transform: translateY(0%);
+    }
+}
+
+@keyframes side-bar-load {
+    0%{
+        transform: translateX(-100%);
+    }
+    100%{
+        transform: translateX(0%);
+    }
+}
+
 @media (max-width : 900px){
     #mainpage{
         padding-left: 0%;
