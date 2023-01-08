@@ -2,7 +2,6 @@ const static_cache = 'static_cache';
 const dyanamic_cache = 'dyanamic_cache';
 
 const assets = [
-    '/',
     'OfflinePage.html',
     'css/OfflinePage.css',
     'LoginPage.ejs',
