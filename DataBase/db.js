@@ -1,55 +1,40 @@
-// import env from "dotenv";
-// env.config();
+import env from "dotenv";
+env.config();
 
-// import mongoose from "mongoose";
-// import findOrCreatePlugin from 'mongoose-findorcreate';
+import mongoose from "mongoose";
 
-// mongoose.plugin(findOrCreatePlugin);
+mongoose.set('strictQuery', false);
+//Set up default mongoose connection
 
-// mongoose.set('strictQuery', false);
-// //Set up default mongoose connection
+const DB = "mongodb+srv://kartikhatwar98:9371865060k@cluster0.wmbj5tq.mongodb.net/?retryWrites=true&w=majority"
 
-// export const DB = "mongodb+srv://kartikhatwar98:9371865060k@youtube-lite.rcj46s0.mongodb.net/YouTube-Lite?retryWrites=true&w=majority";
+export const connectDB = async ()=>{
 
-// export const connectDB = ()=>{
-//     mongoose.connect(DB,{
-//         useUnifiedTopology: true,
-//         useNewUrlParser: true,
-//       }).then(()=>{
-//         console.log('connected');
-//     }).catch((err)=>{
-//         console.log('Not connected :',err);
-//     });
-// }
+    try {
+        await mongoose.connect(DB,{
+            useUnifiedTopology: true,
+            useNewUrlParser: true,
+          });
+    
+        console.log("connected");  
+    } catch (err) {
+        console.log(err);
+    }
+    
+    
+}
 
-// const userSchema = new mongoose.Schema({
-//     id : {
-//         type : String ,
-//         default : null
-//     },
-//     email : {
-//         type : String ,
-//         required : [true , 'Email Required'],
-//         unique : [true,'Email Already Registered']
-//     },
-//     firstName : String,
-//     lastName : String,
-//     profilePhoto : String,
-//     password : {
-//         type : String,
-//     },
-//     source: { type: String, required: [true, "source not specified"] },
-//     lastVisited: { type: Date, default: new Date() }
-// });
+const userSchema = new mongoose.Schema({
+    GoogleId : String,
+    Name : String,
+    ProfilePhoto : String,
+    RefreshToken : {
+        type : String,
+    },
+    AccessToken : {
+        type : String,
+    },
+    LastVisited: { type: Date, default: new Date() }
+});
 
-// const channelSchema = new mongoose.Schema({
-//     channelId :{
-//         type : String,
-//         required : [true , 'Channel already added']
-//     },
-//     name : String,
-//     thumbnail : String
-// })
-
-// export const User = mongoose.model("user", userSchema);
-// export const Channel = mongoose.model("channel",channelSchema);
+export const User = mongoose.model("user", userSchema);
