@@ -45,3 +45,7 @@ img{
 body{
   padding-bottom: 6%;
 }
+
+@media (prefers-color-scheme : dark) {
+  
+}
