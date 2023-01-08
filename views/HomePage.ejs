@@ -39,17 +39,7 @@
         mainpage.classList.toggle('larger-container')
     });
  
-document.addEventListener('DOMContentLoaded', init, false);
-function init() {
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('../service_worker.js')
-      .then((reg) => {
-        console.log('Service worker registered -->', reg);
-      }, (err) => {
-        console.error('Service worker not registered -->', err);
-      });
-  }
-}
+
 </script>
 
 <script src="https://kit.fontawesome.com/57a3e51741.js" crossorigin="anonymous"></script>

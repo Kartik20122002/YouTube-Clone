@@ -17,5 +17,19 @@
 
      <a href="/googleauth/signin"><img src="./images/btn_google_signin_dark_normal_web@2x.png" alt="" srcset=""></a>
 
+
+     <script>
+        document.addEventListener('DOMContentLoaded', init, false);
+function init() {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('../service_worker.js')
+      .then((reg) => {
+        console.log('Service worker registered -->', reg);
+      }, (err) => {
+        console.error('Service worker not registered -->', err);
+      });
+  }
+}
+     </script>
 </body>
 </html>
