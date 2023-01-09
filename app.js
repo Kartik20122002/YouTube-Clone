@@ -24,6 +24,7 @@ app.use(session({
     resave : true,
     saveUninitialized : true
 }));
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -32,7 +33,6 @@ app.set("view engine", "ejs");
 app.use(express.static('./views'));
 app.set('views','./views');
 app.use(express.urlencoded({ extended: true }));
-
 
 app.use('/',isLoggedIn,Home);
 app.use('/googleauth',Auth);
