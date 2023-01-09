@@ -3,7 +3,6 @@ import passport from 'passport';
 import { Strategy } from 'passport-google-oauth20';
 import express from 'express';
 export const Auth = express.Router();
-import { User } from '../DataBase/db.js';
 
 const GoogleStrategy = Strategy;
 
