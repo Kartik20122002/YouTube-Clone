@@ -20,7 +20,7 @@
                                  <a href=<%=channel_link%>><img src="<%=items[i].channelinfo.snippet.thumbnails.medium.url%>" alt="" srcset=""></a> 
                                     <div class="vid-info">
                                         <a hx-get = "/otherlikedpage?token=<%=nextpagetoken%>"
-                                            hx-trigger = "revealed"
+                                            hx-trigger = "intersect once"
                                             hx-target = "#video-container-home"
                                             hx-swap = "beforeend"
                                             href=<%=video_link%>><%=items[i].snippet.title%></a>
@@ -48,12 +48,5 @@
 
         <%}%>
     </div>
-
-    <!-- <button 
-    hx-get = "/otherpage?token=<%=nextpagetoken%>"
-    hx-trigger = "revealed"
-    hx-target = "#video-container-home"
-    hx-swap = "beforeend"
-    class="loading-btn"> Load More</button> -->
 
 </div>

@@ -6,7 +6,7 @@
     <div class="row">
         <div class="video-player">
             <div class="player">
-                <iframe  src=https://www.youtube.com/embed/<%-video.id%>?autoplay=1&rel=0 frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/<%=video.id%>?autoplay=1&rel=0" frameborder="0" allowfullscreen></iframe>
             </div>
 
             <h3 class="video-title"><%=video.snippet.title%></h3>
@@ -24,30 +24,33 @@
       <%  if(likes <= 1) likes = (video.statistics.likeCount/1000).toFixed(1) + 'K'; %>
 
                 <p class="views"><%=views%> Views &bull; 2 days ago</p>
-                <div class="buttons">
+                <div class="buttons" id="buttons">
 
-                    <a id="like" class="rating">
-                        <% if(rating.data.items[0].rating === "like"){ %>
-                        <img hx-get="/like?value=false&videoId=<%=video.id%>&likes=<%=likes%>" hx-target="#like" hx-swap="outerHTML"
-                        src="./images/liked.png">
-                        <%}else{%>
-                            <img hx-get="/like?value=true&videoId=<%=video.id%>&likes=<%=likes%>" hx-target="#like" hx-swap="outerHTML"
-                             src="./images/like.png">
-                        <%}%>
+                    <% if(rating.data.items[0].rating === "like"){ %>
+
+                        <a id="like" class="rating" hx-get="/like?value=false&videoId=<%=video.id%>&likes=<%=likes%>" hx-target="#buttons" hx-swap="outerHTML" >
+                            <img src="./images/liked.png">
+
+                    <%}else{%>
+
+                        <a id="like" class="rating" hx-get="/like?value=true&videoId=<%=video.id%>&likes=<%=likes%>" hx-target="#buttons" hx-swap="outerHTML" >
+                            <img src="./images/like.png">
+
+                    <%}%>
 
                         <%=likes%>
                     </a>
                     
-                    <a  id="dislike" class="rating">
-
-                        <% if(rating.data.items[0].rating === "dislike"){ %>
-                            <img hx-get="/like/dislike?value=false&videoId=<%=video.id%>" hx-target="#dislike" hx-swap="outerHTML"
-                            src="./images/disliked.png">
-                            <%}else{%>
-                                <img hx-get="/like/dislike?value=true&videoId=<%=video.id%>" hx-target="#dislike" hx-swap="outerHTML"
-                                 src="./images/dislike.png">
-                            <%}%>
-                    </a>
+                    
+                    <% if(rating.data.items[0].rating === "dislike"){ %>
+                        <a  id="dislike" class="rating" hx-get="/like/dislike?value=false&videoId=<%=video.id%>&likes=<%=likes%>" hx-target="#buttons" hx-swap="outerHTML" >
+                            <img src="./images/disliked.png">
+                    <%}else{%>
+                        <a  id="dislike" class="rating" hx-get="/like/dislike?value=true&videoId=<%=video.id%>&likes=<%=likes%>" hx-target="#buttons" hx-swap="outerHTML" >
+                            <img src="./images/dislike.png">
+                    <%}%>
+                    
+                        </a>
                     
                     <a href="#" id="share"><img src="./images/share.png">Share</a>
                     <a href="#" id="save"><img src="./images/download.png">Download</a>
@@ -158,3 +161,23 @@
     </div>
 
 </div>
+
+<script>
+
+   let sidebar = document.querySelector('.sidebar');
+
+   document.addEventListener("DOMContentLoaded",()=>{
+    sidebar.classList.toggle('small-sidebar');
+    document.querySelector('.sidebar .shortcut-links').classList.toggle('large-padding');
+    document.querySelector('.sidebar .subscribed-list').classList.toggle('large-padding');
+   })
+
+   let menuIcon = document.querySelector('.menu-icon');
+
+    menuIcon.addEventListener('click',()=>{
+        sidebar.classList.toggle('small-sidebar');
+        document.querySelector('.sidebar .shortcut-links').classList.toggle('large-padding');
+        document.querySelector('.sidebar .subscribed-list').classList.toggle('large-padding');
+    });
+
+</script>

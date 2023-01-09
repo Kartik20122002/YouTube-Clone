@@ -14,6 +14,9 @@ import { ChannelPage} from './Routes/ChannelPage.js';
 import { Playlist } from './Routes/PlaylistPage.js';
 import { Subscribe } from './Routes/Subscribe.js';
 import { Like } from './Routes/Like.js';
+import { connectDB } from './DataBase/db.js';
+
+
 
 const app = express();
 app.use(session({

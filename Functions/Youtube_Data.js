@@ -43,32 +43,39 @@ export const search_videos = async (query)=>{
 }
 
 export const popular_videos = async ()=>{
-    let results = await youtube.videos.list(
-    {   part:['snippet','statistics'], 
-        maxResults : 50,
-        chart : 'mostPopular',
-        regionCode : 'In'
-    });
 
-    let channelsId = [];
-
-     for(let i = 0; i < results.data.items.length ; i++){
-         channelsId.push(results.data.items[i].snippet.channelId);
+    try {
+        let results = await youtube.videos.list(
+            {   part:['snippet','statistics'], 
+                maxResults : 50,
+                chart : 'mostPopular',
+                regionCode : 'In'
+            });
+        
+            let channelsId = [];
+        
+             for(let i = 0; i < results.data.items.length ; i++){
+                 channelsId.push(results.data.items[i].snippet.channelId);
+            }
+        
+            
+            let channelsinfo = await youtube.channels.list({
+                part : ['snippet'],
+                maxResults : 50,
+                id : channelsId,
+            });
+         
+            for(let i = 0 ; i < results.data.items.length ; i++){
+                    results.data.items[i].channelinfo = channelsinfo.data.items[i];
+              if(results.data.items[i].channelinfo == null) results.data.items[i].channelinfo = {snippet : {thumbnails : {medium : {url :{}}}}};
+            }
+        
+            return {result : results.data.items, nextpagetoken : results.data.nextPageToken , prevpagetoken : results.data.prevPageToken};
+    } catch (error) {
+        
     }
 
-    
-    let channelsinfo = await youtube.channels.list({
-        part : ['snippet'],
-        maxResults : 50,
-        id : channelsId,
-    });
- 
-    for(let i = 0 ; i < results.data.items.length ; i++){
-            results.data.items[i].channelinfo = channelsinfo.data.items[i];
-      if(results.data.items[i].channelinfo == null) results.data.items[i].channelinfo = {snippet : {thumbnails : {medium : {url :{}}}}};
-    }
 
-    return {result : results.data.items, nextpagetoken : results.data.nextPageToken , prevpagetoken : results.data.prevPageToken};
 }
 
 export const popular_videos_bytoken = async (token)=>{

@@ -3,6 +3,7 @@ import passport from 'passport';
 import { Strategy } from 'passport-google-oauth20';
 import express from 'express';
 export const Auth = express.Router();
+import { User } from '../DataBase/db.js';
 
 const GoogleStrategy = Strategy;
 
@@ -15,8 +16,18 @@ passport.use(new GoogleStrategy({
     clientSecret : clientSecret,
     callbackURL : redirectUrl,
     scope : scopes,
-    access_type: 'offline'
 },(accessToken,refreshToken,profile,cb)=>{
+
+    // if(refreshToken != undefined ){
+    //     new User({
+    //         GoogleId :profile.id,
+    //         Name : profile.displayName,
+    //         ProfilePhoto : profile._json.picture,
+    //         RefreshToken : refreshToken,
+    //         AccessToken : accessToken
+    //     }).save(); 
+    // }
+
     return cb(null,{profile,accessToken,refreshToken});
 }
 ));
@@ -29,11 +40,13 @@ passport.deserializeUser((user,done)=>{
    return done(null,user);
 });
 
+// , prompt: 'consent'
+
 Auth
 .get('/',(req,res)=>{
     res.render('LoginPage.ejs');
 })
-.get('/signin',passport.authenticate('google'))
+.get('/signin',passport.authenticate('google',{accessType: 'offline'}))
 .get('/callback?',passport.authenticate('google',({
     failureRedirect : '/googleauth' , failureMessage : true, successRedirect : '/'
 })))

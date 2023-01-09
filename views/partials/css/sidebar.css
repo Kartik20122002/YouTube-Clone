@@ -1,22 +1,33 @@
-.sidebar-util::-webkit-scrollbar{
-    display: none;
+.sidebar-util::-webkit-scrollbar-thumb{
+   background: transparent;
 }
 
-.sidebar-util:hover::-webkit-scrollbar{
-    display: block;
+.sidebar-util::-webkit-scrollbar-track{
+    background: transparent;
+ }
+
+.sidebar-util:hover::-webkit-scrollbar-thumb{
+    background: rgba(0 , 0, 0, 0.2);
 }
 
+.sidebar-util:hover::-webkit-scrollbar-track{
+    background: rgba(0 , 0, 0, 0.1);
+ }
 
+ .sidebar-util::-webkit-scrollbar-thumb:hover{
+    background: rgba(0 , 0, 0, 0.25);
+}
 
 
 .sidebar{
-    background: #fff;
     width: 15%;
     position: fixed;
     top: 0;
     height: 100vh;
     transition: .5s;
     z-index: 9;
+    opacity: 1;    
+    background: white;
 }
 
 
@@ -39,7 +50,7 @@
     padding-left: 3%;
 }
 
-.large-padding{
+.large-padding a{
     padding-left: 25%!important;
 }
 
@@ -60,10 +71,6 @@
     flex-wrap: wrap;
 }
 
-.sidebar .shortcut-links a:first-child{
-    color: #ed3833;
-}
-
 .sidebar hr{
     margin: auto;
     border: 0;
@@ -82,7 +89,6 @@
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    flex-wrap: wrap;
 }
 
 .sidebar .subscribed-list a img{
@@ -102,6 +108,38 @@
 .small-sidebar hr{
     width: 75%;
     margin-bottom: 25px;
+}
+
+@media (prefers-color-scheme: dark){
+    .sidebar {
+        background: var(--dark);
+    }
+
+    .sidebar .shortcut-links a img {
+        filter: invert(1);
+    }
+
+    a {
+        color: var(--white);
+    }
+
+    .sidebar .subscribed-list h3 {
+        color: var(--white);
+    }
+
+    .sidebar-util:hover::-webkit-scrollbar-thumb {
+        background: #555;
+        opacity: 1;
+    }
+
+    .sidebar-util::-webkit-scrollbar-thumb:hover {
+        background: rgb(255 255 255);
+      }
+    
+
+    .sidebar-util:hover:-webkit-scrollbar-track {
+        background: #3b3b3b7d;
+    }
 }
 
 @media (max-width : 900px){

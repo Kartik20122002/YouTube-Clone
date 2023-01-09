@@ -12,7 +12,7 @@ Home
     try {
         oauth2client.credentials = {
             access_token : req.user.accessToken,
-            refresh_token : null,
+            refresh_token : req.user.refreshToken,
         }
     
         let {result , nextpagetoken , prevpagetoken}= await popular_videos();

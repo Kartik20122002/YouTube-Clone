@@ -30,3 +30,13 @@
         display: none;
     }
 }
+
+@media (prefers-color-scheme: dark){
+    .bottom-menu {
+        background: var(--dark);
+    }
+
+    .bottom-menu .shortcut-links img {
+        filter: invert(1);
+    }
+}

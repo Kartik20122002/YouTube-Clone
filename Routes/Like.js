@@ -15,17 +15,34 @@ Like.get('/',async (req,res)=>{
         let result = await rating(videoId,'like');
 
         if(result === true){
-            res.send(` <a id="like" class="rating"> <img hx-get="/like?value=false&videoId=${videoId}&likes=${likes}" hx-target="#like" hx-swap="outerHTML"
-            src="./images/liked.png"> 
+            res.send(`
+            <div class="buttons" id="buttons">
+             <a id="like" class="rating" hx-get="/like?value=false&videoId=${videoId}&likes=${likes}" hx-target="#buttons" hx-swap="outerHTML">
+             <img src="./images/liked.png"> 
             ${likes}
             </a>
+            <a id="dislike" class="rating" hx-get="/like/dislike?value=true&videoId=${videoId}&likes=${likes}" hx-target="#buttons" hx-swap="outerHTML">
+            <img src="./images/dislike.png"> 
+            </a>
+            <a href="#" id="share"><img src="./images/share.png">Share</a>
+            <a href="#" id="save"><img src="./images/download.png">Download</a>
+            </div>
             `)
         }
         else{
-            res.send(` <a id="like" class="rating"> <img hx-get="/like?value=true&videoId=${videoId}&likes=${likes}" hx-target="#like" hx-swap="outerHTML"
-        src="./images/like.png"> 
-        ${likes}
-        </a>`)
+            res.send(` 
+            <div class="buttons" id="buttons">
+             <a id="like" class="rating" hx-get="/like?value=true&videoId=${videoId}&likes=${likes}" hx-target="#buttons" hx-swap="outerHTML">
+             <img src="./images/like.png"> 
+            ${likes}
+            </a>
+            <a id="dislike" class="rating" hx-get="/like/dislike?value=true&videoId=${videoId}&likes=${likes}" hx-target="#buttons" hx-swap="outerHTML">
+            <img src="./images/dislike.png"> 
+            </a>
+            <a href="#" id="share"><img src="./images/share.png">Share</a>
+            <a href="#" id="save"><img src="./images/download.png">Download</a>
+            </div>
+            `)
         }
 
 
@@ -35,16 +52,33 @@ Like.get('/',async (req,res)=>{
         let result = await rating(videoId,'none');
         
         if(result === true){
-            res.send(` <a id="like" class="rating"> <img hx-get="/like?value=true&videoId=${videoId}&likes=${likes}" hx-target="#like" hx-swap="outerHTML"
-            src="./images/like.png"> 
-            ${likes}
-            </a>`)
-        }
-        else{
-            res.send(` <a id="like" class="rating"> <img hx-get="/like?value=false&videoId=${videoId}&likes=${likes}" hx-target="#like" hx-swap="outerHTML"
-            src="./images/liked.png"> 
+            res.send(` 
+            <div class="buttons" id="buttons">
+             <a id="like" class="rating" hx-get="/like?value=true&videoId=${videoId}&likes=${likes}" hx-target="#buttons" hx-swap="outerHTML">
+             <img src="./images/like.png"> 
             ${likes}
             </a>
+            <a id="dislike" class="rating" hx-get="/like/dislike?value=true&videoId=${videoId}&likes=${likes}" hx-target="#buttons" hx-swap="outerHTML">
+            <img src="./images/dislike.png"> 
+            </a>
+            <a href="#" id="share"><img src="./images/share.png">Share</a>
+            <a href="#" id="save"><img src="./images/download.png">Download</a>
+            </div>
+            `)
+        }
+        else{
+            res.send(` 
+            <div class="buttons" id="buttons">
+             <a id="like" class="rating" hx-get="/like?value=false&videoId=${videoId}&likes=${likes}" hx-target="#buttons" hx-swap="outerHTML">
+             <img src="./images/liked.png"> 
+            ${likes}
+            </a>
+            <a id="dislike" class="rating" hx-get="/like/dislike?value=true&videoId=${videoId}&likes=${likes}" hx-target="#buttons" hx-swap="outerHTML">
+            <img src="./images/dislike.png"> 
+            </a>
+            <a href="#" id="share"><img src="./images/share.png">Share</a>
+            <a href="#" id="save"><img src="./images/download.png">Download</a>
+            </div>
             `) 
         }
         
@@ -53,6 +87,7 @@ Like.get('/',async (req,res)=>{
 .get('/dislike',async (req,res)=>{
     let value = req.query.value;
     let videoId = req.query.videoId;
+    let likes = req.query.likes;
 
 
     if(value === 'true'){
@@ -60,15 +95,34 @@ Like.get('/',async (req,res)=>{
         let result = await rating(videoId,'dislike');
 
         if(result === true){
-            res.send(` <a id="dislike" class="rating"> <img hx-get="/like/dislike?value=false&videoId=${videoId}" hx-target="#dislike" hx-swap="outerHTML"
-            src="./images/disliked.png"> 
+            res.send(`
+            <div class="buttons" id="buttons">
+             <a id="like" class="rating" hx-get="/like?value=true&videoId=${videoId}&likes=${likes}" hx-target="#buttons" hx-swap="outerHTML">
+             <img src="./images/like.png"> 
+            ${likes}
             </a>
+            <a id="dislike" class="rating" hx-get="/like/dislike?value=false&videoId=${videoId}&likes=${likes}" hx-target="#buttons" hx-swap="outerHTML">
+            <img src="./images/disliked.png"> 
+            </a>
+            <a href="#" id="share"><img src="./images/share.png">Share</a>
+            <a href="#" id="save"><img src="./images/download.png">Download</a>
+            </div>
             `)
         }
         else{
-            res.send(` <a id="dislike" class="rating"> <img hx-get="/like/dislike?value=true&videoId=${videoId}" hx-target="#dislike" hx-swap="outerHTML"
-        src="./images/dislike.png"> 
-        </a>`)
+            res.send(` 
+            <div class="buttons" id="buttons">
+             <a id="like" class="rating" hx-get="/like?value=true&videoId=${videoId}&likes=${likes}" hx-target="#buttons" hx-swap="outerHTML">
+             <img src="./images/like.png"> 
+            ${likes}
+            </a>
+            <a id="dislike" class="rating" hx-get="/like/dislike?value=true&videoId=${videoId}&likes=${likes}" hx-target="#buttons" hx-swap="outerHTML">
+            <img src="./images/dislike.png"> 
+            </a>
+            <a href="#" id="share"><img src="./images/share.png">Share</a>
+            <a href="#" id="save"><img src="./images/download.png">Download</a>
+            </div>
+        `)
         }
 
 
@@ -78,14 +132,33 @@ Like.get('/',async (req,res)=>{
         let result = await rating(videoId,'none');
         
         if(result === true){
-            res.send(` <a id="dislike" class="rating"> <img hx-get="/like/dislike?value=true&videoId=${videoId}" hx-target="#dislike" hx-swap="outerHTML"
-            src="./images/dislike.png"> 
-            </a>`)
+            res.send(` 
+            <div class="buttons" id="buttons">
+             <a id="like" class="rating" hx-get="/like?value=true&videoId=${videoId}&likes=${likes}" hx-target="#buttons" hx-swap="outerHTML">
+             <img src="./images/like.png"> 
+            ${likes}
+            </a>
+            <a id="dislike" class="rating" hx-get="/like/dislike?value=true&videoId=${videoId}&likes=${likes}" hx-target="#buttons" hx-swap="outerHTML">
+            <img src="./images/dislike.png"> 
+            </a>
+            <a href="#" id="share"><img src="./images/share.png">Share</a>
+            <a href="#" id="save"><img src="./images/download.png">Download</a>
+            </div>
+            `)
         }
         else{
-            res.send(` <a id="dislike" class="rating"> <img hx-get="/like/dislike?value=false&videoId=${videoId}" hx-target="#dislike" hx-swap="outerHTML"
-            src="./images/disliked.png"> 
+            res.send(` 
+            <div class="buttons" id="buttons">
+             <a id="like" class="rating" hx-get="/like?value=true&videoId=${videoId}&likes=${likes}" hx-target="#buttons" hx-swap="outerHTML">
+             <img src="./images/like.png"> 
+            ${likes}
             </a>
+            <a id="dislike" class="rating" hx-get="/like/dislike?value=false&videoId=${videoId}&likes=${likes}" hx-target="#buttons" hx-swap="outerHTML">
+            <img src="./images/disliked.png"> 
+            </a>
+            <a href="#" id="share"><img src="./images/share.png">Share</a>
+            <a href="#" id="save"><img src="./images/download.png">Download</a>
+            </div>
             `)
         }
         

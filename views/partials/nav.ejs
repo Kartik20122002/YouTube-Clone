@@ -1,6 +1,5 @@
 <link rel="stylesheet" href="./partials/css/nav.css">
 <nav class="flex-div">
-
     <div class="nav-left flex-div">
         <!-- <img src="./images/menu.png" class="menu-icon" alt="" srcset=""> -->
 
@@ -28,7 +27,12 @@
     <div class="nav-right flex-div">
         <a href="#"> <img src="../images/upload.png" class="upload" alt="" srcset=""> </a>
         <!-- <a href="#"> <img src="../images/more.png" class="more" alt="" srcset=""> </a> -->
-        <a href="#"> <img src="../images/notification.png" class="notification" alt="" srcset=""> </a>
+        <!-- <a id="dark-btn">
+         <div id="mode-btn"><i class="fa-solid fa-moon"></i></div>
+         <div id="mode-btn"><i class="fa-solid fa-sun"></i></div>
+         <div id="ball"></div>
+        </a> -->
+
         <a href="#"> <i class="fa-solid fa-magnifying-glass search"></i></a>
         <!-- <i class="fa-regular fa-bell notification"></i> -->
         <a href="/googleauth/logout"> <img src=<%=profile.photos[0].value%> alt="" class="user-icon"> </a>
@@ -44,4 +48,12 @@
 
 
 
-<script src="./partials/js/nav.js"></script>
+<script>
+  let search_btn = document.querySelector('.nav-right .search');
+let box = document.querySelector('.search-box-small');
+
+search_btn.addEventListener('click',()=>{
+    box.classList.toggle('visible-box')
+});
+
+</script>
