@@ -6,6 +6,12 @@
     box-sizing: border-box;
 }
 
+:root{
+  --dark : #0f0f0f;
+  --white : #f1f1f1;
+}
+
+
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -27,6 +33,26 @@
   opacity: 1;
 }
 
+@media (prefers-color-scheme: dark){
+  ::-webkit-scrollbar-track {
+    background: #3b3b3b7d;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(255 255 255);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #555;
+    opacity: 1;
+  }
+
+  body{
+    background: var(--dark);
+  }
+}  
+
+
 a{
     text-decoration: none;
     color: #5a5a5a;
@@ -42,10 +68,11 @@ img{
 }
 
 
+
 body{
   padding-bottom: 6%;
+  overflow-y: hidden;
+  height: 100vh;
 }
 
-@media (prefers-color-scheme : dark) {
-  
-}
+

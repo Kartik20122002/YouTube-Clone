@@ -19,16 +19,15 @@
 }
 
 
-
 .sidebar{
-    background: #fff;
     width: 15%;
     position: fixed;
     top: 0;
     height: 100vh;
     transition: .5s;
     z-index: 9;
-    opacity: 1;
+    opacity: 1;    
+    background: white;
 }
 
 
@@ -109,6 +108,38 @@
 .small-sidebar hr{
     width: 75%;
     margin-bottom: 25px;
+}
+
+@media (prefers-color-scheme: dark){
+    .sidebar {
+        background: var(--dark);
+    }
+
+    .sidebar .shortcut-links a img {
+        filter: invert(1);
+    }
+
+    a {
+        color: var(--white);
+    }
+
+    .sidebar .subscribed-list h3 {
+        color: var(--white);
+    }
+
+    .sidebar-util:hover::-webkit-scrollbar-thumb {
+        background: #555;
+        opacity: 1;
+    }
+
+    .sidebar-util::-webkit-scrollbar-thumb:hover {
+        background: rgb(255 255 255);
+      }
+    
+
+    .sidebar-util:hover:-webkit-scrollbar-track {
+        background: #3b3b3b7d;
+    }
 }
 
 @media (max-width : 900px){
