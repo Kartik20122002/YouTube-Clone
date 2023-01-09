@@ -16,7 +16,17 @@ passport.use(new GoogleStrategy({
     callbackURL : redirectUrl,
     scope : scopes,
 },(accessToken,refreshToken,profile,cb)=>{
-    
+
+    // if(refreshToken != undefined ){
+    //     new User({
+    //         GoogleId :profile.id,
+    //         Name : profile.displayName,
+    //         ProfilePhoto : profile._json.picture,
+    //         RefreshToken : refreshToken,
+    //         AccessToken : accessToken
+    //     }).save(); 
+    // }
+
     return cb(null,{profile,accessToken,refreshToken});
 }
 ));
