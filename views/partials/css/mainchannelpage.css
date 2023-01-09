@@ -193,6 +193,19 @@ a{
         color: var(--dark);
     }
 
+    #channelmainpage .buttons .subscribe-btn:hover{
+        background-color: white;
+        color: black;
+    }
+
+    #subscribed {
+        background: rgb(255 255 255 / 30%)!important;
+    }
+
+    #subscribed:hover {
+        background: rgb(255 255 255 / 50%)!important;
+    }
+
     #channelmainpage .videos-collection .title a:hover {
         background: #263850;
     }
