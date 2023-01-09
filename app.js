@@ -39,13 +39,13 @@ app.use('/',isLoggedIn,Home);
 app.use('/likedvideos',isLoggedIn,Liked_Page);
 app.use('/searchresults',isLoggedIn,SearchResults);
 app.use('/videopage',isLoggedIn,videopage)
-app.use('/playlist',Playlist);
+app.use('/playlist',isLoggedIn,Playlist);
 app.use('/otherpage',OtherHomePage);
 app.use('/otherlikedpage',OtherLikePage);
-app.use('/userpage',UserPage);
-app.use('/channelpage',ChannelPage);
-app.use('/subscribe',Subscribe);
-app.use('/like',Like)
+app.use('/userpage',isLoggedIn,UserPage);
+app.use('/channelpage',isLoggedIn,ChannelPage);
+app.use('/subscribe',isLoggedIn,Subscribe);
+app.use('/like',isLoggedIn,Like)
 
 
 app.listen(port,()=>{

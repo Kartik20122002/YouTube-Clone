@@ -2,9 +2,12 @@ a{
     cursor: pointer;
 }
 
-#videopage.play-container{
+#videopage.play-container {
     padding-top: 1.5%;
     padding-left: 4%;
+    height: 100vh;
+    overflow-y: scroll;
+    padding-bottom: 10%;
 }
 
 #videopage .row{
@@ -290,6 +293,98 @@ a{
     color: #5a5a5a;
 }
 
+@media (prefers-color-scheme: dark){
+    #videopage.play-container {
+        background: var(--dark);
+    }
+
+    #videopage .vid-info p {
+        color: #aaa;
+    }
+
+    #videopage .vid-info .channel:hover {
+        color: #f1f1f1;
+        cursor: pointer;
+    }
+
+    #videopage .video-player h3 {
+        color: var(--white);
+    }
+
+    #videopage .video-player .video-info {
+        color: #aaa;
+    }
+
+    #videopage .video-player .video-info .buttons img {
+        filter: invert(1);
+    }
+
+    #videopage .video-player .video-info .buttons a {
+        color: var(--white);
+    }
+
+    #videopage .video-player .video-info .buttons a{
+        background: rgb(255 255 255 / 10%);
+    }
+
+    #videopage .video-player .video-info .buttons a:hover{
+        background: rgb(255 255 255 / 20%);
+    }
+
+    #videopage #share {
+        background: rgb(255 255 255 / 10%);
+    }
+
+    #videopage #share:hover {
+        background: rgb(255 255 255 / 20%);
+    }
+
+    #videopage #save {
+        background: rgb(255 255 255 / 10%);
+    }
+
+    #videopage #save:hover {
+        background: rgb(255 255 255 / 20%);
+    }
+
+    #videopage .channelinfo button {
+        background: var(--white);
+        color: var(--dark);
+    }
+
+    #videopage .channelinfo button:hover {
+        background: white;
+        color: black;
+    }
+
+    #subscribed:hover {
+        background: rgb(255 245 245 / 20%)!important;
+    }
+
+    #subscribed {
+        background: rgb(255 255 255 / 14%)!important;
+    }
+
+    #videopage .channelinfo .channel-details p {
+        color: var(--white);
+    }
+
+    #videopage .channelinfo .channel-details span {
+        color: #aaa;
+    }
+
+    #videopage .vid-description p {
+        color: #aaa;
+    }
+
+    #videopage .commentsection .comment-actions img {
+        filter: invert(1);
+    }
+
+    #videopage .vid-description h4 {
+        color: #aaa;
+    }
+}
 
 @media (max-width : 900px){
 

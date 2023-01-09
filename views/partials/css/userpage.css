@@ -4,18 +4,20 @@
     padding-top: 20px;
     padding-bottom: 20px;
     transition: .4s all;
+    height: 100vh;
+    overflow-y: scroll;
 }
 
 #userpage.larger-container{
     padding-left: 7%;
 }
 
-#userpage .row{
+#userpage .row {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-    height: 100vh;
+    margin-bottom: 10%;
 }
 
 #userpage .listpage{
@@ -55,7 +57,7 @@
 }
 
 #userpage .videos-collection .title a{
-    padding: 4px 14px 4px 14px;
+    padding: 7px 20px 7px 20px;
     border-radius: 14px;
 }
 
@@ -134,7 +136,7 @@
 }
 
 #userpage .user-info .user-name{
-    color: var(--yt-spec-text-primary);
+    color: black;
     margin-bottom: 4px;
     font-family: "Roboto","Arial",sans-serif;
     font-size: 1rem;
@@ -164,6 +166,49 @@
 #userpage .user-info .details .list{
     text-align: center;
     color: #5a5a5ac2;
+}
+
+@media (prefers-color-scheme: dark){
+    #userpage {
+        background: var(--dark);
+    }
+
+    #userpage .collection .vid-list .vid-title {
+        color: var(--white);
+    }
+
+    #userpage .videos-collection .title img {
+        filter: invert(1);
+    }
+
+    #userpage .videos-collection .title {
+        color: var(--white);
+    }
+
+    #userpage .collection .vid-list .vid-channel {
+        color: #aaa;
+    }
+
+    #userpage .collection .vid-list .vid-channel:hover {
+        color: #f1f1f1;
+    }
+
+    #userpage .collection .vid-list .vid-detials {
+        color: #aaa;
+    }
+
+    #userpage .videos-collection .title a:hover {
+        background: #263850;
+    }
+    #userpage .user-info .details .list {
+        color: #aaa;
+    }
+    #userpage .user-info hr {
+        background: rgba(255, 255, 255, 0.1);
+    }
+    #userpage .user-info .user-name{
+        color: var(--white);
+    }
 }
 
 @media (max-width : 900px){
