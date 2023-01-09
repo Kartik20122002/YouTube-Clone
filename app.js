@@ -24,6 +24,7 @@ app.use(session({
     resave : true,
     saveUninitialized : true
 }));
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -33,9 +34,8 @@ app.use(express.static('./views'));
 app.set('views','./views');
 app.use(express.urlencoded({ extended: true }));
 
-
-app.use('/googleauth',Auth);
 app.use('/',isLoggedIn,Home);
+app.use('/googleauth',Auth);
 app.use('/likedvideos',isLoggedIn,Liked_Page);
 app.use('/searchresults',isLoggedIn,SearchResults);
 app.use('/videopage',isLoggedIn,videopage)
