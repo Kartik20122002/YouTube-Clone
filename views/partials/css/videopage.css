@@ -293,6 +293,63 @@ a{
     color: #5a5a5a;
 }
 
+
+
+@media (max-width : 900px){
+
+    #videopage.play-container{
+        padding: 1% 1%;
+    }
+    #videopage .vid-description{
+        display: none;
+    }
+
+    #videopage .buttons{
+        width: 37%;
+    }
+
+    #videopage #share{
+        display: none;
+    }
+
+    #videopage #save{
+        display: none;
+    }
+
+    #videopage .row{
+        flex-direction: column;
+    }
+
+    #videopage .right-sidebar{
+        margin-top: 5%;
+    }
+
+    #videopage .side-video-list .small-thumbnail{
+        flex-basis: 35%;
+    }
+
+    #videopage .side-video-list .vid-info{
+        flex-basis: 63%;
+    }
+}
+
+#subscribed{
+    background: rgba(0, 0, 0, 0.2)!important;
+}
+
+#subscribed:hover{
+    background: rgba(0, 0, 0, 0.25)!important;
+}
+
+.small-sidebar {
+    width: 4%!important;
+    opacity: 0!important;
+}
+
+.small-sidebar .sidebar-util::-webkit-scrollbar {
+    width: 0;
+}
+
 @media (prefers-color-scheme: dark){
     #videopage.play-container {
         background: var(--dark);
@@ -357,12 +414,12 @@ a{
         color: black;
     }
 
-    #subscribed:hover {
-        background: rgb(255 245 245 / 20%)!important;
+    #subscribed {
+        background: rgba(255, 255, 255, 0.2)!important;
     }
 
     #subscribed {
-        background: rgb(255 255 255 / 14%)!important;
+        background: rgba(255, 255, 255, 0.14)!important;
     }
 
     #videopage .channelinfo .channel-details p {
@@ -384,59 +441,4 @@ a{
     #videopage .vid-description h4 {
         color: #aaa;
     }
-}
-
-@media (max-width : 900px){
-
-    #videopage.play-container{
-        padding: 1% 1%;
-    }
-    #videopage .vid-description{
-        display: none;
-    }
-
-    #videopage .buttons{
-        width: 37%;
-    }
-
-    #videopage #share{
-        display: none;
-    }
-
-    #videopage #save{
-        display: none;
-    }
-
-    #videopage .row{
-        flex-direction: column;
-    }
-
-    #videopage .right-sidebar{
-        margin-top: 5%;
-    }
-
-    #videopage .side-video-list .small-thumbnail{
-        flex-basis: 35%;
-    }
-
-    #videopage .side-video-list .vid-info{
-        flex-basis: 63%;
-    }
-}
-
-#subscribed{
-    background: rgba(0, 0, 0, 0.2)!important;
-}
-
-#subscribed:hover{
-    background: rgba(0, 0, 0, 0.25)!important;
-}
-
-.small-sidebar {
-    width: 4%!important;
-    opacity: 0!important;
-}
-
-.small-sidebar .sidebar-util::-webkit-scrollbar {
-    width: 0;
 }
