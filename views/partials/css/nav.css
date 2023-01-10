@@ -218,9 +218,10 @@ nav i{
        color: white;
     }
 
-   .nav-middle .search-box input {
-    background-color: #0f0f0f;
-     }
+    .nav-middle .search-box input {
+        background-color: #0f0f0f;
+        color: var(--white);
+    }
 
     .nav-middle .search-box {
        border: 2px solid #353535;
