@@ -316,8 +316,17 @@ a{
         display: none;
     }
 
-    #videopage .row{
+    #videopage .row {
         flex-direction: column;
+        align-items: stretch;
+    }
+
+    #videopage .video-player {
+        width: 100%;
+    }
+
+    #videopage .vid-info p {
+        font-size: 12px;
     }
 
     #videopage .right-sidebar{

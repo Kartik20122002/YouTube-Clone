@@ -248,4 +248,8 @@ a{
     #channelmainpage .videos-collection .collection .vid-channel , #channelmainpage .videos-collection .collection .vid-detials{
         font-size: 9px;
     }
+
+    ::-webkit-scrollbar {
+        display: none!important;
+      }
 }

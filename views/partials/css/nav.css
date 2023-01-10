@@ -286,4 +286,8 @@ nav i{
     .search-box-small{
         display: flex;
     }
+
+    ::-webkit-scrollbar {
+        display: none!important;
+      }
 }
