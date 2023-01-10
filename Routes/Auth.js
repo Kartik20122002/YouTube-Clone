@@ -45,7 +45,7 @@ Auth
 .get('/',(req,res)=>{
     res.render('LoginPage.ejs');
 })
-.get('/signin',passport.authenticate('google',{accessType: 'offline'}))
+.get('/signin',passport.authenticate('google'))
 .get('/callback?',passport.authenticate('google',({
     failureRedirect : '/googleauth' , failureMessage : true, successRedirect : '/'
 })))
@@ -55,3 +55,5 @@ Auth
     })
     res.redirect('/');
 })
+
+// ,{accessType: 'offline'}
