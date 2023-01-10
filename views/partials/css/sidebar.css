@@ -48,6 +48,7 @@
 
 .sidebar .subscribed-list{
     padding-left: 3%;
+    padding-bottom: 15%;
 }
 
 .large-padding a{
@@ -64,17 +65,21 @@
     margin-right: 20px ;
 }
 
-.sidebar .shortcut-links a{
+.sidebar .shortcut-links a {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
+    padding: 5% 5% 5% 5%;
+    margin-bottom: 1%;
+    border-radius: 12px;
+    font-weight: 350;
+    flex-wrap: nowrap;
 }
 
-.sidebar hr{
+.sidebar hr {
     margin: auto;
     border: 0;
     height: 1px;
+    margin-top: 7%;
     background: #ccc;
     width: 85%;
 }
@@ -85,10 +90,15 @@
     color: #5a5a5a;
 }
 
-.sidebar .subscribed-list a{
+.sidebar .subscribed-list a {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    padding: 5% 5% 5% 5%;
+    border-radius: 12px;
+    margin-bottom: 1%;
+    font-weight: 350;
+    overflow: hidden;
+    flex-wrap: nowrap;
 }
 
 .sidebar .subscribed-list a img{
@@ -110,9 +120,24 @@
     margin-bottom: 25px;
 }
 
+.sidebar .shortcut-links a:hover {
+    background: rgb(0 0 0 / 5%);
+}
+.sidebar .subscribed-list a:hover {
+    background: rgb(0 0 0 / 5%);
+}
+
 @media (prefers-color-scheme: dark){
     .sidebar {
         background: var(--dark);
+    }
+
+    .sidebar .shortcut-links a:hover {
+        background: rgb(255 255 255 / 10%);
+    }
+
+    .sidebar .subscribed-list a:hover {
+        background: rgb(255 255 255 / 10%);
     }
 
     .sidebar .shortcut-links a img {
