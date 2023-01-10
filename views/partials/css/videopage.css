@@ -64,6 +64,7 @@ a{
 #videopage .side-video-list img{
     width: 100%;
     border-radius: 12px;
+    background: #5a5a5a;
 }
 
 #videopage .side-video-list .small-thumbnail{
