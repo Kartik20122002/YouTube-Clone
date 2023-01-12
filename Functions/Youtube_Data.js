@@ -29,20 +29,23 @@ export const search_videos = async (query)=>{
              for(let i = 0; i < results.data.items.length ; i++){
                  channelsId.push(results.data.items[i].snippet.channelId);
             }
-         
-            let channelsinfo = await channel_info(channelsId);
+        
+            
+            let channelsinfo = await youtube.channels.list({
+                part : ['snippet'],
+                maxResults : 50,
+                id : channelsId,
+            });
          
             for(let i = 0 ; i < results.data.items.length ; i++){
-                results.data.items[i].channelinfo = channelsinfo[i];
-               
-                if( results.data.items[i].channelinfo == null){
-                    results.data.items[i].channelinfo = {snippet : {thumbnails : {medium : {url :{}}}}};
-                }
-            }  
+                results.data.items[i].channelinfo = channelsinfo.data.items[i];
+              if(results.data.items[i].channelinfo == null) results.data.items[i].channelinfo = {snippet : {thumbnails : {medium : {url :"./images/skeleton.png"}}}};
+            }
         
             return {result : results.data.items, nextpagetoken : results.data.nextPageToken , prevpagetoken : results.data.prevPageToken};
+
     } catch (error) {
-        return error;
+         throw error;
     }
 
 }
@@ -71,13 +74,14 @@ export const popular_videos = async ()=>{
             });
          
             for(let i = 0 ; i < results.data.items.length ; i++){
-                    results.data.items[i].channelinfo = channelsinfo.data.items[i];
-              if(results.data.items[i].channelinfo == null) results.data.items[i].channelinfo = {snippet : {thumbnails : {medium : {url :{}}}}};
+                results.data.items[i].channelinfo = channelsinfo.data.items[i];
+              if(results.data.items[i].channelinfo == null) results.data.items[i].channelinfo = {snippet : {thumbnails : {medium : {url :"./images/skeleton.png"}}}};
             }
         
             return {result : results.data.items, nextpagetoken : results.data.nextPageToken , prevpagetoken : results.data.prevPageToken};
+
     } catch (error) {
-        return error;
+         throw error;
     }
 
 

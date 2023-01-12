@@ -2,12 +2,22 @@ import {clientId , clientSecret , redirectUrl , scopes } from '../Functions/Goog
 import passport from 'passport';
 import { Strategy } from 'passport-google-oauth20';
 import express from 'express';
+import axios from 'axios';
 export const Auth = express.Router();
 
 const GoogleStrategy = Strategy;
 
 export const isLoggedIn = (req,res,next)=>{
     req.user ? next() : res.render('LoginPage.ejs');
+}
+
+export const checktoken = async (req,res,next)=>{
+    let access_token_details = await axios.get(`https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${req.user.accessToken}`)
+    let expire_time = access_token_details.data.expires_in;
+
+    if(expire_time < 300) console.log("Warning Warning");
+
+    next();
 }
 
 passport.use(new GoogleStrategy({
@@ -45,7 +55,7 @@ Auth
 .get('/',(req,res)=>{
     res.render('LoginPage.ejs');
 })
-.get('/signin',passport.authenticate('google'))
+.get('/signin',passport.authenticate('google',{accessType: 'offline'}))
 .get('/callback?',passport.authenticate('google',({
     failureRedirect : '/googleauth' , failureMessage : true, successRedirect : '/'
 })))

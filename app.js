@@ -2,7 +2,7 @@ import express from 'express';
 import session from 'express-session';
 import passport from 'passport';
 import { secret } from './Functions/GoogleAuth.js';
-import { Auth, isLoggedIn } from './Routes/Auth.js';
+import { Auth, isLoggedIn , checktoken} from './Routes/Auth.js';
 import { Home } from './Routes/HomePage.js';
 import { OtherHomePage } from './Routes/OtherHomePage.js';
 import { Liked_Page } from './Routes/LikedVideos.js';

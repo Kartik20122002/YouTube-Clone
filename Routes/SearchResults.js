@@ -9,8 +9,8 @@ export const SearchResults = express.Router();
 SearchResults
 .post('/',isLoggedIn, async (req,res)=>{  
       try {
-        let {result , nextpagetoken , prevpagetoken} = await search_videos(req.body.searchquery);
-     let {subs} = await user_subscriptions();
+      let {result , nextpagetoken , prevpagetoken} = await search_videos(req.body.searchquery);
+      let {subs} = await user_subscriptions();
 
      res.render('SearchPage.ejs',{ profile : req.user.profile, items : result ,nextpagetoken : nextpagetoken, prevpagetoken : prevpagetoken, queryvalue :req.body.searchquery, subs : subs});
 
