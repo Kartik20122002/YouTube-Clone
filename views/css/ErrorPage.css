@@ -1,0 +1,91 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+:root{
+    --dark : #0f0f0f;
+    --white : #f1f1f1;
+    --color1 : #ff6900;
+    --background : linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);
+  }
+
+  body {
+    background: var(--background);
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    overflow: hidden;
+    justify-content: center;
+}
+
+#errorpage{
+    min-height: 60vh;
+    width: 60%;
+    display: flex;
+    padding: 5px 4%;
+    flex-direction: column;
+    background: var(--white);
+    align-items: center;
+    border-radius: 12px;
+    box-shadow: -1px 1px 6px 1px #0000006b;
+}
+
+p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 33vh;
+    border: solid 1px var(--dark);
+    border-radius: 9px;
+    transition: 1s all;
+    padding: 1% 5%;
+    width: 100%;
+    background: rgb(0 0 0 / 5%);
+    cursor: pointer;
+    margin-bottom: 3%;
+}
+
+p:hover{
+    background: rgb(0 0 0 / 10%);
+    height: 50vh;
+    overflow-y: scroll!important;
+}
+
+.errormsg{
+    width: 100%;
+}
+
+h3 {
+    margin-right: 1%;
+    margin-bottom: 2%;
+    margin-top: 1%;
+}
+
+h1{
+    margin-bottom: 2%;
+    margin-top: 1%;
+}
+
+.buttons{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 3%;
+}
+
+.buttons a{
+    padding: 1% 5%;
+    border-radius: 12px;
+    color: var(--white);
+    background: var(--dark);
+}
+
+.buttons a:hover {
+    color: var(--dark);
+    box-shadow: 0px 0px 5px 0px var(--dark);
+    background: var(--white);
+}
+ 

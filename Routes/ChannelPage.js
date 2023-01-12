@@ -52,17 +52,7 @@ ChannelPage
        
         
     } catch (error) {
-        if(error.response){
-            if(error.response.data){
-                if(error.response.data.error){
-                        res.status(error.response.data.error.code).send(error.response.data.error.message);
-                }
-            }
-
-        }
-        else{
-            res.send(error)
-        }
+        res.render('ErrorPage.ejs',{error : error});
     }
    
 

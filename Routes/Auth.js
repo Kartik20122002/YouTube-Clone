@@ -3,6 +3,7 @@ import passport from 'passport';
 import { Strategy } from 'passport-google-oauth20';
 import express from 'express';
 import axios from 'axios';
+import { connectDB , User } from '../DataBase/db.js';
 export const Auth = express.Router();
 
 const GoogleStrategy = Strategy;
@@ -25,19 +26,39 @@ passport.use(new GoogleStrategy({
     clientSecret : clientSecret,
     callbackURL : redirectUrl,
     scope : scopes,
-},(accessToken,refreshToken,profile,cb)=>{
+},async (accessToken,refreshToken,profile,cb)=>{
 
-    // if(refreshToken != undefined ){
-    //     new User({
-    //         GoogleId :profile.id,
-    //         Name : profile.displayName,
-    //         ProfilePhoto : profile._json.picture,
-    //         RefreshToken : refreshToken,
-    //         AccessToken : accessToken
-    //     }).save(); 
-    // }
+    try {
+    if(refreshToken != undefined ){
+
+        let users = await User.find({GoogleId : profile.id});
+        let user = users[0];
+          
+        if(users.length == 0){
+                    let user = new User({
+                            GoogleId : profile.id,
+                            Name : profile.displayName,
+                            RefreshToken : refreshToken,
+                    })
+            
+                    const results = await user.save();
+        }
+        else{
+
+        let personup = await User.updateOne(
+        {GoogleId : profile.id} , 
+        { $set : {RefreshToken : refreshToken} }
+        );
+        }
+        
+    }
 
     return cb(null,{profile,accessToken,refreshToken});
+}
+catch (err) {
+    throw err;
+}
+
 }
 ));
 

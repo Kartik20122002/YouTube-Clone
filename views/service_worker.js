@@ -2,8 +2,6 @@ const static_cache = 'static_cache';
 const dyanamic_cache = 'dyanamic_cache';
 
 const assets = [
-    'OfflinePage.html',
-    'css/OfflinePage.css',
     'LoginPage.ejs',
     'HomePage.ejs',
     'css/LoginPage.css',
@@ -43,14 +41,10 @@ self.addEventListener('install', function(event) {
   })
   
   self.addEventListener('fetch', function(event) {
-
       event.respondWith(
            caches.match(event.request).then(cacheRes =>{
             return cacheRes || fetch(event.request);
-           }).catch(()=> caches.match('OfflinePage.html')).then(cacheRes=>{
-            return cacheRes;
-           })
-    )
+           }));
   });
   
   self.addEventListener('activate', function(event) {

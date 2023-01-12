@@ -17,7 +17,7 @@ SearchResults
 
       }
       catch(error){
-        res.send(error);
+        res.render('ErrorPage.ejs',{error : error});
       }
 
      

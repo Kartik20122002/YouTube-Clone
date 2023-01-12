@@ -15,8 +15,8 @@ import { Playlist } from './Routes/PlaylistPage.js';
 import { Subscribe } from './Routes/Subscribe.js';
 import { Like } from './Routes/Like.js';
 import { connectDB } from './DataBase/db.js';
-
-
+import { LoginPage } from './Routes/LoginPage.js';
+connectDB();
 
 const app = express();
 app.use(session({
@@ -46,6 +46,7 @@ app.use('/userpage',UserPage);
 app.use('/channelpage',ChannelPage);
 app.use('/subscribe',Subscribe);
 app.use('/like',Like)
+app.use('/loginpage',LoginPage);
 
 
 app.listen(port,()=>{

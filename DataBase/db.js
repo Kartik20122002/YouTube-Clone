@@ -17,8 +17,11 @@ export const connectDB = async ()=>{
           });
     
         console.log("connected");  
+        return ;
     } catch (err) {
         console.log(err);
+        throw err;
+        return;
     }
     
     
@@ -27,14 +30,10 @@ export const connectDB = async ()=>{
 const userSchema = new mongoose.Schema({
     GoogleId : String,
     Name : String,
-    ProfilePhoto : String,
     RefreshToken : {
         type : String,
     },
-    AccessToken : {
-        type : String,
-    },
-    LastVisited: { type: Date, default: new Date() }
+    RegisteredOn: { type: Date, default: new Date() }
 });
 
 export const User = mongoose.model("user", userSchema);

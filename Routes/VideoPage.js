@@ -44,8 +44,11 @@ videopage
       });
 
    } catch (error) {
-      res.send(error);
+      res.render('ErrorPage.ejs',{error : error});
    }
 
 
+})
+.post('/',(req,res)=>{
+   res.send("Feature is in development");
 })

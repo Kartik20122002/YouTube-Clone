@@ -14,23 +14,17 @@ Home
             access_token : req.user.accessToken,
             refresh_token : req.user.refreshToken,
         }
+
+        if(req.user.accessToken == null) throw new Error("Access Token can not be obtained");
     
         let {result , nextpagetoken , prevpagetoken}= await popular_videos();
         let {subs} = await user_subscriptions();
+
+        if(!result || !subs) throw new Error("Required Data can not be obtained");
         res.render('HomePage.ejs',{ profile : req.user.profile, items : result, nextpagetoken : nextpagetoken, prevpagetoken : prevpagetoken, queryvalue : "", subs : subs});
      
     } catch (error) {
-        if(error.response){
-            if(error.response.data){
-                if(error.response.data.error){
-                        res.status(error.response.data.error.code).send(error.response.data.error.message);
-                }
-            }
-
-        }
-        else{
-            res.send(error)
-        }
+        res.render('ErrorPage.ejs',{error : error});
     }
    
 

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    <link rel="stylesheet" href="./css/ErrorPage.css">
+    <style>
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f17d; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(136, 136, 136, 0.541); 
+  border-radius : 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  opacity: 1;
+}
+    </style>
+</head>
+<body>
+    <div class="container" id="errorpage">
+        <h1>Sorry for the inconvenince</h1>
+        <div class="errormsg">
+            <h3>Error Details :</h3>
+            <p><%=error%>
+            </p>
+        </div>
+
+        <div class="buttons">
+            <a href="/">Homepage</a>
+            <a href="/loginpage">Loginpage</a>
+        </div>
+    </div>
+</body>
+</html>

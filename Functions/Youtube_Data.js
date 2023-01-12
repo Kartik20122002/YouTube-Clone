@@ -77,7 +77,6 @@ export const popular_videos = async ()=>{
                 results.data.items[i].channelinfo = channelsinfo.data.items[i];
               if(results.data.items[i].channelinfo == null) results.data.items[i].channelinfo = {snippet : {thumbnails : {medium : {url :"./images/skeleton.png"}}}};
             }
-        
             return {result : results.data.items, nextpagetoken : results.data.nextPageToken , prevpagetoken : results.data.prevPageToken};
 
     } catch (error) {
@@ -119,7 +118,7 @@ export const popular_videos_bytoken = async (token)=>{
         
             return {result : results.data.items, nextpagetoken : results.data.nextPageToken , prevpagetoken : results.data.prevPageToken};
     } catch (error) {
-        return error;
+        throw error;
     }
     
 }
@@ -156,7 +155,7 @@ export const liked_videos = async (token)=>{
     
         return {liked : results.data.items,count : results.data.pageInfo.totalResults, nextpagetoken : results.data.nextPageToken , prevpagetoken : results.data.prevPageToken};
     } catch (error) {
-        return error;
+        throw error;
     }
     
 }
@@ -171,7 +170,7 @@ export const user_subscriptions = async ()=>{
     
         return {subs : results.data.items , sub_count : results.data.pageInfo.totalResults};    
     } catch (error) {
-        return error;
+        throw error;
     }
 }
 
@@ -185,7 +184,7 @@ export const channel_info = async(id)=>{
 
     return result.data.items[0];
    } catch (error) {
-      return error;
+    throw error;
    }
 }
 
@@ -207,7 +206,7 @@ results = await results.json();
 return results;
 
     } catch (error) {
-        return error;
+        throw error;
     }
 
 
@@ -234,7 +233,7 @@ export const get_videoAndChannel = async (videoId , ChannelId)=>{
     
         return {relatedvideos : relatedvideos ,video : videodetails.data.items[0], channel : channeldetials.data.items[0]};
     } catch (error) {
-        return error;
+        throw error;
     }
 }
 
@@ -249,7 +248,7 @@ export const getComments = async (videoId)=>{
 
     return result.data.items;
    } catch (error) {
-      return error;
+    throw error;
    }
 }
 
@@ -261,7 +260,7 @@ export const getRating = async (videoId)=>{
     
         return result;
     } catch (error) {
-        return error;
+        throw error;
     }
 }
 
@@ -274,7 +273,7 @@ export const user_playlists = async ()=>{
     
          return {playlists : playlists.data.items , playlist_count : playlists.data.pageInfo.totalResults};
     } catch (error) {
-        return error;
+        throw error;
     }
 }
 
@@ -289,7 +288,7 @@ export const channel_playlists = async (channelId , token)=>{
 
     return {channelplaylists : playlists.data.items , playlists_count : playlists.data.pageInfo.totalResults , playlists_token : playlists.data.nextPageToken};
    } catch (error) {
-    return error;
+    throw error;
    }
 }
 
@@ -304,7 +303,7 @@ export const channel_activities = async (channelId,token)=>{
     
        return {channelactivities : activities.data.items , activities_count : activities.data.pageInfo.totalResults , activities_token : activities.data.nextPageToken};
    } catch (error) {
-       return error;
+    throw error;
    }
 }
 
@@ -318,7 +317,7 @@ export const get_date = (isoformat)=>{
 
     return date;
  } catch (error) {
-    return error;
+    throw error;
  }
 }
 
@@ -347,7 +346,7 @@ export const playlist_byid = async (playlistId, token)=>{
         return {playlist_items : playlist_items.data,playlist_info : playlist_info.data.items[0]}
 
     } catch (error) {
-        return error;
+        throw error;
     }
 }
 
@@ -365,7 +364,7 @@ export const is_Subscribed = async (channelId)=>{
     
         return {flag : result.data.pageInfo.totalResults , id : id};
     } catch (error) {
-        return error;
+        throw error;
     }
 }
 
@@ -385,7 +384,7 @@ export const subscribe = async (channelId)=>{
         if(result.data.snippet.resourceId.channelId === channelId) return {flag : true , subid : result.data.id};
         else return {flag : false , subid : ""};
     } catch (error) {
-        return error;
+        throw error;
     }
 }
 
@@ -399,7 +398,7 @@ export const unsubscribe = async (subid)=>{
         if(result.status === 204) return true;
         else return false;
     } catch (error) {
-        return error;
+        throw error;
     }
 }
 
@@ -413,6 +412,6 @@ export const rating = async(videoId,rating)=>{
         if(result.status === 204) return true;
         return false;
     } catch (error) {
-        return error;
+        throw error;
     }
 }

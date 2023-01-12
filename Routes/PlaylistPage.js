@@ -14,21 +14,13 @@ Playlist
         let {playlist_items,playlist_info} = await playlist_byid(playlistId,"");
 
         let {subs} = await user_subscriptions();
+        if(!playlist_info || !playlist_items|| !subs) throw new Error("Required Data can not be obtained");
+
 
         res.render('PlaylistPage.ejs',{playlist_items : playlist_items, playlist_info : playlist_info ,profile :req.user.profile,subs : subs , queryvalue : ""});
         
     } catch (error) {
-        if(error.response){
-            if(error.response.data){
-                if(error.response.data.error){
-                        res.status(error.response.data.error.code).send(error.response.data.error.message);
-                }
-            }
-
-        }
-        else{
-            res.send(error)
-        }
+        res.render('ErrorPage.ejs',{error : error});
     }
    
 

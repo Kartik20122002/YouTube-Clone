@@ -20,7 +20,7 @@ OtherLikePage
 
         ejs.renderFile('./views/partials/otherlikepage.ejs',{ items : liked , nextpagetoken : nextpagetoken},{},(err,temp)=>{
             if (err) {
-                throw err;
+                res.render('ErrorPage.ejs',{error : err});
             } else {
                 res.send(temp);
             }
@@ -28,18 +28,7 @@ OtherLikePage
 
            
     } catch (error) {
-        if(error.response){
-            if(error.response.data){
-                if(error.response.data.error){
-                    console.log(error);
-                        res.status(error.response.data.error.code).send(error.response.data.error.message);
-                }
-            }
-
-        }
-        else{
-            res.send(error)
-        }
+        res.render('ErrorPage.ejs',{error : error});
     }
    
 
