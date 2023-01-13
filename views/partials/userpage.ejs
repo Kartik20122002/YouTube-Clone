@@ -27,17 +27,25 @@
 
             <div class="videos-collection" id="Subscriptions">
             
-                <div class="title"><img src="./images/subscriptionsicon.png" alt=""> Subscription<span><%=sub_count%></span> <a href="#">See All</a></div>
+                <div class="title"><img src="./images/subscriptionsicon.png" alt=""> Subscription<span><%=sub_count%></span> <a>See All</a></div>
 
                 <div class="collection">
 
-                    <%for(let i = 0 ; i < Math.min(5,subs.length) ; i++){%>
-
+                    <%for(let i = 0 ; i < subs.length; i++){%>
+                    <%if(i < 5){%>
                     <div class="vid-list">
                          <a href="/channelpage?c=<%=subs[i].snippet.resourceId.channelId%>"><img src="<%=subs[i].snippet.thumbnails.medium.url%>" alt="" srcset=""></a>
                          <div class="vid-channel"><%=subs[i].snippet.title%></div>
                          <div class="vid-detials">3276 items &bull; 2 days ago</div>
                     </div>
+                    <%}else{%>
+                        <div class="vid-list hidden">
+                            <a href="/channelpage?c=<%=subs[i].snippet.resourceId.channelId%>"><img src="<%=subs[i].snippet.thumbnails.medium.url%>" alt="" srcset=""></a>
+                            <div class="vid-channel"><%=subs[i].snippet.title%></div>
+                            <div class="vid-detials">3276 items &bull; 2 days ago</div>
+                       </div>
+                     <%}%>
+
 
                     <%}%>
 
@@ -101,3 +109,18 @@
     </div>
     
 </div>
+
+
+<script>
+    let sub_btn = document.querySelector('#Subscriptions .title a');
+    let sub_items = document.querySelector('#Subsciption .hidden');
+
+    sub_btn.addEventListener('click',()=>{
+        if(sub_btn.innerHTML == 'See All') sub_btn.innerHTML = "Hide";
+        else sub_btn.innerHTML = "See All";
+        
+        sub_items.forEach(item => {
+            item.classList.toggle('visible');
+        });
+    })
+</script>

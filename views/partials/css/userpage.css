@@ -91,6 +91,7 @@
     align-items: center;
     margin-bottom: 3%;
     justify-content: center;
+    cursor: pointer;
 }
 
 #userpage #Subscriptions .collection .vid-list a img{
@@ -166,6 +167,14 @@
 #userpage .user-info .details .list{
     text-align: center;
     color: #5a5a5ac2;
+}
+
+.hidden{
+    display: none;
+}
+
+.visible{
+    display: flex!important;
 }
 
 @media (prefers-color-scheme: dark){
