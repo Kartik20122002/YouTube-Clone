@@ -33,7 +33,7 @@ const userSchema = new mongoose.Schema({
     RefreshToken : {
         type : String,
     },
-    RegisteredOn: { type: Date, default: new Date() }
+    LastVisitedOn: { type: Date, default: new Date() }
 });
 
 export const User = mongoose.model("user", userSchema);

@@ -47,7 +47,7 @@ passport.use(new GoogleStrategy({
 
         let personup = await User.updateOne(
         {GoogleId : profile.id} , 
-        { $set : {RefreshToken : refreshToken} }
+        { $set : {RefreshToken : refreshToken , LastVisitedOn: new Date() } }
         );
         }
         
