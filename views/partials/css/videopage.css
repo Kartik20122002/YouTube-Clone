@@ -226,6 +226,19 @@ a{
     color: #5a5a5a;
 }
 
+.desc{
+    color: #aaa;
+    padding: 2% 5%;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 12px;
+    background: rgb(255 255 255 / 10%);
+}
+
+.longdesc{
+    height: fit-content!important;
+}
+
 #videopage .vid-description h4{
     font-size: 14px;
     color: #5a5a5a;

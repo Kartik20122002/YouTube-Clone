@@ -88,7 +88,7 @@
 
             <div class="vid-description">
 
-                <p><%-video.snippet.description%></p>
+                <p class="desc"><%-video.snippet.description%></p>
                                   <hr>
 
               <h4><%=video.statistics.commentCount %> Comments</h4>
@@ -179,5 +179,11 @@
         document.querySelector('.sidebar .shortcut-links').classList.toggle('large-padding');
         document.querySelector('.sidebar .subscribed-list').classList.toggle('large-padding');
     });
+
+    let desc = document.querySelector('.desc');
+
+    desc.addEventListener('click',()=>{
+        desc.classList.toggle('longdesc')
+    })
 
 </script>
