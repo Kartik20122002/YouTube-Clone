@@ -5,7 +5,7 @@
     <div class="channel-info">
 
         <div class="profile-photo">
-            <img src="<%=channelinfo.snippet.thumbnails.medium.url%>" alt="" srcset="">
+            <img src="<%=channelinfo.snippet.thumbnails.medium.url%>" loading="lazy" alt="" srcset="">
         </div>
 
 
@@ -56,7 +56,7 @@
             <%if(i >= 4){%>
             <div class="vid-list hidden">
             <%}%>
-                 <a href="/videopage?v=<%=channelactivities[i].contentDetails.upload.videoId%>&c=<%=channelactivities[i].snippet.channelId%>"><img src="<%=channelactivities[i].snippet.thumbnails.medium.url%>" alt="" srcset=""></a>
+                 <a href="/videopage?v=<%=channelactivities[i].contentDetails.upload.videoId%>&c=<%=channelactivities[i].snippet.channelId%>"><img src="<%=channelactivities[i].snippet.thumbnails.medium.url%>" loading="lazy" alt="" srcset=""></a>
                  <div class="vid-title"><%=channelactivities[i].snippet.title%></div>
                  <div class="vid-channel"><%=channelinfo.snippet.title%></div>
                  <div class="vid-detials">Uploaded on <%=date%></div>

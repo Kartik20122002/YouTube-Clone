@@ -20,24 +20,26 @@ try {
     let access_token_details = await axios.get(`https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${req.user.accessToken}`)
     let expire_time = access_token_details.data.expires_in;
 
-    if(expire_time < 300){
+    if(expire_time < 100){
+
+        res.render('LoginPage.ejs');
         
-        let refreshToken = req.user.refreshToken;
-        let newaccessToken = await refresh.requestNewAccessToken(
-            'google',
-            refreshToken,
-            function (err, accessToken, refreshToken) {
-              if(err) throw err;
-              else return accessToken;
-            },
-          );
-          oauth2client.credentials = {
-            access_token : newaccessToken,
-            refresh_token : refreshToken
-          }
-          req.user.accessToken = newaccessToken;
+    //     let refreshToken = req.user.refreshToken;
+    //     let newaccessToken = await refresh.requestNewAccessToken(
+    //         'google',
+    //         refreshToken,
+    //         function (err, accessToken, refreshToken) {
+    //           if(err) throw err;
+    //           else return accessToken;
+    //         },
+    //       );
+    //       oauth2client.credentials = {
+    //         access_token : newaccessToken,
+    //         refresh_token : refreshToken
+    //       }
+    //       req.user.accessToken = newaccessToken;
     }
-    next();
+    else next();
 
 } catch (error) {
     res.render('ErrorPage.ejs',{error : error});

@@ -16,6 +16,7 @@ import { Subscribe } from './Routes/Subscribe.js';
 import { Like } from './Routes/Like.js';
 import { connectDB } from './DataBase/db.js';
 import { LoginPage } from './Routes/LoginPage.js';
+import { trial } from './Routes/trial.js';
 await connectDB();
 
 
@@ -46,9 +47,8 @@ app.use('/otherlikedpage',checktoken,OtherLikePage);
 app.use('/userpage',checktoken,UserPage);
 app.use('/channelpage',checktoken,ChannelPage);
 app.use('/subscribe',checktoken,Subscribe);
-app.use('/like',Like)
+app.use('/like',checktoken,Like)
 app.use('/loginpage',LoginPage);
-
 
 app.listen(port,()=>{
     console.log(`http://localhost:${port}/`);
