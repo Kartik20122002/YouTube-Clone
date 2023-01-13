@@ -35,7 +35,7 @@ try {
             access_token : newaccessToken,
             refresh_token : refreshToken
           }
-          youtube.auth = oauth2client;
+          req.user.accessToken = newaccessToken;
     }
     next();
 
