@@ -12,7 +12,7 @@ export const oauth2client = new OAuth2(
     clientSecret,
     redirectUrl
 )
-const youtube = google.youtube({version : 'v3' , auth : oauth2client});
+export const youtube = google.youtube({version : 'v3' , auth : oauth2client});
 
 export const search_videos = async (query)=>{
 

@@ -16,7 +16,8 @@ import { Subscribe } from './Routes/Subscribe.js';
 import { Like } from './Routes/Like.js';
 import { connectDB } from './DataBase/db.js';
 import { LoginPage } from './Routes/LoginPage.js';
-connectDB();
+await connectDB();
+
 
 const app = express();
 app.use(session({
@@ -35,16 +36,16 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.use('/googleauth',Auth);
-app.use('/',isLoggedIn,Home);
-app.use('/likedvideos',isLoggedIn,Liked_Page);
-app.use('/searchresults',isLoggedIn,SearchResults);
-app.use('/videopage',isLoggedIn,videopage)
-app.use('/playlist',Playlist);
-app.use('/otherpage',OtherHomePage);
-app.use('/otherlikedpage',OtherLikePage);
-app.use('/userpage',UserPage);
-app.use('/channelpage',ChannelPage);
-app.use('/subscribe',Subscribe);
+app.use('/',isLoggedIn,checktoken,Home);
+app.use('/likedvideos',isLoggedIn,checktoken,Liked_Page);
+app.use('/searchresults',isLoggedIn,checktoken,SearchResults);
+app.use('/videopage',isLoggedIn,checktoken,videopage)
+app.use('/playlist',checktoken,Playlist);
+app.use('/otherpage',checktoken,OtherHomePage);
+app.use('/otherlikedpage',checktoken,OtherLikePage);
+app.use('/userpage',checktoken,UserPage);
+app.use('/channelpage',checktoken,ChannelPage);
+app.use('/subscribe',checktoken,Subscribe);
 app.use('/like',Like)
 app.use('/loginpage',LoginPage);
 

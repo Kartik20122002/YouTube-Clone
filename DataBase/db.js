@@ -28,7 +28,7 @@ export const connectDB = async ()=>{
 }
 
 const userSchema = new mongoose.Schema({
-    GoogleId : String,
+    GoogleId : {type: String , required: true, unique : true},
     Name : String,
     RefreshToken : {
         type : String,
