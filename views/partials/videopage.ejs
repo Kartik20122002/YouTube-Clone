@@ -144,7 +144,7 @@
                 <% let videoTitle = relatedvideos.items[i].snippet.title %>
                 <% let channelTitle = relatedvideos.items[i].snippet.channelTitle %>
 
-                <a href=<%=link%> class="small-thumbnail"> <img src=<%=thumbnail%> alt="."> </a>
+                <a href=<%=link%> class="small-thumbnail"> <img src=<%=thumbnail%> loading="lazy" alt="."> </a>
                 <div class="vid-info">
                     <a href=<%=link%> class="title"><%=videoTitle%></a>
                     <p class="channel"><%=channelTitle%></p>
