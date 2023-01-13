@@ -3,10 +3,10 @@
 <div id="playlistpage">
 
 <div class="info-section">
-    <img class="blur-img" src="<%=playlist_info.snippet.thumbnails.medium.url%>" alt="">
+    <img class="blur-img" src="<%=playlist_info.snippet.thumbnails.medium.url%>" loading="lazy" alt="">
 
     <a href="#" class="playlist-img" >
-        <img src="<%=playlist_info.snippet.thumbnails.medium.url%>" alt="">
+        <img src="<%=playlist_info.snippet.thumbnails.medium.url%>" loading="lazy" alt="">
     </a>
 
     <div class="playlist-details">
@@ -60,7 +60,7 @@
 
         <div class="vid-list">
             <div class="num"><%=i+1%></div>
-            <a href="/videopage?v=<%=playlist_items.items[i].contentDetails.videoId%>&c=<%=playlist_items.items[i].snippet.channelId%>" class="vid-img"><img src="<%=imgurl%>" alt=""></a>
+            <a href="/videopage?v=<%=playlist_items.items[i].contentDetails.videoId%>&c=<%=playlist_items.items[i].snippet.channelId%>" class="vid-img"><img src="<%=imgurl%>" loading="lazy" alt=""></a>
         <div class="vid-details">
           <div class="vid-title"><%=playlist_items.items[i].snippet.title%></div>
           <div class="vid-cred">

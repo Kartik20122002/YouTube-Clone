@@ -19,7 +19,7 @@
 
      <%   for(let i = 0 ; i < subs.length ; i++){  %>
         <a href=/channelpage?c=<%=subs[i].snippet.resourceId.channelId%>>
-            <img src=<%=subs[i].snippet.thumbnails.medium.url%> alt="" srcset="">
+            <img src=<%=subs[i].snippet.thumbnails.medium.url% loading="lazy"> alt="" srcset="">
             <p><%=subs[i].snippet.title%></p>
         </a>
      <% }  %>
