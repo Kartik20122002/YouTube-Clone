@@ -113,7 +113,7 @@
 
 <script>
     let sub_btn = document.querySelector('#Subscriptions .title a');
-    let sub_items = document.querySelector('#Subsciptions .hidden');
+    let sub_items = document.querySelectorAll('#Subsciptions .hidden');
 
     sub_btn.addEventListener('click',()=>{
         if(sub_btn.innerHTML == 'See All') sub_btn.innerHTML = "Hide";
