@@ -25,17 +25,18 @@
 
 
     <div class="nav-right flex-div">
-        <a href="#"> <img src="../images/upload.png" class="upload" alt="" srcset=""> </a>
-        <!-- <a href="#"> <img src="../images/more.png" class="more" alt="" srcset=""> </a> -->
-        <!-- <a id="dark-btn">
-         <div id="mode-btn"><i class="fa-solid fa-moon"></i></div>
-         <div id="mode-btn"><i class="fa-solid fa-sun"></i></div>
-         <div id="ball"></div>
-        </a> -->
-
         <a href="#"> <i class="fa-solid fa-magnifying-glass search"></i></a>
         <!-- <i class="fa-regular fa-bell notification"></i> -->
-        <a href="/googleauth/logout"> <img src=<%=profile.photos[0].value%> alt="" class="user-icon"> </a>
+        <div class="usermenu">
+          <a class="profile-section"> <img src=<%=profile.photos[0].value%> alt="" class="user-icon"> </a>
+          <div class="user-actions hide">
+           <a href="/likedvideos"> <img src="../images/liked.png" alt="."> Your Liked Videos</a>
+              <hr>
+           <a href="/userpage"> <img src="../images/library.png" alt=""> Library</a>
+              <hr>
+           <a href="/googleauth/logout" class="logoutbtn"> <img src="../images/explore.png" alt=""> LogOut</a>
+          </div>
+        </div>
        
     </div>
 
@@ -49,11 +50,28 @@
 
 
 <script>
-  let search_btn = document.querySelector('.nav-right .search');
+let search_btn = document.querySelector('.nav-right .search');
 let box = document.querySelector('.search-box-small');
+let usermenu_btn = document.querySelector('.usermenu .profile-section');
+let user_section = document.querySelector('.user-actions')
 
 search_btn.addEventListener('click',()=>{
     box.classList.toggle('visible-box')
 });
+
+
+usermenu_btn.addEventListener('click',()=>{
+    user_section.classList.toggle('hide');
+})
+
+document.addEventListener('mousedown', function(e) {
+    if (!user_section.contains(e.target) && !usermenu_btn.contains(e.target)) {
+      if(!user_section.classList.contains('hide')){
+          user_section.classList.add('hide');
+       }
+    }
+});
+
+
 
 </script>
