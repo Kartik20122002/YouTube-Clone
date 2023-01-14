@@ -365,8 +365,9 @@ a{
 }
 
 .small-sidebar {
-    width: 4%!important;
     opacity: 0!important;
+    width: 15%!important;
+    transform: translateX(-100%);
 }
 
 .small-sidebar .sidebar-util::-webkit-scrollbar {

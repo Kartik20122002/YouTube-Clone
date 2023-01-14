@@ -119,6 +119,19 @@
 
         <% for(let i = 0 ; i < comments.length ; i++){ %>
 
+       <%console.log(comments[i].snippet)%>
+
+       <%  let d1 = new Date(comments[i].snippet.topLevelComment.snippet.publishedAt);%>
+       <%  let d2 = new Date();%>
+       <%  let date = Math.abs(d2-d1);%>
+       <%  let time = 0;%>
+       <%  date = date/(1000*60); time = Math.trunc(date) +" mins" %>
+       <%  if(date >= 60){ date = date/60; time = Math.trunc(date) + " hours";%>
+       <%  if(date >= 24){ date = date/24; time = Math.trunc(date) + " days"%>
+       <%  if(date >= 31){ date = date/30.4167; time = Math.trunc(date) + " months"%>
+       <%  if(date >= 12){ date = date/12; time = Math.trunc(date) + " years"}%>
+       <%  }}}%>
+
         <% let authorImage = comments[i].snippet.topLevelComment.snippet.authorProfileImageUrl %>
         <% let authorName =  comments[i].snippet.topLevelComment.snippet.authorDisplayName%>
         <% let authorChannel = "/channelpage?c=" + comments[i].snippet.topLevelComment.snippet.authorChannelId.value%>
@@ -129,7 +142,7 @@
             <div class="commentsection">
               <a href=<%=authorChannel%>>  <img src=<%=authorImage%>> </a>
                 <div class="person-details">
-                    <a href=<%=authorChannel%>> <h3><%=authorName%> <span>2 days ago</span></h3> </a>
+                    <a href=<%=authorChannel%>> <h3><%=authorName%> <span><%=time%> ago</span></h3> </a>
                     <p class="person-comment"> <%=comment%></p>
 
                     <div class="comment-actions">
@@ -152,21 +165,29 @@
 
             <% for(let i = 0 ; i < relatedvideos.items.length ; i++){ %>
 
+                <%  let d1 = new Date(relatedvideos.items[i].snippet.publishedAt);%>
+                <%  let d2 = new Date();%>
+                <%  let date = Math.abs(d2-d1);%>
+                <%  let time = 0;%>
+                <%  date = date/(1000*60); time = Math.trunc(date) +" mins" %>
+                <%  if(date >= 60){ date = date/60; time = Math.trunc(date) + " hours";%>
+                <%  if(date >= 24){ date = date/24; time = Math.trunc(date) + " days"%>
+                <%  if(date >= 31){ date = date/30.4167; time = Math.trunc(date) + " months"%>
+                <%  if(date >= 12){ date = date/12; time = Math.trunc(date) + " years"}%>
+                <%  }}}%>
 
-            <div class="side-video-list">
                 <% let link = '/videopage?v=' +  relatedvideos.items[i].id.videoId  + '&c=' +  relatedvideos.items[i].snippet.channelId  %>
                 <% let thumbnail = relatedvideos.items[i].snippet.thumbnails.medium.url %>
                 <% let videoTitle = relatedvideos.items[i].snippet.title %>
                 <% let channelTitle = relatedvideos.items[i].snippet.channelTitle %>
 
+            <div class="side-video-list">
                 <a href=<%=link%> class="small-thumbnail"> <img src=<%=thumbnail%> loading="lazy" alt="."> </a>
                 <div class="vid-info">
                     <a href=<%=link%> class="title"><%=videoTitle%></a>
-                    <p class="channel"><%=channelTitle%></p>
-                    <p class="views">15k views</p>
+                    <p class="channel"><a href="/channelpage?c=<%=relatedvideos.items[i].snippet.channelId%>"><%=channelTitle%></a></p>
+                    <p class="views"><%=time%> ago</p>
                 </div>
-
-            
             </div>
 
             <%}%>
