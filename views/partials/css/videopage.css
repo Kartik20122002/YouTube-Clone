@@ -324,6 +324,7 @@ a{
 
      #videopage .video-player .video-info .buttons a {
         background: none;
+        border: none!important;
     }
 
     #videopage #share{
