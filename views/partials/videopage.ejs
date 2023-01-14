@@ -13,40 +13,54 @@
 
             <div class="video-info">
 
-                        
-      <%  let views = (video.statistics.viewCount/1000000).toFixed(1); %>
-      <%  if(views > 10) views = Math.trunc(views); %>
-      <%  if(views > 1) views = views + 'M'; %>
-      <%  if(views <= 1) views = (video.statistics.viewCount/1000).toFixed(1) + 'K'; %>
-      <%  let likes = (video.statistics.likeCount/1000000).toFixed(1); %>
-      <%  if(likes > 10) likes = Math.trunc(likes); %>
-      <%  if(likes > 1) likes = likes + 'M'; %>
-      <%  if(likes <= 1) likes = (video.statistics.likeCount/1000).toFixed(1) + 'K'; %>
+                <%  let d1 = new Date(video.snippet.publishedAt);%>
+                <%  let d2 = new Date();%>
+                <%  let date = Math.abs(d2-d1);%>
+                <%  let time = 0;%>
+                <%  date = date/(1000*60); time = Math.trunc(date) +" mins" %>
+                <%  if(date >= 60){ date = date/60; time = Math.trunc(date) + " hours";%>
+                <%  if(date >= 24){ date = date/24; time = Math.trunc(date) + " days"%>
+                <%  if(date >= 31){ date = date/30.4167; time = Math.trunc(date) + " months"%>
+                <%  if(date >= 12){ date = date/12; time = Math.trunc(date) + " years"}%>
+                <%  }}}%>
+    
+                <%  let viewss = 0;%>
+                <%  let views = video.statistics.viewCount; viewss = views%>
+                <%  if(views >= 1000){views = views/1000; viewss = Math.trunc(views) + 'K'}%>
+                <%  if(views >= 1000){views = views/1000; viewss = Math.trunc(views) + 'M'}%>
+                <%  if(views >= 1000){views = views/1000; viewss = Math.trunc(views) + 'B'}%>
 
-                <p class="views"><%=views%> Views &bull; 2 days ago</p>
+                <%  let  likess = 0;%>
+                <%  let likes = video.statistics.likeCount;  likess = likes%>
+                <%  if(likes >= 1000){likes = Math.trunc(likes/1000); likess = likes + 'K'}%>
+                <%  if(likes >= 1000){likes = Math.trunc(likes/1000); likess = likes + 'M'}%>
+                <%  if(likes >= 1000){likes = Math.trunc(likes/1000); likess = likes + 'B'}%>
+
+
+                <p class="views"><%=viewss%> Views &bull; <%=time%> ago</p>
                 <div class="buttons" id="buttons">
 
                     <% if(rating.data.items[0].rating === "like"){ %>
 
-                        <a id="like" class="rating" hx-get="/like?value=false&videoId=<%=video.id%>&likes=<%=likes%>" hx-target="#buttons" hx-swap="outerHTML" >
+                        <a id="like" class="rating" hx-get="/like?value=false&videoId=<%=video.id%>&likes=<%=video.statistics.likeCount%>" hx-target="#buttons" hx-swap="outerHTML" >
                             <img src="./images/liked.png">
 
                     <%}else{%>
 
-                        <a id="like" class="rating" hx-get="/like?value=true&videoId=<%=video.id%>&likes=<%=likes%>" hx-target="#buttons" hx-swap="outerHTML" >
+                        <a id="like" class="rating" hx-get="/like?value=true&videoId=<%=video.id%>&likes=<%=video.statistics.likeCount%>" hx-target="#buttons" hx-swap="outerHTML" >
                             <img src="./images/like.png">
 
                     <%}%>
 
-                        <%=likes%>
+                        <%=likess%>
                     </a>
                     
                     
                     <% if(rating.data.items[0].rating === "dislike"){ %>
-                        <a  id="dislike" class="rating" hx-get="/like/dislike?value=false&videoId=<%=video.id%>&likes=<%=likes%>" hx-target="#buttons" hx-swap="outerHTML" >
+                        <a  id="dislike" class="rating" hx-get="/like/dislike?value=false&videoId=<%=video.id%>&likes=<%=video.statistics.likeCount%>" hx-target="#buttons" hx-swap="outerHTML" >
                             <img src="./images/disliked.png">
                     <%}else{%>
-                        <a  id="dislike" class="rating" hx-get="/like/dislike?value=true&videoId=<%=video.id%>&likes=<%=likes%>" hx-target="#buttons" hx-swap="outerHTML" >
+                        <a  id="dislike" class="rating" hx-get="/like/dislike?value=true&videoId=<%=video.id%>&likes=<%=video.statistics.likeCount%>" hx-target="#buttons" hx-swap="outerHTML" >
                             <img src="./images/dislike.png">
                     <%}%>
                     
@@ -59,17 +73,18 @@
             </div>
             <hr>
 
-        <%  let subscribers = (channel.statistics.subscriberCount/1000000).toFixed(1); %>
-      <%  if(subscribers > 10) subscribers = Math.trunc(subscribers); %>
-      <%  if(subscribers > 1) subscribers = subscribers + 'M'; %>
-      <%  if(subscribers <= 1) subscribers = (channel.statistics.subscriberCount/1000).toFixed(1) + 'K'; %>
+            <%  let subscriberss = 0;%>
+                <%  let subscribers = video.statistics.subscriberCount; viewss = views%>
+                <%  if(subscribers >= 1000){subscribers = subscribers/1000; subscriberss = Math.trunc(subscribers) + 'K'}%>
+                <%  if(subscribers >= 1000){subscribers = subscribers/1000; subscriberss = Math.trunc(subscribers) + 'M'}%>
+                <%  if(subscribers >= 1000){subscribers = subscribers/1000; subscriberss = Math.trunc(subscribers) + 'B'}%>
 
             <div class="channelinfo">
             <a href="/channelpage?c=<%=channel.id%>">    <img src=<%=channel.snippet.thumbnails.medium.url%> alt=""> </a>
 
                 <div class="channel-details">
                  <a href="/channelpage?c=<%=channel.id%>">   <p><%=channel.snippet.title%></p> </a>
-                    <span><%=subscribers%> Subscribers</span>
+                    <span><%=subscriberss%> Subscribers</span>
                 </div>
                 <%if(isSubscribed > 0){%>
                 <button 
