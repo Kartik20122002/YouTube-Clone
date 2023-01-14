@@ -119,8 +119,6 @@
 
         <% for(let i = 0 ; i < comments.length ; i++){ %>
 
-       <%console.log(comments[i].snippet)%>
-
        <%  let d1 = new Date(comments[i].snippet.topLevelComment.snippet.publishedAt);%>
        <%  let d2 = new Date();%>
        <%  let date = Math.abs(d2-d1);%>

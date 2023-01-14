@@ -12,28 +12,22 @@
     <div class="playlist-details">
         <div class="title"><%=playlist_info.snippet.title%></div>
 
-        <% let year = playlist_info.snippet.publishedAt.slice(0,4); %>
-        <% let month = playlist_info.snippet.publishedAt.slice(5,7);  %>
-        <% let day = playlist_info.snippet.publishedAt.slice(8,10);  %>
-        <% let date = day + "/" + month + "/" + year%>
+        <%  let d1 = new Date(playlist_info.snippet.publishedAt);%>
+        <%  let d2 = new Date();%>
+        <%  let date = Math.abs(d2-d1);%>
+        <%  let time = 0;%>
+        <%  date = date/(1000*60); time = Math.trunc(date) +" mins" %>
+        <%  if(date >= 60){ date = date/60; time = Math.trunc(date) + " hours";%>
+        <%  if(date >= 24){ date = date/24; time = Math.trunc(date) + " days"%>
+        <%  if(date >= 31){ date = date/30.4167; time = Math.trunc(date) + " months"%>
+        <%  if(date >= 12){ date = date/12; time = Math.trunc(date) + " years"}%>
+        <%  }}}%>
 
 
         <div class="other-details">
             <div class="channel-name"><%=playlist_info.snippet.channelTitle%></div>
-            <div class="playlist-info"><%=playlist_info.contentDetails.itemCount%> videos Updated <%=date%></div>
+            <div class="playlist-info"><%=playlist_info.contentDetails.itemCount%> videos Last &bull; Updated <%=time%> ago</div>
         </div>
-
-        <!-- <div class="buttons">
-            <a href="#" class="playall-btn">
-            <img src="../images/playlisticon.png" alt="">
-             Play All
-            </a>
-            <a href="#" class="playall-btn download-btn">
-                <img src="../images/download.png" alt="">
-                 Download
-            </a>
-
-        </div> -->
 
     </div>
 </div>
@@ -42,10 +36,19 @@
    
     <% for(let i = 0 ; i < playlist_items.items.length ; i++){%>
 
-        <% let vyear = playlist_items.items[i].snippet.publishedAt.slice(0,4); %>
-        <% let vmonth = playlist_items.items[i].snippet.publishedAt.slice(5,7);  %>
-        <% let vday = playlist_items.items[i].snippet.publishedAt.slice(8,10);  %>
-        <% let vdate = vday + "/" + vmonth + "/" + vyear%>
+        
+
+        <%  d1 = new Date(playlist_info.snippet.publishedAt);%>
+        <%  d2 = new Date();%>
+        <%  date = Math.abs(d2-d1);%>
+        <%  time = 0;%>
+        <%  date = date/(1000*60); time = Math.trunc(date) +" mins" %>
+        <%  if(date >= 60){ date = date/60; time = Math.trunc(date) + " hours";%>
+        <%  if(date >= 24){ date = date/24; time = Math.trunc(date) + " days"%>
+        <%  if(date >= 31){ date = date/30.4167; time = Math.trunc(date) + " months"%>
+        <%  if(date >= 12){ date = date/12; time = Math.trunc(date) + " years"}%>
+        <%  }}}%>
+
         <% let imgurl = playlist_items.items[i].snippet.thumbnails.medium%>
 
         <% if(imgurl){imgurl = imgurl.url%>
@@ -59,7 +62,7 @@
           <div class="vid-title"><%=playlist_items.items[i].snippet.title%></div>
           <div class="vid-cred">
             <div class="channel-name"><%=playlist_items.items[i].snippet.channelTitle%></div>
-             <div class="viewsDate">Streamed on <%=vdate%></div>
+             <div class="viewsDate">Last Updated <%=time%> ago</div>
           </div>
         </div>
 
