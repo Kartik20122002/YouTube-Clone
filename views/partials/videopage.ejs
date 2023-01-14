@@ -202,16 +202,12 @@
 
    document.addEventListener("DOMContentLoaded",()=>{
     sidebar.classList.toggle('small-sidebar');
-    document.querySelector('.sidebar .shortcut-links').classList.toggle('large-padding');
-    document.querySelector('.sidebar .subscribed-list').classList.toggle('large-padding');
    })
 
    let menuIcon = document.querySelector('.menu-icon');
 
     menuIcon.addEventListener('click',()=>{
         sidebar.classList.toggle('small-sidebar');
-        document.querySelector('.sidebar .shortcut-links').classList.toggle('large-padding');
-        document.querySelector('.sidebar .subscribed-list').classList.toggle('large-padding');
     });
 
     let desc = document.querySelector('.desc');

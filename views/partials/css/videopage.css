@@ -378,6 +378,10 @@ a{
     transform: translateX(-100%);
 }
 
+.small-sidebar a p, .small-sidebar h3 {
+    display: flex!important;
+}
+
 .small-sidebar .sidebar-util::-webkit-scrollbar {
     width: 0;
 }
