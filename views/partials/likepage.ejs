@@ -27,7 +27,7 @@
 
             <%if(i === items.length-1){%>
                 <div class= "vid-list">
-                    <a href= <%=video_link%>> <img src="<%=items[i].snippet.thumbnails.medium.url%>" loading="lazy" class="thumbnail"> </a>
+                    <a class="thumb-link" href= <%=video_link%>> <img src="<%=items[i].snippet.thumbnails.medium.url%>" loading="lazy" class="thumbnail"> </a>
                                 <div class="flex-div">
                                  <a href=<%=channel_link%>><img src="<%=items[i].channelinfo.snippet.thumbnails.medium.url%>" alt="" srcset=""></a> 
                                     <div class="vid-info">
@@ -45,7 +45,7 @@
             <%}%>
             <% if(i !== items.length-1){  %>
                 <div class= "vid-list">
-                    <a href=<%=video_link%>> <img src="<%=items[i].snippet.thumbnails.medium.url%> " loading="lazy" class="thumbnail"> </a>
+                    <a class="thumb-link" href=<%=video_link%>> <img src="<%=items[i].snippet.thumbnails.medium.url%> " loading="lazy" class="thumbnail"> </a>
                                 <div class="flex-div">
                                  <a href=<%=channel_link%>><img src="<%=items[i].channelinfo.snippet.thumbnails.medium.url%>"></a> 
                                     <div class="vid-info">

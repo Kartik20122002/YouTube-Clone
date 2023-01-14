@@ -12,7 +12,7 @@
 
                     <% for(let i = 0 ; i < Math.min(5,liked.length) ; i++){ %>
                      
-                        <%  let d1 = new Date(Liked[i].snippet.publishedAt);%>
+                        <%  let d1 = new Date(liked[i].snippet.publishedAt);%>
                         <%  let d2 = new Date();%>
                         <%  let date = Math.abs(d2-d1);%>
                         <%  let time = 0;%>
@@ -24,7 +24,7 @@
                         <%  }}}%>
   
                         <%let viewss = 0;%>
-                        <%let views = items[i].statistics.viewCount; viewss = views%>
+                        <%let views = liked[i].statistics.viewCount; viewss = views%>
                         <%if(views >= 1000){views = views/1000; viewss = Math.trunc(views) + 'K'}%>
                         <%if(views >= 1000){views = views/1000; viewss = Math.trunc(views) + 'M'}%>
                         <%if(views >= 1000){views = views/1000; viewss = Math.trunc(views) + 'B'}%>

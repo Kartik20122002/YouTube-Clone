@@ -61,7 +61,7 @@
             <%if(i >= 4){%>
             <div class="vid-list hidden">
             <%}%>
-                 <a href="/videopage?v=<%=channelactivities[i].contentDetails.upload.videoId%>&c=<%=channelactivities[i].snippet.channelId%>"><img src="<%=channelactivities[i].snippet.thumbnails.medium.url%>" loading="lazy" alt="" srcset=""></a>
+                 <a class="thumb-link" href="/videopage?v=<%=channelactivities[i].contentDetails.upload.videoId%>&c=<%=channelactivities[i].snippet.channelId%>"><img src="<%=channelactivities[i].snippet.thumbnails.medium.url%>" loading="lazy" alt="" srcset=""></a>
                  <div class="vid-title"><%=channelactivities[i].snippet.title%></div>
                  <div class="vid-channel"><%=channelinfo.snippet.title%></div>
                  <div class="vid-detials"><%=time%> ago</div>
