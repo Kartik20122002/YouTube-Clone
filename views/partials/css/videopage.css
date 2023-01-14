@@ -322,9 +322,12 @@ a{
         width: 37%;
     }
 
-     #videopage .video-player .video-info .buttons a {
+    #videopage .rating{
         background: none;
-        border: none!important;
+    }
+
+    #videopage #like{
+        border-right: none;
     }
 
     #videopage #share{
