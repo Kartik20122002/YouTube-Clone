@@ -10,14 +10,26 @@
             <% let id = "" %>
             <%if(items[i].id.kind === 'youtube#video'){ %>
                 <% id = items[i].id.videoId%>
+
+                <%  let d1 = new Date(items[i].snippet.publishedAt);%>
+                <%  let d2 = new Date();%>
+                <%  let date = Math.abs(d2-d1);%>
+                <%  let time = 0;%>
+                <%  date = date/(1000*60); time = Math.trunc(date) +" mins" %>
+                <%  if(date >= 60){ date = date/60; time = Math.trunc(date) + " hours";%>
+                <%  if(date >= 24){ date = date/24; time = Math.trunc(date) + " days"%>
+                <%  if(date >= 31){ date = date/30.4167; time = Math.trunc(date) + " months"%>
+                <%  if(date >= 12){ date = date/12; time = Math.trunc(date) + " years"}%>
+                <%  }}}%>
              
                 <div class="vid-list">
-                    <a class="thumb-link" href="/videopage?v=<%=id%>&c=<%=items[i].snippet.channelId%>">  <img src=<%=items[i].snippet.thumbnails.medium.url%> class="thumbnail" alt="Image Here" srcset=""> <div class="keleton"></div> </a>
+                    <a class="thumb-link" href="/videopage?v=<%=id%>&c=<%=items[i].snippet.channelId%>">  <img src="<%=items[i].snippet.thumbnails.medium.url%>" loading="lazy" class="thumbnail" alt="Image Here" srcset=""></a>
                     <div class="flex-div">
                         <a href="/channelpage?c=<%=items[i].snippet.channelId%>"><img src="<%=items[i].channelinfo.snippet.thumbnails.medium.url%>" alt="" srcset=""></a>
                         <div class="vid-info">
                             <a href="/videopage?v=<%=id%>&c=<%=items[i].snippet.channelId%>"><%-items[i].snippet.title%></a>
                             <a href="/channelpage?c=<%=items[i].snippet.channelId%>"> <p><%-items[i].snippet.channelTitle%></p></a>
+                            <p><%=time%> ago</p>
                         </div>
                     </div>
                 </div>

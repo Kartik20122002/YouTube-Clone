@@ -43,11 +43,16 @@
             <% if(channelactivities[i].snippet.type === "upload"){ %>
 
                 
-        <% let year = channelactivities[i].snippet.publishedAt.slice(0,4); %>
-        <% let month = channelactivities[i].snippet.publishedAt.slice(5,7);  %>
-        <% let day = channelactivities[i].snippet.publishedAt.slice(8,10);  %>
-
-        <% let date = day + "/" + month + "/" + year%>
+                <%  let d1 = new Date(channelactivities[i].snippet.publishedAt);%>
+                <%  let d2 = new Date();%>
+                <%  let date = Math.abs(d2-d1);%>
+                <%  let time = 0;%>
+                <%  date = date/(1000*60); time = Math.trunc(date) +" mins" %>
+                <%  if(date >= 60){ date = date/60; time = Math.trunc(date) + " hours";%>
+                <%  if(date >= 24){ date = date/24; time = Math.trunc(date) + " days"%>
+                <%  if(date >= 31){ date = date/30.4167; time = Math.trunc(date) + " months"%>
+                <%  if(date >= 12){ date = date/12; time = Math.trunc(date) + " years"}%>
+                <%  }}}%>
 
 
             <%if(i < 4){%>
@@ -59,7 +64,7 @@
                  <a href="/videopage?v=<%=channelactivities[i].contentDetails.upload.videoId%>&c=<%=channelactivities[i].snippet.channelId%>"><img src="<%=channelactivities[i].snippet.thumbnails.medium.url%>" loading="lazy" alt="" srcset=""></a>
                  <div class="vid-title"><%=channelactivities[i].snippet.title%></div>
                  <div class="vid-channel"><%=channelinfo.snippet.title%></div>
-                 <div class="vid-detials">Uploaded on <%=date%></div>
+                 <div class="vid-detials"><%=time%> ago</div>
             </div>
             <%}%>
             <%}%>
@@ -74,21 +79,33 @@
 
     <div class="videos-collection" id="playlists">
             
-        <div class="title"><img src="./images/playlisticon.png" alt=""> Playlists <span><%=playlists_count%></span>  <a onclick=showmore()>See All</a></div>
+        <div class="title"><img src="./images/playlisticon.png"  alt=""> Playlists <span><%=playlists_count%></span>  <a onclick=showmore()>See All</a></div>
         
         <div class="collection">
 
             <%for(let i = 0 ; i < channelplaylists.length ; i++){%>
+
+                <%  d1 = new Date(channelplaylists[i].snippet.publishedAt);%>
+                <%  d2 = new Date();%>
+                <%  date = Math.abs(d2-d1);%>
+                <%  time = 0;%>
+                <%  date = date/(1000*60); time = Math.trunc(date) +" mins" %>
+                <%  if(date >= 60){ date = date/60; time = Math.trunc(date) + " hours";%>
+                <%  if(date >= 24){ date = date/24; time = Math.trunc(date) + " days"%>
+                <%  if(date >= 31){ date = date/30.4167; time = Math.trunc(date) + " months"%>
+                <%  if(date >= 12){ date = date/12; time = Math.trunc(date) + " years"}%>
+                <%  }}}%>
+
             <%if(i < 4){%>
             <div class="vid-list visible">
             <%}%>
             <%if(i >= 4){%>
             <div class="vid-list hidden">
             <%}%>
-                 <a href="/playlist?p=<%=channelplaylists[i].id%>"><img src="<%=channelplaylists[i].snippet.thumbnails.medium.url%>" alt="" srcset=""></a>
+                 <a href="/playlist?p=<%=channelplaylists[i].id%>"><img src="<%=channelplaylists[i].snippet.thumbnails.medium.url%>" loading="lazy" alt="" srcset=""></a>
                  <div class="vid-title"><%=channelplaylists[i].snippet.title%></div>
                  <div class="vid-channel"><%=channelplaylists[i].snippet.channelTitle%></div>
-                 <div class="vid-detials"><%=channelplaylists[i].contentDetails.itemCount%> items &bull; 2 days ago</div>
+                 <div class="vid-detials"><%=channelplaylists[i].contentDetails.itemCount%> items &bull; <%=time%> ago</div>
             </div>
                         
             <%}%>

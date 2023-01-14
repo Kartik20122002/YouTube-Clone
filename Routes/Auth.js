@@ -23,21 +23,7 @@ try {
     if(expire_time < 100){
 
         res.render('LoginPage.ejs');
-        
-    //     let refreshToken = req.user.refreshToken;
-    //     let newaccessToken = await refresh.requestNewAccessToken(
-    //         'google',
-    //         refreshToken,
-    //         function (err, accessToken, refreshToken) {
-    //           if(err) throw err;
-    //           else return accessToken;
-    //         },
-    //       );
-    //       oauth2client.credentials = {
-    //         access_token : newaccessToken,
-    //         refresh_token : refreshToken
-    //       }
-    //       req.user.accessToken = newaccessToken;
+  
     }
     else next();
 
@@ -55,31 +41,31 @@ const Strategys = new GoogleStrategy({
 },async (accessToken,refreshToken,profile,cb)=>{
 
     try {
-    let users = await User.find({GoogleId : profile.id});
-    if(refreshToken != undefined ){
-        if(users.length == 0){
-                    let user = new User({
-                            GoogleId : profile.id,
-                            Name : profile.displayName,
-                            RefreshToken : refreshToken,
-                    })
+    // let users = await User.find({GoogleId : profile.id});
+    // if(refreshToken != undefined ){
+    //     if(users.length == 0){
+    //                 let user = new User({
+    //                         GoogleId : profile.id,
+    //                         Name : profile.displayName,
+    //                         RefreshToken : refreshToken,
+    //                 })
             
-                    const results = await user.save();
-        }
-        else{
+    //                 const results = await user.save();
+    //     }
+    //     else{
 
-        let personup = await User.updateOne(
-        {GoogleId : profile.id} , 
-        { $set : {RefreshToken : refreshToken , LastVisitedOn: new Date() } }
-        );
-        }
+    //     let personup = await User.updateOne(
+    //     {GoogleId : profile.id} , 
+    //     { $set : {RefreshToken : refreshToken , LastVisitedOn: new Date() } }
+    //     );
+    //     }
         
-    }
-    else{
-        if(users.length != 0){
-            refreshToken = users[0].RefreshToken;
-        }
-    }
+    // }
+    // else{
+    //     if(users.length != 0){
+    //         refreshToken = users[0].RefreshToken;
+    //     }
+    // }
 
     return cb(null,{profile,accessToken,refreshToken});
 }

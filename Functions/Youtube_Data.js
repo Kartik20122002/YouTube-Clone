@@ -164,7 +164,7 @@ export const user_subscriptions = async ()=>{
     try {
         let results = await youtube.subscriptions.list({
             part : ['snippet','contentDetails'],
-            maxResults : 25,
+            maxResults : 50,
             mine : true,
         });
     

@@ -17,7 +17,7 @@ import { Like } from './Routes/Like.js';
 import { connectDB } from './DataBase/db.js';
 import { LoginPage } from './Routes/LoginPage.js';
 import { trial } from './Routes/trial.js';
-await connectDB();
+// await connectDB();
 
 
 const app = express();

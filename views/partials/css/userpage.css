@@ -169,13 +169,14 @@
     color: #5a5a5ac2;
 }
 
-.hidden{
-    display: none;
+#Subscriptions .title a{
+    cursor: pointer;
 }
 
-.visible{
-    display: flex!important;
+.hidden{
+    display: none!important;
 }
+
 
 @media (prefers-color-scheme: dark){
     #userpage {

@@ -8,10 +8,22 @@
         <% let video_link = "/videopage?v=" + items[i].id + "&c=" + items[i].snippet.channelId %>
         <% let channel_link = "/channelpage?c=" + items[i].snippet.channelId %>
 
-    <%    let views = (items[i].statistics.viewCount/1000000).toFixed(1);%>
-    <%    if(views > 10) views = Math.trunc(views);%>
-    <%    if(views > 1) views = views + 'M';%>
-    <%    if(views <= 1) views = (items[i].statistics.viewCount/1000).toFixed(1) + 'K';%>
+        <%  let d1 = new Date(items[i].snippet.publishedAt);%>
+        <%  let d2 = new Date();%>
+        <%  let date = Math.abs(d2-d1);%>
+        <%  let time = 0;%>
+        <%  date = date/(1000*60); time = Math.trunc(date) +" mins" %>
+        <%  if(date >= 60){ date = date/60; time = Math.trunc(date) + " hours";%>
+        <%  if(date >= 24){ date = date/24; time = Math.trunc(date) + " days"%>
+        <%  if(date >= 31){ date = date/30.4167; time = Math.trunc(date) + " months"%>
+        <%  if(date >= 12){ date = date/12; time = Math.trunc(date) + " years"}%>
+        <%  }}}%>
+    
+        <%let viewss = 0;%>
+        <%let views = items[i].statistics.viewCount; viewss = views%>
+        <%if(views >= 1000){views = views/1000; viewss = Math.trunc(views) + 'K'}%>
+        <%if(views >= 1000){views = views/1000; viewss = Math.trunc(views) + 'M'}%>
+        <%if(views >= 1000){views = views/1000; viewss = Math.trunc(views) + 'B'}%>
 
             <%if(i === items.length-1){%>
                 <div class= "vid-list">
@@ -26,7 +38,7 @@
                                             href=<%=video_link%>><%=items[i].snippet.title%></a>
                                        <a href=<%=channel_link%> > <p><%=items[i].snippet.channelTitle%></p></a>
                                         
-                                        <p> <%=views%> Views &bull; 2 days</p>
+                                        <p> <%=viewss%> Views &bull; <%=time%> ago</p>
                                     </div>
                                 </div>
                 </div>
@@ -40,7 +52,7 @@
                                         <a href=<%=video_link%>><%=items[i].snippet.title%></a>
                                        <a href=<%=channel_link%>> <p><%=items[i].snippet.channelTitle%></p></a>
                                         
-                                        <p> <%=views%> Views &bull; 2 days</p>
+                                        <p> <%=viewss%> Views &bull; <%=time%> ago</p>
                                     </div>
                                 </div>
                 </div>
