@@ -322,6 +322,10 @@ a{
         width: 37%;
     }
 
+     #videopage .video-player .video-info .buttons a {
+        background: none;
+    }
+
     #videopage #share{
         display: none;
     }
@@ -402,9 +406,6 @@ a{
 
     #videopage .video-player .video-info .buttons a {
         color: var(--white);
-    }
-
-    #videopage .video-player .video-info .buttons a{
         background: rgb(255 255 255 / 10%);
     }
 
