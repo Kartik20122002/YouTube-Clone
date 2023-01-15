@@ -1,6 +1,5 @@
 import express from 'express';
 export const UserPage = express.Router();
-import ejs from 'ejs';
 import { user_playlists , liked_videos , user_subscriptions } from '../Functions/Youtube_Data.js';
 UserPage.use(express.json());
 

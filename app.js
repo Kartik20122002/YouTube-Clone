@@ -14,17 +14,14 @@ import { ChannelPage} from './Routes/ChannelPage.js';
 import { Playlist } from './Routes/PlaylistPage.js';
 import { Subscribe } from './Routes/Subscribe.js';
 import { Like } from './Routes/Like.js';
-import { connectDB } from './DataBase/db.js';
 import { LoginPage } from './Routes/LoginPage.js';
-import { trial } from './Routes/trial.js';
-// await connectDB();
 
 
 const app = express();
 app.use(session({
     secret : secret ,
-    resave : true,
-    saveUninitialized : true
+    resave : false,
+    saveUninitialized : false
 }));
 app.use(passport.initialize());
 app.use(passport.session());

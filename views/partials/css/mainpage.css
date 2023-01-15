@@ -4,7 +4,7 @@
     height: 92vh;
     overflow-y: scroll;
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 10%;
     transition: .4s all;
 }
 
@@ -15,7 +15,7 @@
 
 #mainpage .list-container{
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
     grid-column-gap: 16px;
     grid-row-gap: 30px;
     margin-top: 15px;
@@ -25,6 +25,7 @@
 .thumb-link{
     display: flex;
     background: #5a5a5a;
+    min-height: 10rem;
     position: relative;
     height: fit-content;
     border-radius: 5%;

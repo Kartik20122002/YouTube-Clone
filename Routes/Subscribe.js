@@ -54,46 +54,6 @@ else{
 
 
 
-// Subscribe
-// .get('/',async (req,res)=>{
-//     let id = req.query.c;
-//     let value = req.query.value;
-
-//     console.log("reached")
-    
-//     if(value === 'true'){
-//     console.log("subscribed to id : ",id);
-
-//     // let result = await subscribe(id);
-
-//     // if(result === true){
-//         res.send(`<button hx-get = "/subscribe?c=${id}&value=false"
-//         hx-swap = "outerHTML"
-//         type="button" id="subscribed">Subscribed
-//        </button>`);
-//     // }
-//     // else{
-//     //     res.send(`<button  hx-get = "/subscribe?c=${id}&value=true"
-//     //     hx-swap = "outerHTML"
-//     //      type="button">Subscribe
-//     //    </button>`)
-//     // }
-    
-// }
-// else{
-//         console.log("unsubscribed to id : ",id);
-//         res.send(`<button  hx-get = "/subscribe?c=${id}&value=true"
-//         hx-swap = "outerHTML"
-//         type="button">Subscribe
-//         </button>`)   
-//     }
-// });
-
-
-
-
-
-
 
 
 

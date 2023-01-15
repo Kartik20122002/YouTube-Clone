@@ -1,7 +1,7 @@
 {
     "short_name" : "YouTube-Lite",
     "name" : "YouTube-Lite",
-    "description": "This is fully functional clone of youtube.",
+    "description": "This is fully functional clone of YouTube.",
     "start_url": "/",
     "display" : "standalone",
     "background_color" : "white",

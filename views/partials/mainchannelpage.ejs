@@ -43,7 +43,7 @@
 
     <div class="videos-collection" id="recent_uploads">
             
-        <div class="title"><img src="./images/recent.png" alt=""> Recent Uploads <span><%=channelactivities.length%></span>  <a onclick=showmore()>See All</a></div>
+        <div class="title"><img src="./images/recent.png" loading="lazy" alt=""> Recent Uploads <span><%=channelactivities.length%></span>  <a>See All</a></div>
 
         <div class="collection">
 
@@ -87,7 +87,7 @@
 
     <div class="videos-collection" id="playlists">
             
-        <div class="title"><img src="./images/playlisticon.png"  alt=""> Playlists <span><%=playlists_count%></span>  <a onclick=showmore()>See All</a></div>
+        <div class="title"><img src="./images/playlisticon.png" loading="lazy"  alt=""> Playlists <span><%=playlists_count%></span>  <a>See All</a></div>
         
         <div class="collection">
 
@@ -132,7 +132,7 @@
 
 
 <script>
-    let playlist_btn = document.querySelector('#playlists .title a');
+let playlist_btn = document.querySelector('#playlists .title a');
 let hidden_playlist_videos = document.querySelectorAll('#playlists .hidden');
 
 playlist_btn.addEventListener('click',()=>{

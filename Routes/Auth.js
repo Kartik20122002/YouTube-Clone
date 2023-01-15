@@ -1,11 +1,8 @@
 import {clientId , clientSecret , redirectUrl , scopes } from '../Functions/GoogleAuth.js'
 import passport from 'passport';
-import refresh from 'passport-oauth2-refresh';
 import { Strategy } from 'passport-google-oauth20';
 import express from 'express';
 import axios from 'axios';
-import { User } from '../DataBase/db.js';
-import {oauth2client,youtube} from '../Functions/Youtube_Data.js';
 export const Auth = express.Router();
 
 const GoogleStrategy = Strategy;
@@ -41,31 +38,6 @@ const Strategys = new GoogleStrategy({
 },async (accessToken,refreshToken,profile,cb)=>{
 
     try {
-    // let users = await User.find({GoogleId : profile.id});
-    // if(refreshToken != undefined ){
-    //     if(users.length == 0){
-    //                 let user = new User({
-    //                         GoogleId : profile.id,
-    //                         Name : profile.displayName,
-    //                         RefreshToken : refreshToken,
-    //                 })
-            
-    //                 const results = await user.save();
-    //     }
-    //     else{
-
-    //     let personup = await User.updateOne(
-    //     {GoogleId : profile.id} , 
-    //     { $set : {RefreshToken : refreshToken , LastVisitedOn: new Date() } }
-    //     );
-    //     }
-        
-    // }
-    // else{
-    //     if(users.length != 0){
-    //         refreshToken = users[0].RefreshToken;
-    //     }
-    // }
 
     return cb(null,{profile,accessToken,refreshToken});
 }
@@ -77,7 +49,6 @@ catch (err) {
 )
 
 passport.use(Strategys);
-refresh.use(Strategys);
 
 
 
@@ -95,7 +66,7 @@ Auth
 .get('/',(req,res)=>{
     res.render('LoginPage.ejs');
 })
-.get('/signin',passport.authenticate('google',{accessType: 'offline'}))
+.get('/signin',passport.authenticate('google'))
 .get('/callback?',passport.authenticate('google',({
     failureRedirect : '/googleauth' , failureMessage : true, successRedirect : '/'
 })))

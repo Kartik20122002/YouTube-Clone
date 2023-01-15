@@ -1,6 +1,5 @@
 import express from 'express';
 export const Like = express.Router();
-import ejs from 'ejs';
 import { rating } from '../Functions/Youtube_Data.js';
 Like.use(express.json());
 

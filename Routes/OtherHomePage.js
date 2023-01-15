@@ -30,16 +30,10 @@ OtherHomePage
            
     } catch (error) {
         if(error.response){
-            if(error.response.data){
-                if(error.response.data.error){
-                    console.log(error);
-                        res.status(error.response.data.error.code).send(error.response.data.error.message);
-                }
-            }
-
+            res.render('ErrorPage.ejs',{error : error});
         }
         else{
-            res.send(error)
+            res.render('LoginPage.ejs');
         }
     }
    

@@ -1,6 +1,5 @@
 import express from 'express';
 export const Home = express.Router();
-import ejs from 'ejs';
 import { popular_videos ,oauth2client, user_subscriptions } from '../Functions/Youtube_Data.js';
 Home.use(express.json());
 

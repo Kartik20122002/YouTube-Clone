@@ -15,8 +15,8 @@ OtherLikePage
 
         if(nextpagetoken){
             nextpagetoken = nextpagetoken;
-       }
-       else nextpagetoken = "notokenhere";
+        }
+        else nextpagetoken = "notokenhere";
 
         ejs.renderFile('./views/partials/otherlikepage.ejs',{ items : liked , nextpagetoken : nextpagetoken},{},(err,temp)=>{
             if (err) {

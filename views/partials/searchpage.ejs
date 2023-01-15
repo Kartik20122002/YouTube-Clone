@@ -25,7 +25,7 @@
                 <div class="vid-list">
                     <a class="thumb-link" href="/videopage?v=<%=id%>&c=<%=items[i].snippet.channelId%>">  <img src="<%=items[i].snippet.thumbnails.medium.url%>" loading="lazy" class="thumbnail" alt="Image Here" srcset=""></a>
                     <div class="flex-div">
-                        <a href="/channelpage?c=<%=items[i].snippet.channelId%>"><img src="<%=items[i].channelinfo.snippet.thumbnails.medium.url%>" alt="" srcset=""></a>
+                        <a href="/channelpage?c=<%=items[i].snippet.channelId%>"><img src="<%=items[i].channelinfo.snippet.thumbnails.medium.url%>" loading="lazy" alt="" srcset=""></a>
                         <div class="vid-info">
                             <a href="/videopage?v=<%=id%>&c=<%=items[i].snippet.channelId%>"><%-items[i].snippet.title%></a>
                             <a href="/channelpage?c=<%=items[i].snippet.channelId%>"> <p><%-items[i].snippet.channelTitle%></p></a>
@@ -41,7 +41,7 @@
                 <div class="vid-list">
                     <a href="/playlist?p=<%=id%>"><img src=<%=items[i].snippet.thumbnails.medium.url%> class="thumbnail" alt="Image Here" srcset=""> </a>
                     <div class="flex-div">
-                        <a href="/channelpage?c=<%=items[i].snippet.channelId%>"><img src="<%-items[i].channelinfo.snippet.thumbnails.medium.url%>" alt="" srcset=""></a>
+                        <a href="/channelpage?c=<%=items[i].snippet.channelId%>"><img src="<%-items[i].channelinfo.snippet.thumbnails.medium.url%>" loading="lazy" alt="" srcset=""></a>
                         <div class="vid-info">
                             <a href="/playlist?p=<%=id%>"><%-items[i].snippet.title%> (PlayList)</a>
                             <a href="/channelpage?c=<%=items[i].snippet.channelId%>"> <p><%-items[i].snippet.channelTitle%></p></a>
@@ -53,7 +53,7 @@
                 <% id = items[i].id.channelId %>
 
                 <div class="vid-list channel-list">
-                    <a href=/channelpage?c=<%=id%>>  <img src=<%=items[i].snippet.thumbnails.medium.url%> class="thumbnail" alt="Image Here"> </a>
+                    <a href=/channelpage?c=<%=id%>>  <img src="<%=items[i].snippet.thumbnails.medium.url%>" loading="lazy" class="thumbnail" alt="Image Here"> </a>
                     <div class="flex-div">
                         <div class="vid-info">
                             <a href=/channelpage?c=<%=id%>><%-items[i].snippet.title%></a>

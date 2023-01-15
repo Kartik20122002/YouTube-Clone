@@ -1,6 +1,5 @@
 import express from 'express';
 export const ChannelPage = express.Router();
-import ejs from 'ejs';
 import { channel_activities, channel_info, channel_playlists, get_date, is_Subscribed, user_subscriptions } from '../Functions/Youtube_Data.js';
 ChannelPage.use(express.json());
 

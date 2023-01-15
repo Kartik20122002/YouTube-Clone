@@ -1,5 +1,4 @@
 import express from 'express';
-import ejs from 'ejs';
 import { search_videos ,user_subscriptions } from '../Functions/Youtube_Data.js';
 import { isLoggedIn } from './Auth.js';
 

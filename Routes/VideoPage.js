@@ -1,6 +1,7 @@
 import express from 'express';
+import ytdl from 'ytdl-core';
+import fs from 'node:fs'
 export const videopage = express.Router();
-import ejs from 'ejs';
 import { getComments, getRating, get_videoAndChannel, is_Subscribed, user_subscriptions } from '../Functions/Youtube_Data.js';
 videopage.use(express.json());
 
@@ -50,5 +51,18 @@ videopage
 
 })
 .post('/',(req,res)=>{
-   res.send("Feature is in development");
+   res.send("Feature is in development , Please Go Back");
+})
+.get('/download',(req,res)=>{
+  try {
+
+     ytdl('http://www.youtube.com/watch?v=aqz-KE-bpKQ').pipe(fs.createWriteStream(`video.mp4`));
+   //   console.log("Downloading...")
+     res.send("Download")
+
+
+  } catch (error) {
+     console.log(error);
+     res.send("Download");
+  }
 })

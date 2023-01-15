@@ -1,6 +1,5 @@
 import express from 'express';
 export const Playlist = express.Router();
-import ejs from 'ejs';
 import { user_subscriptions , playlist_byid} from '../Functions/Youtube_Data.js';
 Playlist.use(express.json());
 

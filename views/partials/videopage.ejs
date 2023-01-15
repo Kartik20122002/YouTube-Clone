@@ -6,7 +6,7 @@
     <div class="row">
         <div class="video-player">
             <div class="player">
-                <iframe src="https://www.youtube.com/embed/<%=video.id%>?autoplay=1&rel=0" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/<%=video.id%>?rel=0&autoplay=1" frameborder="0" allowfullscreen autoplay></iframe>
             </div>
 
             <h3 class="video-title"><%=video.snippet.title%></h3>
@@ -66,8 +66,9 @@
                     
                         </a>
                     
-                    <a href="#" id="share"><img src="./images/share.png">Share</a>
-                    <a href="#" id="save"><img src="./images/download.png">Download</a>
+                    <a id="share" style="cursor: pointer;" onclick="copyFunction()"><img src="./images/share.png">Share</a>
+                    <a id="save" style="cursor: pointer;" hx-get="/videopage/download?link='<%=video.id%>'&title='<%=video.snippet.title%>.mp4'" hx-swap="innerHTML">
+                        <img src="./images/download.png">Download</a>
 
                 </div>
             </div>
@@ -81,10 +82,10 @@
                 <%  if(subscribers >= 1000){subscribers = subscribers/1000; subscriberss = Math.trunc(subscribers) + 'B'}%>
 
             <div class="channelinfo">
-            <a href="/channelpage?c=<%=channel.id%>">    <img src=<%=channel.snippet.thumbnails.medium.url%> alt=""> </a>
+            <a href="/channelpage?c=<%=channel.id%>">    <img src="<%=channel.snippet.thumbnails.medium.url%>" alt=""> </a>
 
                 <div class="channel-details">
-                 <a href="/channelpage?c=<%=channel.id%>">   <p><%=channel.snippet.title%></p> </a>
+                 <a href="/channelpage?c=<%=channel.id%>"><p><%=channel.snippet.title%></p> </a>
                     <span><%=subscriberss%> Subscribers</span>
                 </div>
                 <%if(isSubscribed > 0){%>
@@ -140,15 +141,15 @@
         <% let likes = comments[i].snippet.topLevelComment.snippet.likeCount%>
 
             <div class="commentsection">
-              <a href=<%=authorChannel%>>  <img src=<%=authorImage%>> </a>
+              <a href=<%=authorChannel%>>  <img src="<%=authorImage%>" loading="lazy"> </a>
                 <div class="person-details">
                     <a href=<%=authorChannel%>> <h3><%=authorName%> <span><%=time%> ago</span></h3> </a>
                     <p class="person-comment"> <%=comment%></p>
 
                     <div class="comment-actions">
-                        <img src="./images/like.png">
+                        <img src="./images/like.png" loading="lazy">
                         <span><%=likes%></span>
-                        <img src="./images/dislike.png">
+                        <img src="./images/dislike.png" loading="lazy">
                     </div>
 
                 </div>
@@ -182,7 +183,7 @@
                 <% let channelTitle = relatedvideos.items[i].snippet.channelTitle %>
 
             <div class="side-video-list">
-                <a href=<%=link%> class="small-thumbnail"> <img src=<%=thumbnail%> loading="lazy" alt="."> </a>
+                <a href=<%=link%> class="small-thumbnail"> <img src="<%=thumbnail%>" loading="lazy" alt="."> </a>
                 <div class="vid-info">
                     <a href=<%=link%> class="title"><%=videoTitle%></a>
                     <p class="channel"><a href="/channelpage?c=<%=relatedvideos.items[i].snippet.channelId%>"><%=channelTitle%></a></p>
@@ -217,5 +218,13 @@
     desc.addEventListener('click',()=>{
         desc.classList.toggle('longdesc')
     })
+
+  function copyFunction() {
+  var copyText = "https://www.youtube.com/watch?v=<%=video.id%>";
+
+  navigator.clipboard.writeText(copyText);
+
+  alert("Copied the text: " + copyText);
+}
 
 </script>

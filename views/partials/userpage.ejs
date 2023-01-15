@@ -52,7 +52,6 @@
                   
 
                     <%for(let i = 0 ; i < subs.length; i++){%>
-                        <!-- subs[i].snippet.publishedAt -->
                       <%  let d1 = new Date(subs[i].snippet.publishedAt);%>
                       <%  let d2 = new Date();%>
                       <%  let date = Math.abs(d2-d1);%>
@@ -64,13 +63,13 @@
 
                     <%if(i < 5){%>
                     <div class="vid-list">
-                         <a href="/channelpage?c=<%=subs[i].snippet.resourceId.channelId%>"><img src="<%=subs[i].snippet.thumbnails.medium.url%>" alt="" srcset=""></a>
+                         <a href="/channelpage?c=<%=subs[i].snippet.resourceId.channelId%>"><img src="<%=subs[i].snippet.thumbnails.medium.url%>" loading="lazy" alt="" srcset=""></a>
                          <div class="vid-channel"><%=subs[i].snippet.title%></div>
                          <div class="vid-detials"><%=subs[i].contentDetails.totalItemCount%> items &bull; <%=time%> ago</div>
                     </div>
                     <%}else{%>
                         <div class="vid-list hidden">
-                            <a href="/channelpage?c=<%=subs[i].snippet.resourceId.channelId%>"><img src="<%=subs[i].snippet.thumbnails.medium.url%>" alt="" srcset=""></a>
+                            <a href="/channelpage?c=<%=subs[i].snippet.resourceId.channelId%>"><img src="<%=subs[i].snippet.thumbnails.medium.url%>" loading="lazy" alt="" srcset=""></a>
                             <div class="vid-channel"><%=subs[i].snippet.title%></div>
                             <div class="vid-detials"><%=subs[i].contentDetails.totalItemCount%> items &bull; <%=time%> ago</div>
                        </div>
@@ -91,13 +90,25 @@
 
                 <div class="collection">
 
-                    <% for(let i = 0 ; i < Math.min(5,playlists.length) ; i++){ %>
+                    <% for(let i = 0 ; i < playlists.length ; i++){ %>
 
+                    <%  let d1 = new Date(playlists[i].snippet.publishedAt);%>
+                    <%  let d2 = new Date();%>
+                    <%  let date = Math.abs(d2-d1);%>
+                    <%  let time = 0;%>
+                    <%  date = date/(1000*3600*24); time = Math.trunc(date)+" days"%>
+                    <%  if(date >= 31){ date = date/(30.4167); time = Math.trunc(date) + " months" }%>
+                    <%  if(date >= 12){ date = date/(12); time = Math.trunc(date) + " years" }%>
+
+                    <%if(i < 5){%>
                     <div class="vid-list">
-                         <a href="/playlist?p=<%=playlists[i].id%>"><img src="<%=playlists[i].snippet.thumbnails.medium.url%>" alt="" srcset=""></a>
+                    <%}else{%>
+                    <div class="vid-list hidden">
+                    <%}%>
+                         <a href="/playlist?p=<%=playlists[i].id%>"><img src="<%=playlists[i].snippet.thumbnails.medium.url%>" loading="lazy" alt="" srcset=""></a>
                          <div class="vid-title"><%=playlists[i].snippet.title%></div>
                          <div class="vid-channel"><%=playlists[i].snippet.channelTitle%></div>
-                         <div class="vid-detials"><%=playlists[i].contentDetails.itemCount%> items &bull; 2 days ago</div>
+                         <div class="vid-detials"><%=playlists[i].contentDetails.itemCount%> items &bull; <%=time%> ago</div>
                     </div>
 
                     <%}%>
@@ -112,7 +123,7 @@
 
 
         <div class="user-info">
-              <img src="<%=profile.photos[0].value%>" alt=""> 
+              <img src="<%=profile.photos[0].value%>" loading="lazy" alt=""> 
               <div class="user-name"><%=profile.displayName%></div>
               
               <hr>
