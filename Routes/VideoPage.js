@@ -1,5 +1,7 @@
 import express from 'express';
 import ytcog from 'ytcog';
+import env from 'dotenv';
+env.config();
 export const videopage = express.Router();
 import { getComments, getRating, get_videoAndChannel, is_Subscribed, user_subscriptions } from '../Functions/Youtube_Data.js';
 videopage.use(express.json());
