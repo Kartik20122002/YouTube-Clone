@@ -1,6 +1,8 @@
 import express from 'express';
 import ytdl from 'ytdl-core';
 import fs from 'node:fs'
+import path from 'node:path';
+import ytcog from 'ytcog';
 export const videopage = express.Router();
 import { getComments, getRating, get_videoAndChannel, is_Subscribed, user_subscriptions } from '../Functions/Youtube_Data.js';
 videopage.use(express.json());
@@ -53,16 +55,16 @@ videopage
 .post('/',(req,res)=>{
    res.send("Feature is in development , Please Go Back");
 })
-.get('/download',(req,res)=>{
+.get('/download',async (req,res)=>{
   try {
-
-     ytdl('http://www.youtube.com/watch?v=aqz-KE-bpKQ').pipe(fs.createWriteStream(`video.mp4`));
-   //   console.log("Downloading...")
-     res.send("Download")
-
-
+   await ytcog.dl({id:req.query.link});
+   res.send(`
+   <a id="save" style="cursor: pointer;">
+   Downloaded</a>`)
   } catch (error) {
      console.log(error);
-     res.send("Download");
+     res.send(`
+   <a id="save" style="cursor: pointer;" hx-get="/videopage/download?link=${req.query.link}&title='${req.query.title}'" hx-swap="outerHTML">
+   <img src="./images/download.png">Download</a>`)
   }
 })
