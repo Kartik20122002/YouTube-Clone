@@ -57,10 +57,12 @@ videopage
 })
 .get('/download',async (req,res)=>{
   try {
-   await ytcog.dl({id:req.query.link});
-   res.send(`
-   <a id="save" style="cursor: pointer;">
-   Downloaded</a>`)
+   let videopath = path.resolve('/');
+   res.send(videopath);
+   // await ytcog.dl({id:req.query.link});
+   // res.send(`
+   // <a id="save" style="cursor: pointer;">
+   // Downloaded</a>`)
   } catch (error) {
      console.log(error);
      res.send(`
