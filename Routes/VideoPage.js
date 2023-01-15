@@ -59,12 +59,10 @@ videopage
       const videopath = systemPath('desktop');
       console.log(videopath);
 
-      res.send(videopath);
-
-   //    await ytcog.dl({id:req.query.link,videoQuality:'720p',path : 'C:/'});  // ,path : downloadfolder
-   //    res.send(`
-   //    <a id="save" style="cursor: pointer;">
-   // Downloaded</a>`)
+      // await ytcog.dl({id:req.query.link,videoQuality:'720p'});  // ,path : downloadfolder
+      res.send(`
+      <a id="save" style="cursor: pointer;">
+   Downloaded</a>`)
   } catch (error) {
      console.log(error);
      res.send(`
