@@ -1,7 +1,4 @@
 import express from 'express';
-import ytdl from 'ytdl-core';
-import fs from 'node:fs'
-import path from 'node:path';
 import ytcog from 'ytcog';
 export const videopage = express.Router();
 import { getComments, getRating, get_videoAndChannel, is_Subscribed, user_subscriptions } from '../Functions/Youtube_Data.js';
@@ -57,9 +54,10 @@ videopage
 })
 .get('/download',async (req,res)=>{
   try {
-   let videopath = path.resolve('/');
-   res.send(videopath);
-   // await ytcog.dl({id:req.query.link});
+   let downloadfolder =  process.env.USERPROFILE + "/Downloads";
+
+   res.send(downloadfolder);
+   // await ytcog.dl({id:req.query.link,videoQuality:'720p',path : downloadfolder});
    // res.send(`
    // <a id="save" style="cursor: pointer;">
    // Downloaded</a>`)
