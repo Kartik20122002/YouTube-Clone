@@ -1,6 +1,6 @@
 import express from 'express';
 import ytcog from 'ytcog';
-import os from 'os';
+import { systemPath } from 'drive-tools';
 export const videopage = express.Router();
 import { getComments, getRating, get_videoAndChannel, is_Subscribed, user_subscriptions } from '../Functions/Youtube_Data.js';
 videopage.use(express.json());
@@ -55,11 +55,16 @@ videopage
 })
 .get('/download',async (req,res)=>{
    try {
+      
+      const videopath = systemPath('desktop');
+      console.log(videopath);
 
-      await ytcog.dl({id:req.query.link,videoQuality:'720p'});  // ,path : downloadfolder
-      res.send(`
-      <a id="save" style="cursor: pointer;">
-   Downloaded</a>`)
+      res.send(videopath);
+
+   //    await ytcog.dl({id:req.query.link,videoQuality:'720p',path : 'C:/'});  // ,path : downloadfolder
+   //    res.send(`
+   //    <a id="save" style="cursor: pointer;">
+   // Downloaded</a>`)
   } catch (error) {
      console.log(error);
      res.send(`
