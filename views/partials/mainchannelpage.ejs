@@ -8,11 +8,19 @@
             <img src="<%=channelinfo.snippet.thumbnails.medium.url%>" loading="lazy" alt="" srcset="">
         </div>
 
+        <%  let subscriberss = 0;%>
+        <%  let subscribers = channelinfo.statistics.subscriberCount; subscriberss = subscribers;%>
+        <%  if(subscribers >= 1000){subscribers = subscribers/1000; subscriberss = Math.trunc(subscribers) + 'K'}%>
+        <%  if(subscribers >= 1000){subscribers = subscribers/1000; subscriberss = Math.trunc(subscribers) + 'M'}%>
+        <%  if(subscribers >= 1000){subscribers = subscribers/1000; subscriberss = Math.trunc(subscribers) + 'B'}%>
+
+        
+
 
         <div class="channel-details">
             <div class="channel-name"><%=channelinfo.snippet.title%></div>
             <div class="fancy-id"><%=channelinfo.snippet.customUrl%></div>
-            <div class="subscribers"><%=channelinfo.statistics.subscriberCount%> subscribers</div>
+            <div class="subscribers"><%=subscriberss%> subscribers</div>
             <div class="subscribers"><%=channelinfo.statistics.videoCount%> videos</div>
             <div class="items"><%=channelinfo.statistics.viewCount%> views</div>
         </div>

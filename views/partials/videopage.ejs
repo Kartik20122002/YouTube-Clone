@@ -73,8 +73,9 @@
             </div>
             <hr>
 
-            <%  let subscriberss = 0;%>
-                <%  let subscribers = video.statistics.subscriberCount; viewss = views%>
+
+                <%  let subscriberss = 0;%>
+                <%  let subscribers = channel.statistics.subscriberCount; subscriberss = subscribers;%>
                 <%  if(subscribers >= 1000){subscribers = subscribers/1000; subscriberss = Math.trunc(subscribers) + 'K'}%>
                 <%  if(subscribers >= 1000){subscribers = subscribers/1000; subscriberss = Math.trunc(subscribers) + 'M'}%>
                 <%  if(subscribers >= 1000){subscribers = subscribers/1000; subscriberss = Math.trunc(subscribers) + 'B'}%>
@@ -102,9 +103,10 @@
             </div>
 
             <div class="vid-description">
-
-                <p class="desc"><%-video.snippet.description%></p>
-                                  <hr>
+                <%if(video.snippet.description){%>
+                <p class="desc"><%=video.snippet.description%></p>
+                <hr>
+                <%}%>
 
               <h4><%=video.statistics.commentCount %> Comments</h4>
 
