@@ -1,7 +1,6 @@
 import express from 'express';
 import ytcog from 'ytcog';
-import env from 'dotenv';
-env.config();
+import os from 'os';
 export const videopage = express.Router();
 import { getComments, getRating, get_videoAndChannel, is_Subscribed, user_subscriptions } from '../Functions/Youtube_Data.js';
 videopage.use(express.json());
@@ -10,17 +9,17 @@ videopage.use(express.json());
 
 videopage
 .get('/',async (req,res)=>{
-
+   
    try {
       const videoId = req.query.v;
       const channelId = req.query.c;
-   
+      
       let item0 = get_videoAndChannel(videoId,channelId);
       let item1 = getComments(videoId);
       let item2 = getRating(videoId);
       let item3 = is_Subscribed(channelId);
       let item4 = user_subscriptions();
-
+      
       let results = await Promise.all([item0,item1,item2,item3,item4]);
 
       
@@ -30,8 +29,8 @@ videopage
       const {flag , id} = results[3];
       const {subs} = results[4];
       
-
-
+      
+      
       res.render('VideoPage.ejs',{
          comments: comments,
          relatedvideos: relatedvideos, 
@@ -44,24 +43,23 @@ videopage
          queryvalue : "" , 
          profile : req.user.profile
       });
-
+      
    } catch (error) {
       res.render('ErrorPage.ejs',{error : error});
    }
-
-
+   
+   
 })
 .post('/',(req,res)=>{
    res.send("Feature is in development , Please Go Back");
 })
 .get('/download',async (req,res)=>{
-  try {
-   let downloadfolder =  process.env.USERPROFILE + "/Downloads";
-
-   res.send(downloadfolder);
-   // await ytcog.dl({id:req.query.link,videoQuality:'720p',path : downloadfolder});
-   // res.send(`
-   // <a id="save" style="cursor: pointer;">
+   try {
+      const userHomeDir = os.homedir();
+      res.send(userHomeDir);
+      // await ytcog.dl({id:req.query.link,videoQuality:'720p',path : downloadfolder});
+      // res.send(`
+      // <a id="save" style="cursor: pointer;">
    // Downloaded</a>`)
   } catch (error) {
      console.log(error);
