@@ -1,6 +1,5 @@
 <link rel="stylesheet" href="./partials/css/videopage.css">
 <script src="./js/htmx.js"></script>
-
 <div id="videopage" class="container play-container">
 
     <div class="row">
@@ -67,8 +66,8 @@
                         </a>
                     
                     <a id="share" style="cursor: pointer;" onclick="copyFunction()"><img src="./images/share.png">Share</a>
-                    <a id="save" style="cursor: pointer;" hx-get="/videopage/download?link=<%=video.id%>" hx-swap="outerHTML">
-                        <img src="./images/download.png">Download</a>
+                    <!-- <a id="save" style="cursor: pointer;" hx-get="/videopage/download?link=<%=video.id%>" hx-swap="outerHTML">
+                        <img src="./images/download.png">Download</a> -->
 
                 </div>
             </div>

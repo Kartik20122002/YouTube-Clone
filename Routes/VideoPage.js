@@ -55,12 +55,11 @@ videopage
 })
 .get('/download',async (req,res)=>{
    try {
-      const userHomeDir = os.homedir();
-      res.send(userHomeDir);
-      // await ytcog.dl({id:req.query.link,videoQuality:'720p',path : downloadfolder});
-      // res.send(`
-      // <a id="save" style="cursor: pointer;">
-   // Downloaded</a>`)
+
+      await ytcog.dl({id:req.query.link,videoQuality:'720p'});  // ,path : downloadfolder
+      res.send(`
+      <a id="save" style="cursor: pointer;">
+   Downloaded</a>`)
   } catch (error) {
      console.log(error);
      res.send(`
