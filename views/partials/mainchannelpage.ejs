@@ -65,15 +65,20 @@
 
             <%if(i < 4){%>
             <div class="vid-list visible">
-            <%}%>
-            <%if(i >= 4){%>
+                <a class="thumb-link" href="/videopage?v=<%=channelactivities[i].contentDetails.upload.videoId%>&c=<%=channelactivities[i].snippet.channelId%>"><img src="<%=channelactivities[i].snippet.thumbnails.medium.url%>" loading="lazy" alt="" srcset=""></a>
+                <div class="vid-title"><%=channelactivities[i].snippet.title%></div>
+                <div class="vid-channel"><%=channelinfo.snippet.title%></div>
+                <div class="vid-detials"><%=time%> ago</div>
+           </div>
+            <%}else{%>
             <div class="vid-list hidden">
+                <a class="thumb-link" href="/videopage?v=<%=channelactivities[i].contentDetails.upload.videoId%>&c=<%=channelactivities[i].snippet.channelId%>"><img src="<%=channelactivities[i].snippet.thumbnails.medium.url%>" loading="lazy" alt="" srcset=""></a>
+                <div class="vid-title"><%=channelactivities[i].snippet.title%></div>
+                <div class="vid-channel"><%=channelinfo.snippet.title%></div>
+                <div class="vid-detials"><%=time%> ago</div>
+           </div>
             <%}%>
-                 <a class="thumb-link" href="/videopage?v=<%=channelactivities[i].contentDetails.upload.videoId%>&c=<%=channelactivities[i].snippet.channelId%>"><img src="<%=channelactivities[i].snippet.thumbnails.medium.url%>" loading="lazy" alt="" srcset=""></a>
-                 <div class="vid-title"><%=channelactivities[i].snippet.title%></div>
-                 <div class="vid-channel"><%=channelinfo.snippet.title%></div>
-                 <div class="vid-detials"><%=time%> ago</div>
-            </div>
+            
             <%}%>
             <%}%>
                         
@@ -106,15 +111,20 @@
 
             <%if(i < 4){%>
             <div class="vid-list visible">
-            <%}%>
-            <%if(i >= 4){%>
-            <div class="vid-list hidden">
-            <%}%>
-                 <a href="/playlist?p=<%=channelplaylists[i].id%>"><img src="<%=channelplaylists[i].snippet.thumbnails.medium.url%>" loading="lazy" alt="" srcset=""></a>
+                <a href="/playlist?p=<%=channelplaylists[i].id%>"><img src="<%=channelplaylists[i].snippet.thumbnails.medium.url%>" loading="lazy" alt="" srcset=""></a>
                  <div class="vid-title"><%=channelplaylists[i].snippet.title%></div>
                  <div class="vid-channel"><%=channelplaylists[i].snippet.channelTitle%></div>
                  <div class="vid-detials"><%=channelplaylists[i].contentDetails.itemCount%> items &bull; <%=time%> ago</div>
             </div>
+            <%}else{%>
+            <div class="vid-list hidden">
+                <a href="/playlist?p=<%=channelplaylists[i].id%>"><img src="<%=channelplaylists[i].snippet.thumbnails.medium.url%>" loading="lazy" alt="" srcset=""></a>
+                 <div class="vid-title"><%=channelplaylists[i].snippet.title%></div>
+                 <div class="vid-channel"><%=channelplaylists[i].snippet.channelTitle%></div>
+                 <div class="vid-detials"><%=channelplaylists[i].contentDetails.itemCount%> items &bull; <%=time%> ago</div>
+            </div>
+            <%}%>
+                 
                         
             <%}%>
 
