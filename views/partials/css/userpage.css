@@ -87,9 +87,14 @@
 
 #userpage #Subscriptions .collection .vid-list a{
     width: 50%;
+    min-width: 50%;
+    height: 74%;
+    max-height: fit-content;
     display: flex;
+    background: #555;
     align-items: center;
     margin-bottom: 3%;
+    border-radius: 50%;
     justify-content: center;
     cursor: pointer;
 }
