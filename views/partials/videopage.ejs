@@ -66,6 +66,7 @@
                         </a>
                     
                     <a id="share" style="cursor: pointer;" onclick="copyFunction()"><img src="./images/share.png">Share</a>
+                    <a id="save" style="cursor: pointer;" href="https://www.ssyoutube.com/watch?v=<%=video.id%>" target="_blank"><img src="./images/download.png">Download</a>
                     <!-- <a id="save" style="cursor: pointer;" hx-get="/videopage/download?link=<%=video.id%>" hx-swap="outerHTML">
                         <img src="./images/download.png">Download</a> -->
 
@@ -226,22 +227,22 @@
   alert("Copied Link" + copyText);
 }
 
- let downloadbtn = document.querySelector('#save');
- downloadbtn.addEventListener('click',()=>{
-        downloadbtn.innerHTML = "Downloading";
-        let count = 0;
-        setInterval(()=>{
-            if(count > 3){
-                count = 0;
-                downloadbtn.innerHTML = "Downloading";
-            }
-            else{
-            downloadbtn.innerHTML = downloadbtn.innerHTML +'.';
-            count = count + 1;
-            }
+//  let downloadbtn = document.querySelector('#save');
+//  downloadbtn.addEventListener('click',()=>{
+//         downloadbtn.innerHTML = "Downloading";
+//         let count = 0;
+//         setInterval(()=>{
+//             if(count > 3){
+//                 count = 0;
+//                 downloadbtn.innerHTML = "Downloading";
+//             }
+//             else{
+//             downloadbtn.innerHTML = downloadbtn.innerHTML +'.';
+//             count = count + 1;
+//             }
             
-        },500);
-       downloadbtn.style.minWidth = '10rem'
- })
+//         },500);
+//        downloadbtn.style.minWidth = '10rem'
+//  })
 
 </script>
