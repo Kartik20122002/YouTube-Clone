@@ -23,21 +23,20 @@ const assets = [
     'images/home.png',
     'images/user.png',
     'images/menu.png',
-    'images/notification.png',
     'images/subscriptionsicon.png',
     'images/Youtube-Logo.svg',
-    'images/voice-search.png',
     'manifest.json',
 ]
 
-self.addEventListener('install', function(event) {
+self.addEventListener('install', (event)=> {
       event.waitUntil(
-      caches.open(static_cache)
-      .then((cache) =>{
-        cache.addAll(assets);
+      (async ()=>{
+        cache = await caches.open(static_cache);
+        await cache.addAll(assets);
+        self.skipWaiting();
       })
-      .then(self.skipWaiting())
-      );
+      )
+    
   })
   
   self.addEventListener('fetch', function(event) {
