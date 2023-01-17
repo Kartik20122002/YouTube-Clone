@@ -41,6 +41,15 @@
     }
 }
 
+@keyframes skeleton-loading-dark {
+    0% {
+        background-color: rgba(255,255,255, 0.15);;
+    }
+    100% {
+        background-color: rgba(255,255,255, 0.1);;
+    }
+}
+
 
 .thumb-link .keleton{
    display: none;
@@ -135,7 +144,9 @@
         color: #aaa;
     }
 
-
+    .thumb-link{
+        animation: skeleton-loading-dark 1s linear infinite alternate!important;
+    }
 
 }
 
