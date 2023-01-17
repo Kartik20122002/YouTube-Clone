@@ -8,7 +8,7 @@ export const Auth = express.Router();
 const GoogleStrategy = Strategy;
 
 export const isLoggedIn = (req,res,next)=>{
-    req.user ? next() : res.render('LoginPage.ejs');
+    req.user ? next() : res.redirect('/googleauth/signin');
 }
 
 
