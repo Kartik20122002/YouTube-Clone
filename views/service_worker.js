@@ -33,17 +33,19 @@ const assets = [
 self.addEventListener('install', function(event) {
       event.waitUntil(
       caches.open(static_cache)
-      .then(function(cache) {
-        cache.addAll(assets)
+      .then((cache) =>{
+        cache.addAll(assets);
       })
       .then(self.skipWaiting())
-      )
+      );
   })
   
   self.addEventListener('fetch', function(event) {
       event.respondWith(
            caches.match(event.request).then(cacheRes =>{
-            return cacheRes || fetch(event.request);
+            return cacheRes || fetch(event.request).then((res)=>{
+              return res;
+            });
            }));
   });
   
