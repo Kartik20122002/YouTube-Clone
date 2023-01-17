@@ -67,8 +67,30 @@ a{
     background: #5a5a5a;
 }
 
-#videopage .side-video-list .small-thumbnail{
+
+#videopage .side-video-list .small-thumbnail {
     flex-basis: 35%;
+    display: flex;
+    border-radius: 12px;
+    animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-color: rgba(0, 0, 0, 0.15);;
+    }
+    100% {
+        background-color: rgba(0, 0, 0, 0.1);;
+    }
+}
+
+@keyframes skeleton-loading-dark {
+    0% {
+        background-color: rgba(255,255,255, 0.15);;
+    }
+    100% {
+        background-color: rgba(255,255,255, 0.1);;
+    }
 }
 
 #videopage .side-video-list .vid-info{
@@ -473,5 +495,9 @@ a{
 
     #videopage .vid-description h4 {
         color: #aaa;
+    }
+
+    #videopage .side-video-list .small-thumbnail {
+        animation: skeleton-loading-dark 1s linear infinite alternate;
     }
 }
