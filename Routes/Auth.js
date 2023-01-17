@@ -19,7 +19,7 @@ try {
 
     if(expire_time < 100){
 
-        res.render('LoginPage.ejs');
+        res.redirect('/');
   
     }
     else next();
