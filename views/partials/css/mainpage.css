@@ -34,7 +34,7 @@
 
 @keyframes skeleton-loading {
     0% {
-        background-color: rgb(202 195 195 / 27%);
+        background-color: rgb(202 195 195 / 28%);
     }
     100% {
         background-color: rgb(130 130 130);
