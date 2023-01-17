@@ -155,6 +155,10 @@ a{
  #playlistpage .videos-section .vid-list .vid-img{
     min-width: 160px;
     flex-basis: 16%;
+    border-radius: 12px;
+    background: #606060;
+    height: fit-content;
+    display: flex;
     margin-right: 2%;
  }
 
