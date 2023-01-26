@@ -48,20 +48,22 @@
         <div class="collection">
 
             <%for(let i = 0 ; i < channelactivities.length ; i++){%>
+
+                     
+            <%  let d1 = new Date(channelactivities[i].snippet.publishedAt);%>
+            <%  let d2 = new Date();%>
+            <%  let date = Math.abs(d2-d1);%>
+            <%  let time = 0;%>
+            <%  date = date/(1000*60); time = Math.trunc(date) +" mins" %>
+            <%  if(date >= 60){ date = date/60; time = Math.trunc(date) + " hours";%>
+            <%  if(date >= 24){ date = date/24; time = Math.trunc(date) + " days"%>
+            <%  if(date >= 31){ date = date/30.4167; time = Math.trunc(date) + " months"%>
+            <%  if(date >= 12){ date = date/12; time = Math.trunc(date) + " years"}%>
+            <%  }}}%>
+
             <% if(channelactivities[i].snippet.type === "upload"){ %>
 
-                
-                <%  let d1 = new Date(channelactivities[i].snippet.publishedAt);%>
-                <%  let d2 = new Date();%>
-                <%  let date = Math.abs(d2-d1);%>
-                <%  let time = 0;%>
-                <%  date = date/(1000*60); time = Math.trunc(date) +" mins" %>
-                <%  if(date >= 60){ date = date/60; time = Math.trunc(date) + " hours";%>
-                <%  if(date >= 24){ date = date/24; time = Math.trunc(date) + " days"%>
-                <%  if(date >= 31){ date = date/30.4167; time = Math.trunc(date) + " months"%>
-                <%  if(date >= 12){ date = date/12; time = Math.trunc(date) + " years"}%>
-                <%  }}}%>
-
+       
 
             <%if(i < 4){%>
             <div class="vid-list visible">
@@ -80,6 +82,27 @@
             <%}%>
             
             <%}%>
+
+            <% if(channelactivities[i].snippet.type === "playlistItem"){ %>
+
+                <%if(i < 4){%>
+                    <div class="vid-list visible">
+                        <a class="thumb-link" href="/playlist?p=<%=channelactivities[i].contentDetails.playlistItem.playlistId%>"><img src="<%=channelactivities[i].snippet.thumbnails.medium.url%>" loading="lazy" alt="" srcset=""></a>
+                        <div class="vid-title"><%=channelactivities[i].snippet.title%></div>
+                        <div class="vid-channel"><%=channelinfo.snippet.title%> </div>
+                        <div class="vid-detials"><%=time%> ago <span> (Added to Playlist)</span></div>
+                   </div>
+                <%}else{%>
+                    <div class="vid-list hidden">
+                        <a class="thumb-link" href="/playlist?p=<%=channelactivities[i].contentDetails.playlistItem.playlistId%>"><img src="<%=channelactivities[i].snippet.thumbnails.medium.url%>" loading="lazy" alt="" srcset=""></a>
+                        <div class="vid-title"><%=channelactivities[i].snippet.title%></div>
+                        <div class="vid-channel"><%=channelinfo.snippet.title%> </div>
+                        <div class="vid-detials"><%=time%> ago <span> (Added to Playlist)</span></div>
+                   </div>
+                <%}%>
+            
+            <%}%>
+            
             <%}%>
                         
 

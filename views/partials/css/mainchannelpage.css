@@ -168,6 +168,10 @@ a{
     color: #606060;
 }
 
+#channelmainpage .videos-collection .collection .vid-detials span{
+    color: var(--dark);
+}
+
 #channelmainpage .videos-collection .collection .vid-title{
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -227,7 +231,10 @@ a{
     #channelmainpage .videos-collection .collection .vid-channel, #channelmainpage .videos-collection .collection .vid-detials {
         color: #aaa;
     }
-
+    
+    #channelmainpage .videos-collection .collection .vid-detials span{
+        color: #fff;
+    }
     
 }
 
