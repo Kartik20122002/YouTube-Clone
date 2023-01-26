@@ -11,7 +11,8 @@ export const oauth2client = new OAuth2(
     clientId,
     clientSecret,
     redirectUrl
-)
+);
+
 export const youtube = google.youtube({version : 'v3' , auth : oauth2client});
 
 export const search_videos = async (query)=>{

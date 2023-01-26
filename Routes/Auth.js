@@ -18,9 +18,7 @@ try {
     let expire_time = access_token_details.data.expires_in;
 
     if(expire_time < 100){
-
         res.redirect('/');
-  
     }
     else next();
 
@@ -74,7 +72,7 @@ Auth
     req.logOut((err)=>{
         res.send(err);
     })
-    res.redirect('/');
+    res.redirect('/loginpage');
 })
 
 // ,{accessType: 'offline'}
