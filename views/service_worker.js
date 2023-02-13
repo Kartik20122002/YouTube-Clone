@@ -2,30 +2,7 @@ const static_cache = 'static_cache';
 const dyanamic_cache = 'dyanamic_cache';
 
 const assets = [
-    'LoginPage.ejs',
-    'HomePage.ejs',
-    'css/LoginPage.css',
-    'css/HomePage.css',
-    'partials/nav.ejs',
-    'partials/sidebar.ejs',
-    'partials/bottommenu.ejs',
-    'partials/css/nav.css',
-    'partials/css/sidebar.css',
-    'partials/css/bottommenu.css',
-    'partials/js/nav.js',
-    'js/htmx.js',
-    'images/Icons/192x192.png',
-    'images/btn_google_signin_dark_normal_web@2x.png',
-    'images/like.png',
-    'images/dislike.png',
-    'images/disliked.png',
-    'images/liked.png',
-    'images/home.png',
-    'images/user.png',
-    'images/menu.png',
-    'images/subscriptionsicon.png',
-    'images/Youtube-Logo.svg',
-    'manifest.json',
+    
 ]
 
 self.addEventListener('install', (event)=> {
